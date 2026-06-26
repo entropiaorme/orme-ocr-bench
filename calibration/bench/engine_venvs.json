@@ -1,0 +1,44 @@
+{
+  "_comment": "Map of engine key -> Python interpreter to use when running that engine. Paths are relative to the repo root unless absolute. Engines absent from this map fall back to sys.executable (the orchestrator's own interpreter). On POSIX hosts replace 'Scripts/python.exe' with 'bin/python' across the engines map; SETUP.md walks the bring-up edits.",
+  "global_env": {
+    "_comment": "Environment variables merged into every subprocess. HF_HOME redirects HuggingFace's cache off the system drive on hosts where it lacks headroom. Repoint at a local cache or remove entirely on hosts where the default location (~/.cache/huggingface) is fine.",
+    "HF_HOME": "/path/to/huggingface-cache"
+  },
+  "engines": {
+    "ppocr":                 ".venv/Scripts/python.exe",
+    "tesseract":             ".venv/Scripts/python.exe",
+    "easyocr":               ".venv/Scripts/python.exe",
+    "trocr":                 ".venv/Scripts/python.exe",
+
+    "ppocrv5_mobile":        ".venv-1/Scripts/python.exe",
+    "ppocrv5_en_mobile":     ".venv-1/Scripts/python.exe",
+    "ppocrv5_latin_mobile":  ".venv-1/Scripts/python.exe",
+    "ppocrv5_server":        ".venv-1/Scripts/python.exe",
+    "rapidocr":              ".venv-1/Scripts/python.exe",
+
+    "onnxtr_crnn_mobile":    ".venv-2/Scripts/python.exe",
+    "onnxtr_parseq":         ".venv-2/Scripts/python.exe",
+    "onnxtr_vitstr":         ".venv-2/Scripts/python.exe",
+    "onnxtr_viptr":          ".venv-2/Scripts/python.exe",
+    "onnxtr_sar":            ".venv-2/Scripts/python.exe",
+    "onnxtr_master":         ".venv-2/Scripts/python.exe",
+
+    "openocr_svtrv2":        ".venv-3/Scripts/python.exe",
+
+    "mmocr_abinet":          ".venv-4/Scripts/python.exe",
+    "mmocr_robustscanner":   ".venv-4/Scripts/python.exe",
+    "mmocr_satrn":           ".venv-4/Scripts/python.exe",
+
+    "trocr_large_printed":   ".venv-5/Scripts/python.exe",
+    "donut":                 ".venv-5/Scripts/python.exe",
+    "nougat":                ".venv-5/Scripts/python.exe",
+
+    "florence2_base":        ".venv-6/Scripts/python.exe",
+    "florence2_large":       ".venv-6/Scripts/python.exe",
+    "surya":                 ".venv-6/Scripts/python.exe",
+
+    "got_ocr2":              ".venv-7/Scripts/python.exe",
+    "kosmos25":              ".venv-7/Scripts/python.exe",
+    "dots_ocr":              ".venv-7/Scripts/python.exe"
+  }
+}

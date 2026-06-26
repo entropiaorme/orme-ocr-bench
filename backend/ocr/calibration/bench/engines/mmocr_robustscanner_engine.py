@@ -1,0 +1,57 @@
+"""MMOCR RobustScanner adapter.
+
+RobustScanner (ECCV 2020) is a position-aware dual-branch attention
+recogniser explicitly designed for *contextless* short strings — the
+position enhancement branch keeps it from collapsing to a language-prior
+hallucination on text that has no natural-language structure. That
+contextless-friendly posture is the relevant axis for our numeric cells
+(skill level, profession rank_level, profession percent), which are short
+digit-only strings where an LM-coupled recogniser like ABINet often
+"corrects" digits toward word-shaped hallucinations.
+
+Loaded via ``mmocr.apis.MMOCRInferencer(rec="robustscanner")``;
+recogniser-only mode (no detection) since cells are pre-cropped.
+
+Confidence is the per-cell score returned by the recogniser
+(``rec_scores[0]``), which is a softmax-aggregated character probability.
+"""
+
+from __future__ import annotations
+
+import contextlib
+import io
+
+import numpy as np
+
+from backend.ocr.calibration.bench.engines.base import OCREngine
+
+
+class MMOCRRobustScannerEngine(OCREngine):
+    name = "mmocr_robustscanner"
+
+    def __init__(self) -> None:
+        try:
+            from mmocr.apis import MMOCRInferencer
+        except ModuleNotFoundError as exc:
+            raise ModuleNotFoundError(
+                "mmocr not installed. See agents/4/ROOM.md for the install "
+                "recipe (torch 2.0.0 + mmcv 2.0.1 + mmdet 3.1.0 + mmocr 1.0.1)."
+            ) from exc
+
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            self._inferencer = MMOCRInferencer(rec="robustscanner", device="cpu")
+
+    def warm_up(self) -> None:
+        dummy = np.full((48, 200, 3), 255, dtype=np.uint8)
+        self.read_text(dummy)
+
+    def read_text(self, crop_bgr: np.ndarray) -> tuple[str, float]:
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            out = self._inferencer(crop_bgr, return_vis=False)
+        pred = out["predictions"][0]
+        texts = pred.get("rec_texts") or [""]
+        scores = pred.get("rec_scores") or [0.0]
+        return texts[0], float(scores[0])
+
+
+ENGINE = MMOCRRobustScannerEngine

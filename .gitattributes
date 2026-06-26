@@ -1,0 +1,8 @@
+# Shell scripts stay LF regardless of core.autocrlf so they run under bash
+# after any checkout/clone (CRLF would break the shebang/commands).
+*.sh text eol=lf
+
+# Corpus crops are binary: never apply EOL normalisation, which would
+# corrupt the PNG bytes.
+*.png -text
+*.onnx -text

@@ -1,0 +1,26 @@
+# Driver venv for the bench orchestrator + the lightweight bench commons.
+#
+# Per-engine venvs install on top of (or instead of) this set; see SETUP.md
+# for the full per-engine recipe table. Engines absent from
+# calibration/bench/engine_venvs.json fall back to whichever interpreter
+# runs the orchestrator, so anything you want to run from the driver venv
+# (e.g. the four classic baselines: ppocr, tesseract, easyocr, trocr-base)
+# also goes here.
+
+# Bench harness (orchestrator + scoring)
+numpy>=1.20.0
+rapidfuzz>=3.0
+psutil>=5.9             # optional: RSS / process metrics in the report
+
+# Capture + image I/O (used by bench/capture.py and validate_panel_ocr.py)
+opencv-python>=4.9.0
+mss>=9.0.0
+pynput>=1.7.0           # only needed for live-capture re-runs against EU
+
+# ONNX Runtime: pick exactly one provider line per host.
+# - CPU baseline (any platform):
+onnxruntime>=1.18
+# - Windows AMD/Intel GPU via DirectML (uncomment, comment the CPU line):
+# onnxruntime-directml>=1.18
+# - NVIDIA CUDA (uncomment, comment the CPU line):
+# onnxruntime-gpu>=1.18

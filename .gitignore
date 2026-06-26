@@ -1,0 +1,25 @@
+# Driver venv + per-engine virtualenvs (rebuilt per host; recipes in
+# SETUP.md). The engine -> interpreter map in
+# calibration/bench/engine_venvs.json references these by relative path.
+.venv/
+.venv-*/
+
+# HuggingFace cache (per host; redirect via HF_HOME in engine_venvs.json).
+huggingface-cache/
+.cache/
+
+# Per-host diagnostic output (validate_panel_ocr.py writes here; the
+# committed corpus under calibration/bench/ stays tracked).
+calibration/validate/
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

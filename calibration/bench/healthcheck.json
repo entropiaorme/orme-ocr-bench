@@ -1,0 +1,223 @@
+[
+  {
+    "engine": "donut",
+    "ok": true,
+    "text": "",
+    "conf": 0.6687318683670593,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "dots_ocr",
+    "ok": false,
+    "error_type": "ValueError",
+    "error": "The following `model_kwargs` are not used by the model: ['mm_token_type_ids'] (note: typos in the generate arguments will also show up in this list)",
+    "traceback_tail": ".venv-7\\Lib\\site-packages\\torch\\utils\\_contextlib.py\", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File \".venv-7\\Lib\\site-packages\\transformers\\generation\\utils.py\", line 2377, in generate\n    self._validate_model_kwargs(model_kwargs.copy())\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \".venv-7\\Lib\\site-packages\\transformers\\generation\\utils.py\", line 1578, in _validate_model_kwargs\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: The following `model_kwargs` are not used by the model: ['mm_token_type_ids'] (note: typos in the generate arguments will also show up in this list)\n"
+  },
+  {
+    "engine": "easyocr",
+    "ok": true,
+    "text": "Agility",
+    "conf": 0.9997894420594076,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "florence2_base",
+    "ok": true,
+    "text": "\u0660\u0660",
+    "conf": 0.6333340735485157,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "florence2_large",
+    "ok": true,
+    "text": "M",
+    "conf": 0.7851911224424839,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "got_ocr2",
+    "ok": true,
+    "text": "Agility111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+    "conf": 0.8291275487130152,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "kosmos25",
+    "ok": true,
+    "text": "<bbox><x_48><y_4><x_621><y_231></bbox>Agility",
+    "conf": 0.4269325894419078,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "mmocr_abinet",
+    "ok": true,
+    "text": "nntpposiinnnos",
+    "conf": 0.12532975684319222,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "mmocr_robustscanner",
+    "ok": true,
+    "text": "Agifity",
+    "conf": 0.643801178250994,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "mmocr_satrn",
+    "ok": true,
+    "text": ">thereformation",
+    "conf": 0.5507348453005155,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "nougat",
+    "ok": false,
+    "error_type": "ImportError",
+    "error": "\nNougatTokenizerFast requires the NLTK library but it was not found in your environment. You can install it by referring to:\nhttps://www.nltk.org/install.html. Please note that you may need to restart your runtime after installation.\n\nNougatTokenizerFast requires the python-Levenshtein library but it was not found in your environment. You can install it with pip: `pip\ninstall python-Levenshtein`. Please note that you may need to restart your runtime after installation.\n",
+    "traceback_tail": "   requires_backends(self, [\"nltk\", \"levenshtein\"])\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \".venv-5\\Lib\\site-packages\\transformers\\utils\\import_utils.py\", line 2143, in requires_backends\n    raise ImportError(\"\".join(failed))\nImportError: \nNougatTokenizerFast requires the NLTK library but it was not found in your environment. You can install it by referring to:\nhttps://www.nltk.org/install.html. Please note that you may need to restart your runtime after installation.\n\nNougatTokenizerFast requires the python-Levenshtein library but it was not found in your environment. You can install it with pip: `pip\ninstall python-Levenshtein`. Please note that you may need to restart your runtime after installation.\n\n"
+  },
+  {
+    "engine": "onnxtr_crnn_mobile",
+    "ok": true,
+    "text": "Agility----",
+    "conf": 0.6054725408554077,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "onnxtr_master",
+    "ok": true,
+    "text": "Agility----",
+    "conf": 0.3688483089208603,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "onnxtr_parseq",
+    "ok": true,
+    "text": "Agility----",
+    "conf": 0.9698712944984436,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "onnxtr_sar",
+    "ok": true,
+    "text": "Agility-I-I",
+    "conf": 0.5662164092063904,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "onnxtr_viptr",
+    "ok": true,
+    "text": "Aglity",
+    "conf": 0.7319859743118287,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "onnxtr_vitstr",
+    "ok": true,
+    "text": "Agility----",
+    "conf": 0.9940456271171569,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "openocr_svtrv2",
+    "ok": true,
+    "text": "Agility",
+    "conf": 0.8930202126502991,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "ppocr",
+    "ok": true,
+    "text": "Agility",
+    "conf": 0.005905301014764936,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "ppocrv5_en_mobile",
+    "ok": true,
+    "text": "Agility",
+    "conf": 0.9491875603057267,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "ppocrv5_latin_mobile",
+    "ok": true,
+    "text": "Agility",
+    "conf": 0.8725198272739387,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "ppocrv5_mobile",
+    "ok": true,
+    "text": "Agility\u5927\u5ba4",
+    "conf": 0.6195967016044834,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "ppocrv5_server",
+    "ok": true,
+    "text": "Agility",
+    "conf": 0.7171761309741235,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "rapidocr",
+    "ok": true,
+    "text": "Agility",
+    "conf": 0.7996602207422256,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "surya",
+    "ok": false,
+    "error_type": "AssertionError",
+    "error": "You need to pass in a detection predictor if you don't provide bboxes or polygons",
+    "traceback_tail": "lthcheck.py\", line 79, in probe_one\n    engine.warm_up()\n    ~~~~~~~~~~~~~~^^\n  File \"backend\\ocr\\calibration\\bench\\engines\\surya_engine.py\", line 49, in warm_up\n    self.read_text(dummy)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"backend\\ocr\\calibration\\bench\\engines\\surya_engine.py\", line 57, in read_text\n    predictions = self._recognizer([pil])\n  File \".venv-6\\Lib\\site-packages\\surya\\recognition\\__init__.py\", line 379, in __call__\n    assert det_predictor is not None, (\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: You need to pass in a detection predictor if you don't provide bboxes or polygons\n"
+  },
+  {
+    "engine": "tesseract",
+    "ok": true,
+    "text": "Agility",
+    "conf": 0.95,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "trocr",
+    "ok": true,
+    "text": "AGLITY INCLUSIVE SUBJECT WITH",
+    "conf": 0.450248495298023,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  },
+  {
+    "engine": "trocr_large_printed",
+    "ok": true,
+    "text": "AGILLITY",
+    "conf": 0.5365447200839936,
+    "expected": "Agility",
+    "probe_crop": "calibration\\bench\\crops\\skill\\page-01\\row-00-name.png"
+  }
+]
