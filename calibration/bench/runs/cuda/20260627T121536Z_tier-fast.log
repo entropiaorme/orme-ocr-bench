@@ -1,0 +1,765 @@
+# orme-ocr-bench Experiment-A run log
+# track:        cuda (unconstrained research breadth; best device per engine)
+# selection:    --tier fast
+# started_utc:  20260627T121536Z
+# host:         lnx-comw2-1.lunet.lboro.ac.uk
+# os:           Linux 6.8.0-124-generic x86_64
+# python:       Python 3.12.1
+# git_commit:   e872b8f main
+# git_dirty:    yes
+# HF_HOME:      /home/lunet/comw2/.cache/huggingface
+# --- nvidia-smi ---
+# name, memory.total [MiB], driver_version
+# NVIDIA RTX A1000 Laptop GPU, 4096 MiB, 580.95.05
+# ---------------------------------------------------------------
+
+>>> benchmark_panel_ocr --tier fast --results-subdir cuda --skip-existing
+Global env additions for subprocesses: HF_HOME=/home/lunet/comw2/.cache/huggingface
+
+[engine 1/15] ppocr: result exists, skipping (--skip-existing)
+
+[engine 2/15] ppocrv5_mobile: result exists, skipping (--skip-existing)
+
+[engine 3/15] ppocrv5_en_mobile: result exists, skipping (--skip-existing)
+
+[engine 4/15] ppocrv5_latin_mobile: result exists, skipping (--skip-existing)
+
+[engine 5/15] ppocrv5_server: result exists, skipping (--skip-existing)
+
+[engine 6/15] rapidocr: result exists, skipping (--skip-existing)
+
+[engine 7/15] onnxtr_crnn_mobile: result exists, skipping (--skip-existing)
+
+[engine 8/15] onnxtr_parseq: result exists, skipping (--skip-existing)
+
+[engine 9/15] onnxtr_vitstr: result exists, skipping (--skip-existing)
+
+[engine 10/15] onnxtr_viptr: result exists, skipping (--skip-existing)
+
+[engine 11/15] onnxtr_sar: result exists, skipping (--skip-existing)
+
+[engine 12/15] onnxtr_master: result exists, skipping (--skip-existing)
+
+=== Launching openocr_svtrv2 [engine 13/15] subprocess (python=.venv-3) ===
+[openocr_svtrv2] loading...
+[2026/06/27 13:15:38] openrec INFO: Model already exists at: /home/lunet/comw2/.cache/openocr/openocr_rec_model.onnx
+[openocr_svtrv2] loaded in 946.8 ms (RSS 497.1 MB, device=cuda, provider=CUDAExecutionProvider)
+[openocr_svtrv2] warming up...
+[openocr_svtrv2] warmed up in 321.3 ms
+[openocr_svtrv2] panel 1/2 skill: 12 pages, 288 cells
+
+[openocr_svtrv2] skill p01/12 done in 1.3s (24 cells)                    
+
+[openocr_svtrv2] skill p02/12 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] skill p03/12 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] skill p04/12 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] skill p05/12 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] skill p06/12 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] skill p07/12 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] skill p08/12 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] skill p09/12 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] skill p10/12 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] skill p11/12 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] skill p12/12 done in 1.4s (24 cells)                    
+[openocr_svtrv2] panel 1/2 skill done: 16.5s (288 cells)
+[openocr_svtrv2] panel 2/2 profession: 14 pages, 336 cells
+
+[openocr_svtrv2] profession p01/14 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] profession p02/14 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] profession p03/14 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] profession p04/14 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] profession p05/14 done in 1.3s (24 cells)                    
+
+[openocr_svtrv2] profession p06/14 done in 1.3s (24 cells)                    
+
+[openocr_svtrv2] profession p07/14 done in 1.3s (24 cells)                    
+
+[openocr_svtrv2] profession p08/14 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] profession p09/14 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] profession p10/14 done in 1.2s (24 cells)                    
+
+[openocr_svtrv2] profession p11/14 done in 1.2s (24 cells)                    
+
+[openocr_svtrv2] profession p12/14 done in 1.3s (24 cells)                    
+
+[openocr_svtrv2] profession p13/14 done in 1.4s (24 cells)                    
+
+[openocr_svtrv2] profession p14/14 done in 1.3s (24 cells)                    
+[openocr_svtrv2] panel 2/2 profession done: 18.6s (336 cells)
+[openocr_svtrv2] wrote /home/lunet/comw2/PersonalWorkspace/ocr-bench/project/calibration/bench/results/cuda/openocr_svtrv2.json
+=== openocr_svtrv2 subprocess exit=0 wall=37083.2ms ===
+
+=== Launching tesseract [engine 14/15] subprocess (python=.venv) ===
+[tesseract] loading...
+[tesseract] loaded in 83.4 ms (RSS 51.4 MB, device=cpu)
+[tesseract] warming up...
+[tesseract] warmed up in 111.1 ms
+[tesseract] panel 1/2 skill: 12 pages, 288 cells
+
+[tesseract] skill p01/12 done in 2.0s (24 cells)                    
+
+[tesseract] skill p02/12 done in 1.9s (24 cells)                    
+
+[tesseract] skill p03/12 done in 2.0s (24 cells)                    
+
+[tesseract] skill p04/12 done in 2.0s (24 cells)                    
+
+[tesseract] skill p05/12 done in 2.0s (24 cells)                    
+
+[tesseract] skill p06/12 done in 2.0s (24 cells)                    
+
+[tesseract] skill p07/12 done in 2.0s (24 cells)                    
+
+[tesseract] skill p08/12 done in 2.0s (24 cells)                    
+
+[tesseract] skill p09/12 done in 2.0s (24 cells)                    
+
+[tesseract] skill p10/12 done in 2.0s (24 cells)                    
+
+[tesseract] skill p11/12 done in 2.0s (24 cells)                    
+
+[tesseract] skill p12/12 done in 2.0s (24 cells)                    
+[tesseract] panel 1/2 skill done: 23.9s (288 cells)
+[tesseract] panel 2/2 profession: 14 pages, 336 cells
+
+[tesseract] profession p01/14 done in 2.1s (24 cells)                    
+
+[tesseract] profession p02/14 done in 2.1s (24 cells)                    
+
+[tesseract] profession p03/14 done in 2.0s (24 cells)                    
+
+[tesseract] profession p04/14 done in 2.1s (24 cells)                    
+
+[tesseract] profession p05/14 done in 2.1s (24 cells)                    
+
+[tesseract] profession p06/14 done in 2.0s (24 cells)                    
+
+[tesseract] profession p07/14 done in 2.1s (24 cells)                    
+
+[tesseract] profession p08/14 done in 2.1s (24 cells)                    
+
+[tesseract] profession p09/14 done in 2.0s (24 cells)                    
+
+[tesseract] profession p10/14 done in 2.0s (24 cells)                    
+
+[tesseract] profession p11/14 done in 2.0s (24 cells)                    
+
+[tesseract] profession p12/14 done in 2.0s (24 cells)                    
+
+[tesseract] profession p13/14 done in 2.0s (24 cells)                    
+
+[tesseract] profession p14/14 done in 2.0s (24 cells)                    
+[tesseract] panel 2/2 profession done: 28.5s (336 cells)
+[tesseract] wrote /home/lunet/comw2/PersonalWorkspace/ocr-bench/project/calibration/bench/results/cuda/tesseract.json
+=== tesseract subprocess exit=0 wall=52850.2ms ===
+
+=== Launching easyocr [engine 15/15] subprocess (python=.venv) ===
+[easyocr] loading...
+[easyocr] loaded in 16922.0 ms (RSS 1110.2 MB, device=cuda)
+[easyocr] warming up...
+[easyocr] warmed up in 176.2 ms
+[easyocr] panel 1/2 skill: 12 pages, 288 cells
+
+[easyocr] skill p01/12 done in 0.6s (24 cells)                    
+
+[easyocr] skill p02/12 done in 0.4s (24 cells)                    
+
+[easyocr] skill p03/12 done in 0.4s (24 cells)                    
+
+[easyocr] skill p04/12 done in 0.2s (24 cells)                    
+
+[easyocr] skill p05/12 done in 0.3s (24 cells)                    
+
+[easyocr] skill p06/12 done in 0.4s (24 cells)                    
+
+[easyocr] skill p07/12 done in 0.4s (24 cells)                    
+
+[easyocr] skill p08/12 done in 0.4s (24 cells)                    
+
+[easyocr] skill p09/12 done in 0.4s (24 cells)                    
+
+[easyocr] skill p10/12 done in 0.4s (24 cells)                    
+
+[easyocr] skill p11/12 done in 0.3s (24 cells)                    
+
+[easyocr] skill p12/12 done in 0.3s (24 cells)                    
+[easyocr] panel 1/2 skill done: 4.5s (288 cells)
+[easyocr] panel 2/2 profession: 14 pages, 336 cells
+
+[easyocr] profession p01/14 done in 0.6s (24 cells)                    
+
+[easyocr] profession p02/14 done in 0.5s (24 cells)                    
+
+[easyocr] profession p03/14 done in 0.5s (24 cells)                    
+
+[easyocr] profession p04/14 done in 0.4s (24 cells)                    
+
+[easyocr] profession p05/14 done in 0.4s (24 cells)                    
+
+[easyocr] profession p06/14 done in 0.4s (24 cells)                    
+
+[easyocr] profession p07/14 done in 0.5s (24 cells)                    
+
+[easyocr] profession p08/14 done in 0.5s (24 cells)                    
+
+[easyocr] profession p09/14 done in 0.4s (24 cells)                    
+
+[easyocr] profession p10/14 done in 0.4s (24 cells)                    
+
+[easyocr] profession p11/14 done in 0.3s (24 cells)                    
+
+[easyocr] profession p12/14 done in 0.4s (24 cells)                    
+
+[easyocr] profession p13/14 done in 0.4s (24 cells)                    
+
+[easyocr] profession p14/14 done in 0.4s (24 cells)                    
+[easyocr] panel 2/2 profession done: 6.1s (336 cells)
+[easyocr] wrote /home/lunet/comw2/PersonalWorkspace/ocr-bench/project/calibration/bench/results/cuda/easyocr.json
+=== easyocr subprocess exit=0 wall=28654.0ms ===
+
+=== COMPOSITE BENCHMARK ===
+
+metric                                  ppocr ppocrv5_mobile ppocrv5_en_mobile ppocrv5_latin_mobile ppocrv5_server       rapidocr onnxtr_crnn_mobile  onnxtr_parseq  onnxtr_vitstr   onnxtr_viptr     onnxtr_sar  onnxtr_master openocr_svtrv2      tesseract        easyocr
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PASS                                  473/594        542/594        473/594        460/594        383/594        581/594        366/594        375/594        291/594        469/594        381/594        391/594        550/594        250/594        421/594
+RECOVERED                                  42             28             42             83            102             13            196            192            205            100            190            184             44              2              1
+UNRECOVERABLE                              79             24             79             51            109              0             32             27             98             25             23             19              0            342            172
+Effective accuracy                      86.7%          96.0%          86.7%          91.4%          81.6%         100.0%          94.6%          95.5%          83.5%          95.8%          96.1%          96.8%         100.0%          42.4%          71.0%
+Hallucinate                                 7              9              7              5              1              0             29             33             33              0             34             33              0             77              0
+Drop                                       36              0             36             36             73              0              0              0              0              0              0              0              0             57              1
+Substitute                                 62             43             62             92            137             13            199            186            270            125            179            170             44            210             69
+Reject                                     16              0             16              1              0              0              0              0              0              0              0              0              0              0            103
+Init load (ms)                            424            413            378            387            491            708           2792           4725           8352          17602           3825          18065            947             83          16922
+Init warmup (ms)                          453            368            343            341            362            324            301            246            171            580            429            413            321            111            176
+RSS post-warmup (MB)                      944            881            848            848            960            901            946            969            813           1034           1085           1115            908             55           1363
+Final RSS (MB)                            957            903            871            871           1003            916            991            998            841           1070           1170           1165            942             61           1458
+Per-cell mean (ms)                       35.0           36.4           34.9           34.6           93.4           35.2           59.1           31.1           15.5           73.1          124.9          145.1           55.8           83.6           16.9
+Per-cell p95 (ms)                        35.8           37.5           35.7           35.6           96.8           36.0           73.2           33.0           21.7           80.9          148.6          184.5           58.7           94.1           25.3
+Per-cell max (ms)                        60.9           81.1           75.3           50.3           98.5           38.4           76.2           46.2           31.5           99.3          174.7          218.0           67.4          105.7          120.2
+OCR total (s)                            20.8           21.6           20.7           20.6           55.5           20.9           35.1           18.5            9.2           43.5           74.2           86.2           33.2           49.6           10.1
+Subprocess wall (s)                      23.0           23.8           22.8           22.6           59.4           23.3           40.0           24.6           18.5           64.0           82.0          109.0           36.4           52.6           27.7
+
+
+=== PER-CELL-TYPE EFFECTIVE ACCURACY ===
+
+cell                                    ppocr ppocrv5_mobile ppocrv5_en_mobile ppocrv5_latin_mobile ppocrv5_server       rapidocr onnxtr_crnn_mobile  onnxtr_parseq  onnxtr_vitstr   onnxtr_viptr     onnxtr_sar  onnxtr_master openocr_svtrv2      tesseract        easyocr
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+name                            84.1%  (165+42/246)  98.8%  (215+28/246)  84.1%  (165+42/246)  86.2%  (129+83/246)  63.0%  (53+102/246) 100.0%  (233+13/246)  98.4%  (46+196/246)  98.4%  (50+192/246)  96.7%  (33+205/246)  98.8%  (143+100/246)  98.4%  (52+190/246)  98.4%  (58+184/246) 100.0%  (202+44/246)  49.2%  (119+2/246)  99.6%  (244+1/246)
+level                           95.1%  (137+0/144)  94.4%  (136+0/144)  95.1%  (137+0/144)  99.3%  (143+0/144)  99.3%  (143+0/144) 100.0%  (144+0/144) 100.0%  (144+0/144) 100.0%  (144+0/144) 100.0%  (144+0/144)  98.6%  (142+0/144) 100.0%  (144+0/144) 100.0%  (144+0/144) 100.0%  (144+0/144)  25.0%  (36+0/144)  29.9%  (43+0/144)
+rank_level                      67.6%  (69+0/102)  87.3%  (89+0/102)  67.6%  (69+0/102)  84.3%  (86+0/102)  86.3%  (88+0/102) 100.0%  (102+0/102)  72.5%  (74+0/102)  77.5%  (79+0/102)  62.7%  (64+0/102)  80.4%  (82+0/102)  81.4%  (83+0/102)  85.3%  (87+0/102) 100.0%  (102+0/102)  61.8%  (63+0/102)  39.2%  (40+0/102)
+percent                        100.0%  (102+0/102) 100.0%  (102+0/102) 100.0%  (102+0/102) 100.0%  (102+0/102)  97.1%  (99+0/102) 100.0%  (102+0/102) 100.0%  (102+0/102) 100.0%  (102+0/102)  49.0%  (50+0/102) 100.0%  (102+0/102) 100.0%  (102+0/102) 100.0%  (102+0/102) 100.0%  (102+0/102)  31.4%  (32+0/102)  92.2%  (94+0/102)
+
+--- PPOCR failures (121) ---
+  skill p01 r05 name        [RECOVERED    ] mode=substitute expected='Angling' ocr='Angli' fuzzy_score=83.3
+  skill p01 r06 name        [UNRECOVERABLE] mode=drop       expected='Animal Lore' ocr='nmo'
+  skill p01 r07 name        [UNRECOVERABLE] mode=reject     expected='Animal Taming' ocr=''
+  skill p01 r08 name        [UNRECOVERABLE] mode=drop       expected='Armor Technology' ocr='Amoeolo'
+  skill p01 r09 name        [RECOVERED    ] mode=substitute expected='Artefact Preservation' ocr='Arteftreservation' fuzzy_score=89.5
+  skill p01 r11 name        [UNRECOVERABLE] mode=drop       expected='Attachments Technology' ocr='enolo'
+  skill p02 r01 name        [RECOVERED    ] mode=substitute expected='Baitfishing' ocr='Baithing' fuzzy_score=84.2
+  skill p02 r06 name        [UNRECOVERABLE] mode=substitute expected='Bravado' ocr='ceaaolowb'
+  skill p03 r02 name        [RECOVERED    ] mode=substitute expected='Combat Reflexes' ocr='Combt ef es' fuzzy_score=76.9
+  skill p03 r06 name        [RECOVERED    ] mode=substitute expected='Courage' ocr='Couraow' fuzzy_score=71.4
+  skill p03 r08 name        [UNRECOVERABLE] mode=drop       expected='Deep Ocean Fishing' ocr='eihin'
+  skill p04 r02 name        [RECOVERED    ] mode=substitute expected='Electrokinesis' ocr='Electrokinesso' fuzzy_score=92.9
+  skill p04 r03 level       [UNRECOVERABLE] mode=substitute expected=13 ocr=1
+  skill p04 r07 name        [UNRECOVERABLE] mode=drop       expected='Face Sculpting' ocr='F lpti'
+  skill p04 r10 name        [RECOVERED    ] mode=substitute expected='Fishing Attachment Technology' ocr='Fishingttchment Technology' fuzzy_score=94.5
+  skill p04 r11 name        [UNRECOVERABLE] mode=drop       expected='Fishing Rod Technology' ocr='Fo  no'
+  skill p05 r01 name        [UNRECOVERABLE] mode=substitute expected='Food Technology' ocr='Foo  hnolo'
+  skill p05 r03 name        [RECOVERED    ] mode=drop       expected='Fragmentating' ocr='Fragmt' fuzzy_score=81.8
+  skill p05 r04 name        [RECOVERED    ] mode=substitute expected='Gastronomy' ocr='stronomy' fuzzy_score=88.9
+  skill p05 r04 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=12
+  skill p05 r05 name        [UNRECOVERABLE] mode=drop       expected='Gauss Weaponry Technology' ocr='eponehlo'
+  skill p05 r06 name        [RECOVERED    ] mode=substitute expected='Genetics' ocr='enetics' fuzzy_score=93.3
+  skill p05 r07 level       [UNRECOVERABLE] mode=reject     expected=2 ocr=''
+  skill p05 r10 name        [RECOVERED    ] mode=substitute expected='Handgun' ocr='Handun' fuzzy_score=92.3
+  skill p06 r01 name        [UNRECOVERABLE] mode=drop       expected='Heavy Weapons' ocr='Hea pa'
+  skill p06 r02 name        [UNRECOVERABLE] mode=drop       expected='Inflict Melee Damage' ocr='l'
+  skill p06 r03 name        [UNRECOVERABLE] mode=reject     expected='Inflict Ranged Damage' ocr=''
+  skill p06 r05 name        [RECOVERED    ] mode=substitute expected='Jamming' ocr='amming' fuzzy_score=92.3
+  skill p06 r06 name        [UNRECOVERABLE] mode=drop       expected='Laser Weaponry Technology' ocr='aseponehnlo'
+  skill p06 r07 name        [UNRECOVERABLE] mode=drop       expected='Light Melee Weapons' ocr='e   on'
+  ... +91 more
+
+--- PPOCRV5_MOBILE failures (52) ---
+  skill p01 r00 name        [RECOVERED    ] mode=substitute expected='Agility' ocr='Agility大室' fuzzy_score=87.5
+  skill p01 r05 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=10
+  skill p01 r06 name        [RECOVERED    ] mode=substitute expected='Animal Lore' ocr='canimal Loreowb' fuzzy_score=76.9
+  skill p02 r01 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=15
+  skill p02 r05 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=19
+  skill p02 r06 name        [RECOVERED    ] mode=substitute expected='Bravado' ocr='Bravadow' fuzzy_score=93.3
+  skill p03 r00 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=12
+  skill p03 r06 name        [RECOVERED    ] mode=substitute expected='Courage' ocr='Courageowb' fuzzy_score=82.4
+  skill p04 r00 name        [RECOVERED    ] mode=substitute expected='Dodge' ocr='Dodge美室' fuzzy_score=83.3
+  skill p07 r05 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=10
+  skill p08 r06 name        [RECOVERED    ] mode=substitute expected='Mining Laser Technology' ocr='[maning LaserTechnologyw' fuzzy_score=85.1
+  skill p09 r06 name        [RECOVERED    ] mode=substitute expected='Provisioning' ocr='Provisioningow' fuzzy_score=92.3
+  skill p10 r01 name        [RECOVERED    ] mode=hallucinate expected='Rifle' ocr='Rifle美楼一' fuzzy_score=90.0
+  skill p10 r06 name        [RECOVERED    ] mode=substitute expected='Scan Technology' ocr='ScanTechnologyw' fuzzy_score=93.3
+  skill p10 r06 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=12
+  skill p11 r00 level       [UNRECOVERABLE] mode=hallucinate expected=7 ocr=72
+  skill p12 r03 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=102
+  profession p01 r00 name        [RECOVERED    ] mode=substitute expected='Electro Kinetic (Dmg)' ocr='ElectroKinetic (Dmg）' fuzzy_score=92.7
+  profession p01 r01 rank_level  [UNRECOVERABLE] mode=substitute expected=74 ocr='cYEmite4b'
+  profession p01 r02 name        [RECOVERED    ] mode=substitute expected='Swordsman (Dmg)' ocr='Swordsman (Dmg）' fuzzy_score=93.3
+  profession p01 r04 name        [RECOVERED    ] mode=substitute expected='Knifefighter (Dmg)' ocr='cYnfefghteDmg' fuzzy_score=71.0
+  profession p01 r06 name        [RECOVERED    ] mode=substitute expected='Cryogenic (Dmg)' ocr='Cryogenic(Dmg）' fuzzy_score=89.7
+  profession p01 r07 name        [RECOVERED    ] mode=substitute expected='Ranged Laser (Dmg)' ocr='Ranged Laser (Dmg）' fuzzy_score=94.4
+  profession p02 r01 rank_level  [UNRECOVERABLE] mode=substitute expected=33 ocr='Yansperingm3lb'
+  profession p02 r02 name        [RECOVERED    ] mode=substitute expected='Brawler (Dmg)' ocr='Brawler (Dmg）' fuzzy_score=92.3
+  profession p02 r04 name        [RECOVERED    ] mode=substitute expected='Ranged BLP (Dmg)' ocr='RangedbLPDmg' fuzzy_score=78.6
+  profession p03 r01 rank_level  [UNRECOVERABLE] mode=substitute expected=23 ocr='Skilled3b'
+  profession p03 r04 name        [UNRECOVERABLE] mode=substitute expected='Knifefighter (Hit)' ocr='cYmnegtaow'
+  profession p03 r06 rank_level  [UNRECOVERABLE] mode=substitute expected=18 ocr='Adept.18美'
+  profession p04 r01 rank_level  [UNRECOVERABLE] mode=substitute expected=16 ocr='Competentn16b'
+  ... +22 more
+
+--- PPOCRV5_EN_MOBILE failures (121) ---
+  skill p01 r05 name        [RECOVERED    ] mode=substitute expected='Angling' ocr='Angli' fuzzy_score=83.3
+  skill p01 r06 name        [UNRECOVERABLE] mode=drop       expected='Animal Lore' ocr='nmo'
+  skill p01 r07 name        [UNRECOVERABLE] mode=reject     expected='Animal Taming' ocr=''
+  skill p01 r08 name        [UNRECOVERABLE] mode=drop       expected='Armor Technology' ocr='Amoeolo'
+  skill p01 r09 name        [RECOVERED    ] mode=substitute expected='Artefact Preservation' ocr='Arteftreservation' fuzzy_score=89.5
+  skill p01 r11 name        [UNRECOVERABLE] mode=drop       expected='Attachments Technology' ocr='enolo'
+  skill p02 r01 name        [RECOVERED    ] mode=substitute expected='Baitfishing' ocr='Baithing' fuzzy_score=84.2
+  skill p02 r06 name        [UNRECOVERABLE] mode=substitute expected='Bravado' ocr='ceaaolowb'
+  skill p03 r02 name        [RECOVERED    ] mode=substitute expected='Combat Reflexes' ocr='Combt ef es' fuzzy_score=76.9
+  skill p03 r06 name        [RECOVERED    ] mode=substitute expected='Courage' ocr='Couraow' fuzzy_score=71.4
+  skill p03 r08 name        [UNRECOVERABLE] mode=drop       expected='Deep Ocean Fishing' ocr='eihin'
+  skill p04 r02 name        [RECOVERED    ] mode=substitute expected='Electrokinesis' ocr='Electrokinesso' fuzzy_score=92.9
+  skill p04 r03 level       [UNRECOVERABLE] mode=substitute expected=13 ocr=1
+  skill p04 r07 name        [UNRECOVERABLE] mode=drop       expected='Face Sculpting' ocr='F lpti'
+  skill p04 r10 name        [RECOVERED    ] mode=substitute expected='Fishing Attachment Technology' ocr='FishingAttchment Technology' fuzzy_score=96.4
+  skill p04 r11 name        [UNRECOVERABLE] mode=drop       expected='Fishing Rod Technology' ocr='Fo  no'
+  skill p05 r01 name        [UNRECOVERABLE] mode=substitute expected='Food Technology' ocr='Foo  hnolo'
+  skill p05 r03 name        [RECOVERED    ] mode=drop       expected='Fragmentating' ocr='Fragmt' fuzzy_score=81.8
+  skill p05 r04 name        [RECOVERED    ] mode=substitute expected='Gastronomy' ocr='stronomy' fuzzy_score=88.9
+  skill p05 r04 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=12
+  skill p05 r05 name        [UNRECOVERABLE] mode=drop       expected='Gauss Weaponry Technology' ocr='eponehlo'
+  skill p05 r06 name        [RECOVERED    ] mode=substitute expected='Genetics' ocr='enetics' fuzzy_score=93.3
+  skill p05 r07 level       [UNRECOVERABLE] mode=reject     expected=2 ocr=''
+  skill p05 r10 name        [RECOVERED    ] mode=substitute expected='Handgun' ocr='Handun' fuzzy_score=92.3
+  skill p06 r01 name        [UNRECOVERABLE] mode=drop       expected='Heavy Weapons' ocr='Hea pa'
+  skill p06 r02 name        [UNRECOVERABLE] mode=drop       expected='Inflict Melee Damage' ocr='l'
+  skill p06 r03 name        [UNRECOVERABLE] mode=reject     expected='Inflict Ranged Damage' ocr=''
+  skill p06 r05 name        [RECOVERED    ] mode=substitute expected='Jamming' ocr='amming' fuzzy_score=92.3
+  skill p06 r06 name        [UNRECOVERABLE] mode=drop       expected='Laser Weaponry Technology' ocr='aseponehnlo'
+  skill p06 r07 name        [UNRECOVERABLE] mode=drop       expected='Light Melee Weapons' ocr='e   on'
+  ... +91 more
+
+--- PPOCRV5_LATIN_MOBILE failures (134) ---
+  skill p01 r02 name        [RECOVERED    ] mode=substitute expected='Alertness' ocr='Alertnes' fuzzy_score=94.1
+  skill p01 r06 name        [UNRECOVERABLE] mode=substitute expected='Animal Lore' ocr='cYnmalowb'
+  skill p01 r07 name        [RECOVERED    ] mode=substitute expected='Animal Taming' ocr='Animal Tain' fuzzy_score=91.7
+  skill p01 r08 name        [RECOVERED    ] mode=substitute expected='Armor Technology' ocr='Armor Technolo' fuzzy_score=93.3
+  skill p01 r09 name        [RECOVERED    ] mode=drop       expected='Artefact Preservation' ocr='Artfrn' fuzzy_score=65.5
+  skill p01 r11 name        [UNRECOVERABLE] mode=drop       expected='Attachments Technology' ocr='At'
+  skill p02 r00 name        [RECOVERED    ] mode=substitute expected='BLP Weaponry Technology' ocr='BLPWeaponry Technolo' fuzzy_score=93.0
+  skill p02 r01 name        [UNRECOVERABLE] mode=drop       expected='Baitfishing' ocr='Baiin'
+  skill p02 r02 name        [RECOVERED    ] mode=substitute expected='Biology' ocr='Biologyw' fuzzy_score=93.3
+  skill p02 r03 name        [RECOVERED    ] mode=substitute expected='Bioregenesis' ocr='Bioreee' fuzzy_score=77.1
+  skill p02 r04 name        [RECOVERED    ] mode=substitute expected='Body Sculpting' ocr='Body Scult' fuzzy_score=83.3
+  skill p02 r06 name        [UNRECOVERABLE] mode=substitute expected='Bravado' ocr='camaelowb'
+  skill p02 r07 name        [RECOVERED    ] mode=substitute expected='Butchering' ocr='Butcrin' fuzzy_score=82.4
+  skill p03 r00 name        [RECOVERED    ] mode=substitute expected='Color Matching' ocr='Color atchin' fuzzy_score=92.3
+  skill p03 r02 name        [UNRECOVERABLE] mode=drop       expected='Combat Reflexes' ocr='Co'
+  skill p03 r04 name        [RECOVERED    ] mode=substitute expected='Concentration' ocr='Concentratin' fuzzy_score=96.0
+  skill p03 r06 name        [UNRECOVERABLE] mode=substitute expected='Courage' ocr='Cmulowb'
+  skill p03 r07 name        [RECOVERED    ] mode=substitute expected='Cryogenics' ocr='Cryoencs' fuzzy_score=88.9
+  skill p03 r08 name        [RECOVERED    ] mode=substitute expected='Deep Ocean Fishing' ocr='Deepcean ishin' fuzzy_score=87.5
+  skill p03 r11 name        [RECOVERED    ] mode=substitute expected='Dispense Decoy' ocr='Dipene  ec' fuzzy_score=75.0
+  skill p04 r01 name        [RECOVERED    ] mode=substitute expected='Drilling' ocr='Drillin' fuzzy_score=93.3
+  skill p04 r02 name        [UNRECOVERABLE] mode=substitute expected='Electrokinesis' ocr='Electnsiw'
+  skill p04 r03 name        [RECOVERED    ] mode=substitute expected='Electronics' ocr='Electronic' fuzzy_score=95.2
+  skill p04 r04 name        [RECOVERED    ] mode=substitute expected='Engineering' ocr='Engineri' fuzzy_score=84.2
+  skill p04 r07 name        [RECOVERED    ] mode=substitute expected='Face Sculpting' ocr='ac  cut' fuzzy_score=64.3
+  skill p04 r10 name        [RECOVERED    ] mode=substitute expected='Fishing Attachment Technology' ocr='Fishing Attachment Technoloy' fuzzy_score=98.2
+  skill p04 r11 name        [RECOVERED    ] mode=drop       expected='Fishing Rod Technology' ocr='id Tc' fuzzy_score=72.0
+  skill p05 r00 name        [RECOVERED    ] mode=substitute expected='Fly Fishing' ocr='Fly Fhing' fuzzy_score=90.0
+  skill p05 r01 name        [UNRECOVERABLE] mode=substitute expected='Food Technology' ocr='Food Tecnoo'
+  skill p05 r02 name        [RECOVERED    ] mode=substitute expected='Force Merge' ocr='Forc ere' fuzzy_score=84.2
+  ... +104 more
+
+--- PPOCRV5_SERVER failures (211) ---
+  skill p01 r01 name        [UNRECOVERABLE] mode=drop       expected='Aim' ocr='a'
+  skill p01 r02 name        [UNRECOVERABLE] mode=drop       expected='Alertness' ocr='aea'
+  skill p01 r03 name        [UNRECOVERABLE] mode=drop       expected='Analysis' ocr='ann'
+  skill p01 r04 name        [UNRECOVERABLE] mode=drop       expected='Anatomy' ocr='an'
+  skill p01 r05 name        [RECOVERED    ] mode=substitute expected='Angling' ocr='anglin' fuzzy_score=76.9
+  skill p01 r06 name        [UNRECOVERABLE] mode=drop       expected='Animal Lore' ocr='an'
+  skill p01 r07 name        [RECOVERED    ] mode=substitute expected='Animal Taming' ocr='Animal taings' fuzzy_score=84.6
+  skill p01 r08 name        [RECOVERED    ] mode=substitute expected='Armor Technology' ocr='Armor tnog' fuzzy_score=85.5
+  skill p01 r09 name        [UNRECOVERABLE] mode=substitute expected='Artefact Preservation' ocr='ateat YYYYteo'
+  skill p01 r10 name        [UNRECOVERABLE] mode=drop       expected='Athletics' ocr='caG'
+  skill p02 r00 name        [RECOVERED    ] mode=substitute expected='BLP Weaponry Technology' ocr='BLP Weaponry Technologyc登毫' fuzzy_score=93.9
+  skill p02 r01 name        [RECOVERED    ] mode=substitute expected='Baitfishing' ocr='Bbaitfisingco' fuzzy_score=83.3
+  skill p02 r02 name        [UNRECOVERABLE] mode=substitute expected='Biology' ocr='Beonnn'
+  skill p02 r03 name        [RECOVERED    ] mode=substitute expected='Bioregenesis' ocr='Bioren' fuzzy_score=81.8
+  skill p02 r04 name        [RECOVERED    ] mode=drop       expected='Body Sculpting' ocr='Body c' fuzzy_score=85.5
+  skill p02 r05 name        [RECOVERED    ] mode=substitute expected='Botany' ocr='Botnyns' fuzzy_score=76.9
+  skill p02 r06 name        [UNRECOVERABLE] mode=drop       expected='Bravado' ocr='Bav'
+  skill p02 r07 name        [UNRECOVERABLE] mode=substitute expected='Butchering' ocr='Batein'
+  skill p02 r08 name        [RECOVERED    ] mode=substitute expected='Carpentry' ocr='Carptnt' fuzzy_score=75.0
+  skill p02 r09 name        [RECOVERED    ] mode=drop       expected='Casting' ocr='as' fuzzy_score=90.0
+  skill p02 r10 name        [UNRECOVERABLE] mode=drop       expected='Chemistry' ocr='a'
+  skill p02 r11 name        [UNRECOVERABLE] mode=drop       expected='Clubs' ocr='e'
+  skill p03 r00 name        [RECOVERED    ] mode=substitute expected='Color Matching' ocr='Color Matchingt毫' fuzzy_score=93.3
+  skill p03 r01 name        [UNRECOVERABLE] mode=substitute expected='Coloring' ocr='Colorit'
+  skill p03 r02 name        [RECOVERED    ] mode=substitute expected='Combat Reflexes' ocr='Combat e' fuzzy_score=85.5
+  skill p03 r03 name        [UNRECOVERABLE] mode=drop       expected='Computer' ocr='Cop'
+  skill p03 r04 name        [RECOVERED    ] mode=substitute expected='Concentration' ocr='Concentraion' fuzzy_score=96.0
+  skill p03 r05 name        [RECOVERED    ] mode=substitute expected='Coolness' ocr='Coolnessta' fuzzy_score=88.9
+  skill p03 r06 name        [UNRECOVERABLE] mode=drop       expected='Courage' ocr='ca'
+  skill p03 r07 name        [RECOVERED    ] mode=substitute expected='Cryogenics' ocr='Cryogeni' fuzzy_score=88.9
+  ... +181 more
+
+--- RAPIDOCR failures (13) ---
+  skill p02 r02 name        [RECOVERED    ] mode=substitute expected='Biology' ocr='Biology-' fuzzy_score=93.3
+  skill p02 r04 name        [RECOVERED    ] mode=substitute expected='Body Sculpting' ocr='BodyScupting' fuzzy_score=92.3
+  skill p08 r01 name        [RECOVERED    ] mode=substitute expected='Mentor' ocr='Mentor.' fuzzy_score=92.3
+  skill p12 r04 name        [RECOVERED    ] mode=substitute expected='Vehicle Repairing' ocr='VehicleReairing' fuzzy_score=93.8
+  profession p01 r04 name        [RECOVERED    ] mode=substitute expected='Knifefighter (Dmg)' ocr='Knifefighter（Dmg)' fuzzy_score=91.4
+  profession p01 r05 name        [RECOVERED    ] mode=substitute expected='Pyro Kinetic (Dmg)' ocr='PyroKinetic（Dmg）' fuzzy_score=82.4
+  profession p01 r06 name        [RECOVERED    ] mode=substitute expected='Cryogenic (Dmg)' ocr='Cryogenic（Dmg）' fuzzy_score=82.8
+  profession p02 r02 name        [RECOVERED    ] mode=substitute expected='Brawler (Dmg)' ocr='Brawler(Dmg）' fuzzy_score=88.0
+  profession p02 r03 name        [RECOVERED    ] mode=substitute expected='Whipper (Dmg)' ocr='Whipper(Dmg）' fuzzy_score=88.0
+  profession p03 r01 name        [RECOVERED    ] mode=substitute expected='Pyro Kinetic (Hit)' ocr='PyroKinetic（Hit)' fuzzy_score=88.2
+  profession p03 r02 name        [RECOVERED    ] mode=substitute expected='Cryogenic (Hit)' ocr='Cryogenic （Hit）' fuzzy_score=86.7
+  profession p03 r04 name        [RECOVERED    ] mode=substitute expected='Knifefighter (Hit)' ocr='Knifefighter（Hit)' fuzzy_score=91.4
+  profession p14 r02 name        [RECOVERED    ] mode=substitute expected='Animal Investigator' ocr='Animallnvestigator' fuzzy_score=91.9
+
+--- ONNXTR_CRNN_MOBILE failures (228) ---
+  skill p01 r00 name        [RECOVERED    ] mode=hallucinate expected='Agility' ocr='Agility----' fuzzy_score=90.0
+  skill p01 r01 name        [RECOVERED    ] mode=hallucinate expected='Aim' ocr='Alm----' fuzzy_score=60.0
+  skill p01 r02 name        [RECOVERED    ] mode=substitute expected='Alertness' ocr='AlertnessS---' fuzzy_score=81.8
+  skill p01 r03 name        [RECOVERED    ] mode=substitute expected='Analysis' ocr='Analysis---' fuzzy_score=84.2
+  skill p01 r04 name        [RECOVERED    ] mode=hallucinate expected='Anatomy' ocr='Anatomyy---' fuzzy_score=90.0
+  skill p01 r05 name        [RECOVERED    ] mode=hallucinate expected='Angling' ocr='Angling----' fuzzy_score=90.0
+  skill p01 r06 name        [RECOVERED    ] mode=substitute expected='Animal Lore' ocr='AnimalLore---' fuzzy_score=83.3
+  skill p01 r07 name        [RECOVERED    ] mode=substitute expected='Animal Taming' ocr='AnimalTaming---' fuzzy_score=85.7
+  skill p01 r08 name        [RECOVERED    ] mode=substitute expected='Armor Technology' ocr='ArmorTechnologyGy--' fuzzy_score=85.7
+  skill p01 r09 name        [RECOVERED    ] mode=substitute expected='Artefact Preservation' ocr='Artefact.Preservation--' fuzzy_score=90.9
+  skill p01 r10 name        [RECOVERED    ] mode=substitute expected='Athletics' ocr='Athletics---' fuzzy_score=85.7
+  skill p01 r11 name        [RECOVERED    ] mode=substitute expected='Attachments Technology' ocr='AttachmentsTechnology--' fuzzy_score=93.3
+  skill p02 r00 name        [RECOVERED    ] mode=substitute expected='BLP Weaponry Technology' ocr='BLPWeaponryTechnologyay-' fuzzy_score=89.4
+  skill p02 r01 name        [RECOVERED    ] mode=substitute expected='Baitfishing' ocr='Baitfishing---' fuzzy_score=88.0
+  skill p02 r02 name        [RECOVERED    ] mode=hallucinate expected='Biology' ocr='Biology----' fuzzy_score=90.0
+  skill p02 r03 name        [RECOVERED    ] mode=substitute expected='Bioregenesis' ocr='Bioregenesis---' fuzzy_score=88.9
+  skill p02 r04 name        [RECOVERED    ] mode=substitute expected='Body Sculpting' ocr='BodySculpting---' fuzzy_score=86.7
+  skill p02 r05 name        [RECOVERED    ] mode=hallucinate expected='Botany' ocr='Botany----' fuzzy_score=90.0
+  skill p02 r06 name        [RECOVERED    ] mode=substitute expected='Bravado' ocr='Bravado---' fuzzy_score=82.4
+  skill p02 r07 name        [RECOVERED    ] mode=substitute expected='Butchering' ocr='Butchering---' fuzzy_score=87.0
+  skill p02 r08 name        [RECOVERED    ] mode=substitute expected='Carpentry' ocr='Carpentryy---' fuzzy_score=81.8
+  skill p02 r09 name        [RECOVERED    ] mode=hallucinate expected='Casting' ocr='Casting----' fuzzy_score=90.0
+  skill p02 r10 name        [RECOVERED    ] mode=substitute expected='Chemistry' ocr='Chemistry---' fuzzy_score=85.7
+  skill p02 r11 name        [RECOVERED    ] mode=hallucinate expected='Clubs' ocr='Clubs----' fuzzy_score=90.0
+  skill p03 r00 name        [RECOVERED    ] mode=substitute expected='Color Matching' ocr='ColorMatching---' fuzzy_score=86.7
+  skill p03 r01 name        [RECOVERED    ] mode=substitute expected='Coloring' ocr='Coloring3---' fuzzy_score=90.0
+  skill p03 r02 name        [RECOVERED    ] mode=substitute expected='Combat Reflexes' ocr='CombatReflexeflexes--' fuzzy_score=77.8
+  skill p03 r03 name        [RECOVERED    ] mode=hallucinate expected='Computer' ocr='Computerer---' fuzzy_score=90.0
+  skill p03 r04 name        [RECOVERED    ] mode=substitute expected='Concentration' ocr='Concentration---' fuzzy_score=89.7
+  skill p03 r05 name        [RECOVERED    ] mode=substitute expected='Coolness' ocr='Coolness6---' fuzzy_score=90.0
+  ... +198 more
+
+--- ONNXTR_PARSEQ failures (219) ---
+  skill p01 r00 name        [RECOVERED    ] mode=hallucinate expected='Agility' ocr='Agility----' fuzzy_score=90.0
+  skill p01 r01 name        [RECOVERED    ] mode=hallucinate expected='Aim' ocr='Aim----' fuzzy_score=90.0
+  skill p01 r02 name        [RECOVERED    ] mode=substitute expected='Alertness' ocr='Alertness---' fuzzy_score=85.7
+  skill p01 r03 name        [RECOVERED    ] mode=substitute expected='Analysis' ocr='Analysiss---' fuzzy_score=90.0
+  skill p01 r04 name        [RECOVERED    ] mode=hallucinate expected='Anatomy' ocr='Anatomyy---' fuzzy_score=90.0
+  skill p01 r05 name        [RECOVERED    ] mode=hallucinate expected='Angling' ocr='Angling----' fuzzy_score=90.0
+  skill p01 r06 name        [RECOVERED    ] mode=substitute expected='Animal Lore' ocr='AnimalLore---' fuzzy_score=83.3
+  skill p01 r07 name        [RECOVERED    ] mode=substitute expected='Animal Taming' ocr='AnimalTaming---' fuzzy_score=85.7
+  skill p01 r08 name        [RECOVERED    ] mode=substitute expected='Armor Technology' ocr='ArmorTechnologygy--' fuzzy_score=85.7
+  skill p01 r09 name        [RECOVERED    ] mode=substitute expected='Artefact Preservation' ocr='ArtefactPreservation--' fuzzy_score=93.0
+  skill p01 r10 name        [RECOVERED    ] mode=substitute expected='Athletics' ocr='Athleticss---' fuzzy_score=81.8
+  skill p01 r11 name        [RECOVERED    ] mode=substitute expected='Attachments Technology' ocr='AttachmentsTechnology--' fuzzy_score=93.3
+  skill p02 r00 name        [RECOVERED    ] mode=substitute expected='BLP Weaponry Technology' ocr='BLPWeaponryTechnologygy-' fuzzy_score=89.4
+  skill p02 r01 name        [RECOVERED    ] mode=substitute expected='Baitfishing' ocr='Baitfishing---' fuzzy_score=88.0
+  skill p02 r02 name        [RECOVERED    ] mode=hallucinate expected='Biology' ocr='Biology----' fuzzy_score=90.0
+  skill p02 r03 name        [RECOVERED    ] mode=substitute expected='Bioregenesis' ocr='Bioregenesis---' fuzzy_score=88.9
+  skill p02 r04 name        [RECOVERED    ] mode=substitute expected='Body Sculpting' ocr='BodySculpting---' fuzzy_score=86.7
+  skill p02 r05 name        [RECOVERED    ] mode=hallucinate expected='Botany' ocr='Botany----' fuzzy_score=90.0
+  skill p02 r06 name        [RECOVERED    ] mode=hallucinate expected='Bravado' ocr='Bravado----' fuzzy_score=90.0
+  skill p02 r07 name        [RECOVERED    ] mode=substitute expected='Butchering' ocr='Butchering---' fuzzy_score=87.0
+  skill p02 r08 name        [RECOVERED    ] mode=hallucinate expected='Carpentry' ocr='Carpentryry---' fuzzy_score=90.0
+  skill p02 r09 name        [RECOVERED    ] mode=hallucinate expected='Casting' ocr='Casting----' fuzzy_score=90.0
+  skill p02 r10 name        [RECOVERED    ] mode=substitute expected='Chemistry' ocr='Chemistry---' fuzzy_score=85.7
+  skill p02 r11 name        [RECOVERED    ] mode=hallucinate expected='Clubs' ocr='Clubs----' fuzzy_score=90.0
+  skill p03 r00 name        [RECOVERED    ] mode=substitute expected='Color Matching' ocr='Color.Matching---' fuzzy_score=83.9
+  skill p03 r01 name        [RECOVERED    ] mode=substitute expected='Coloring' ocr='Coloringa---' fuzzy_score=90.0
+  skill p03 r02 name        [RECOVERED    ] mode=substitute expected='Combat Reflexes' ocr='CombatReflexeflexess--' fuzzy_score=75.7
+  skill p03 r03 name        [RECOVERED    ] mode=hallucinate expected='Computer' ocr='Computerer---' fuzzy_score=90.0
+  skill p03 r04 name        [RECOVERED    ] mode=substitute expected='Concentration' ocr='Concentration---' fuzzy_score=89.7
+  skill p03 r05 name        [RECOVERED    ] mode=substitute expected='Coolness' ocr='Coolnesss---' fuzzy_score=90.0
+  ... +189 more
+
+--- ONNXTR_VITSTR failures (303) ---
+  skill p01 r00 name        [RECOVERED    ] mode=hallucinate expected='Agility' ocr='Agility----' fuzzy_score=90.0
+  skill p01 r01 name        [RECOVERED    ] mode=hallucinate expected='Aim' ocr='Aim----' fuzzy_score=90.0
+  skill p01 r02 name        [RECOVERED    ] mode=substitute expected='Alertness' ocr='Alertnesss---' fuzzy_score=81.8
+  skill p01 r03 name        [RECOVERED    ] mode=substitute expected='Analysis' ocr='Analysis----' fuzzy_score=90.0
+  skill p01 r04 name        [RECOVERED    ] mode=hallucinate expected='Anatomy' ocr='Anatomyy---' fuzzy_score=90.0
+  skill p01 r05 name        [RECOVERED    ] mode=hallucinate expected='Angling' ocr='Angling----' fuzzy_score=90.0
+  skill p01 r06 name        [RECOVERED    ] mode=substitute expected='Animal Lore' ocr='AnimalLore---' fuzzy_score=83.3
+  skill p01 r07 name        [RECOVERED    ] mode=substitute expected='Animal Taming' ocr='AnimalTaming---' fuzzy_score=85.7
+  skill p01 r08 name        [RECOVERED    ] mode=substitute expected='Armor Technology' ocr='ArmorTechnologygy--' fuzzy_score=85.7
+  skill p01 r09 name        [RECOVERED    ] mode=substitute expected='Artefact Preservation' ocr='ArtefactPreservation--' fuzzy_score=93.0
+  skill p01 r10 name        [RECOVERED    ] mode=substitute expected='Athletics' ocr='AthleticsS---' fuzzy_score=81.8
+  skill p01 r11 name        [RECOVERED    ] mode=substitute expected='Attachments Technology' ocr='AttachmentsTeechnllognology--' fuzzy_score=82.4
+  skill p02 r00 name        [RECOVERED    ] mode=substitute expected='BLP Weaponry Technology' ocr='BLPWeaponryTechnolhnologygy-' fuzzy_score=82.4
+  skill p02 r01 name        [RECOVERED    ] mode=substitute expected='Baitfishing' ocr='Baitfishing---' fuzzy_score=88.0
+  skill p02 r02 name        [RECOVERED    ] mode=hallucinate expected='Biology' ocr='Biology----' fuzzy_score=90.0
+  skill p02 r03 name        [RECOVERED    ] mode=substitute expected='Bioregenesis' ocr='Bioregenesis---' fuzzy_score=88.9
+  skill p02 r04 name        [RECOVERED    ] mode=substitute expected='Body Sculpting' ocr='BodySculpting---' fuzzy_score=86.7
+  skill p02 r05 name        [RECOVERED    ] mode=hallucinate expected='Botany' ocr='Botany----' fuzzy_score=90.0
+  skill p02 r06 name        [RECOVERED    ] mode=hallucinate expected='Bravado' ocr='Bravado----' fuzzy_score=90.0
+  skill p02 r07 name        [RECOVERED    ] mode=substitute expected='Butchering' ocr='Butchering---' fuzzy_score=87.0
+  skill p02 r08 name        [RECOVERED    ] mode=hallucinate expected='Carpentry' ocr='Carpentryry---' fuzzy_score=90.0
+  skill p02 r09 name        [RECOVERED    ] mode=hallucinate expected='Casting' ocr='Casting----' fuzzy_score=90.0
+  skill p02 r10 name        [RECOVERED    ] mode=substitute expected='Chemistry' ocr='Chemistry---' fuzzy_score=85.7
+  skill p02 r11 name        [RECOVERED    ] mode=hallucinate expected='Clubs' ocr='Clubs----' fuzzy_score=90.0
+  skill p03 r00 name        [RECOVERED    ] mode=substitute expected='Color Matching' ocr='ColorMatching---' fuzzy_score=86.7
+  skill p03 r01 name        [RECOVERED    ] mode=substitute expected='Coloring' ocr='Coloringa---' fuzzy_score=90.0
+  skill p03 r02 name        [RECOVERED    ] mode=substitute expected='Combat Reflexes' ocr='CombatReflexes---' fuzzy_score=87.5
+  skill p03 r03 name        [RECOVERED    ] mode=hallucinate expected='Computer' ocr='Computerer---' fuzzy_score=90.0
+  skill p03 r04 name        [RECOVERED    ] mode=substitute expected='Concentration' ocr='Concentration---' fuzzy_score=89.7
+  skill p03 r05 name        [RECOVERED    ] mode=substitute expected='Coolness' ocr='Coolnesss---' fuzzy_score=90.0
+  ... +273 more
+
+--- ONNXTR_VIPTR failures (125) ---
+  skill p01 r00 name        [RECOVERED    ] mode=substitute expected='Agility' ocr='Aglity' fuzzy_score=92.3
+  skill p01 r02 name        [RECOVERED    ] mode=substitute expected='Alertness' ocr='Alertnesss--' fuzzy_score=85.7
+  skill p01 r03 name        [RECOVERED    ] mode=substitute expected='Analysis' ocr='AnalysisS' fuzzy_score=94.1
+  skill p01 r04 name        [RECOVERED    ] mode=substitute expected='Anatomy' ocr='Anatomyy' fuzzy_score=93.3
+  skill p01 r08 name        [RECOVERED    ] mode=substitute expected='Armor Technology' ocr='ArmorTechnologygy' fuzzy_score=90.9
+  skill p01 r10 name        [RECOVERED    ] mode=substitute expected='Athletics' ocr='Athleticss' fuzzy_score=94.7
+  skill p01 r11 name        [RECOVERED    ] mode=substitute expected='Attachments Technology' ocr='AttachmentsTechnology-' fuzzy_score=95.5
+  skill p02 r00 name        [UNRECOVERABLE] mode=substitute expected='BLP Weaponry Technology' ocr='ELPWGspOTYyTechnologygy-'
+  skill p02 r02 name        [RECOVERED    ] mode=substitute expected='Biology' ocr='Biology-' fuzzy_score=93.3
+  skill p02 r06 name        [RECOVERED    ] mode=substitute expected='Bravado' ocr='Bravado-' fuzzy_score=93.3
+  skill p02 r08 name        [RECOVERED    ] mode=substitute expected='Carpentry' ocr='Carpentryy' fuzzy_score=94.7
+  skill p03 r00 name        [RECOVERED    ] mode=substitute expected='Color Matching' ocr='GoloriMatchinehing' fuzzy_score=75.0
+  skill p03 r01 name        [RECOVERED    ] mode=substitute expected='Coloring' ocr='Coloring-' fuzzy_score=94.1
+  skill p03 r02 name        [RECOVERED    ] mode=substitute expected='Combat Reflexes' ocr='CombatReflexesS--' fuzzy_score=87.5
+  skill p03 r03 name        [RECOVERED    ] mode=substitute expected='Computer' ocr='Computerer' fuzzy_score=88.9
+  skill p03 r05 name        [RECOVERED    ] mode=substitute expected='Coolness' ocr='Coolnesss' fuzzy_score=94.1
+  skill p03 r06 name        [RECOVERED    ] mode=substitute expected='Courage' ocr='Courage-' fuzzy_score=93.3
+  skill p03 r09 name        [RECOVERED    ] mode=substitute expected='Dexterity' ocr='Dexterityy' fuzzy_score=94.7
+  skill p03 r10 name        [RECOVERED    ] mode=substitute expected='Diagnosis' ocr='Diagnosisis' fuzzy_score=90.0
+  skill p04 r00 level       [UNRECOVERABLE] mode=substitute expected=2534 ocr=2584
+  skill p04 r01 name        [RECOVERED    ] mode=substitute expected='Drilling' ocr='Drlling' fuzzy_score=93.3
+  skill p04 r04 name        [RECOVERED    ] mode=substitute expected='Engineering' ocr='Engineering-' fuzzy_score=95.7
+  skill p04 r08 name        [RECOVERED    ] mode=substitute expected='First Aid' ocr='FirstAid1' fuzzy_score=88.9
+  skill p05 r00 name        [RECOVERED    ] mode=substitute expected='Fly Fishing' ocr='FlyFishng' fuzzy_score=90.0
+  skill p05 r01 name        [UNRECOVERABLE] mode=substitute expected='Food Technology' ocr='FoodTechnologyy'
+  skill p05 r02 name        [RECOVERED    ] mode=substitute expected='Force Merge' ocr='ForceMerge-' fuzzy_score=90.9
+  skill p05 r06 name        [RECOVERED    ] mode=substitute expected='Genetics' ocr='Geneticss' fuzzy_score=94.1
+  skill p05 r07 name        [RECOVERED    ] mode=substitute expected='Geology' ocr='Geology-' fuzzy_score=93.3
+  skill p05 r10 name        [RECOVERED    ] mode=substitute expected='Handgun' ocr='Handgunn' fuzzy_score=93.3
+  skill p06 r00 name        [RECOVERED    ] mode=substitute expected='Heavy Melee Weapons' ocr='HeavyMelcoWeapons' fuzzy_score=83.3
+  ... +95 more
+
+--- ONNXTR_SAR failures (213) ---
+  skill p01 r00 name        [RECOVERED    ] mode=hallucinate expected='Agility' ocr='Agility-I-I' fuzzy_score=90.0
+  skill p01 r01 name        [RECOVERED    ] mode=hallucinate expected='Aim' ocr='Aim-I--' fuzzy_score=90.0
+  skill p01 r02 name        [RECOVERED    ] mode=hallucinate expected='Alertness' ocr='AlertnessSS-I-' fuzzy_score=90.0
+  skill p01 r03 name        [RECOVERED    ] mode=substitute expected='Analysis' ocr='Analysiss---' fuzzy_score=90.0
+  skill p01 r04 name        [RECOVERED    ] mode=hallucinate expected='Anatomy' ocr='Anatomyy-I-' fuzzy_score=90.0
+  skill p01 r05 name        [RECOVERED    ] mode=hallucinate expected='Angling' ocr='Angling-I-I' fuzzy_score=90.0
+  skill p01 r06 name        [RECOVERED    ] mode=substitute expected='Animal Lore' ocr='AnimalloreI--' fuzzy_score=75.0
+  skill p01 r07 name        [RECOVERED    ] mode=substitute expected='Animal Taming' ocr='AnimalTamingI--' fuzzy_score=85.7
+  skill p01 r08 name        [RECOVERED    ] mode=substitute expected='Armor Technology' ocr='ArmorTechnologygy--' fuzzy_score=85.7
+  skill p01 r09 name        [RECOVERED    ] mode=substitute expected='Artefact Preservation' ocr='ArtefactPreservation--' fuzzy_score=93.0
+  skill p01 r10 name        [RECOVERED    ] mode=substitute expected='Athletics' ocr='Athleticss---' fuzzy_score=81.8
+  skill p01 r11 name        [RECOVERED    ] mode=substitute expected='Attachments Technology' ocr='AttachmentsTechnology-I' fuzzy_score=93.3
+  skill p02 r00 name        [RECOVERED    ] mode=substitute expected='BLP Weaponry Technology' ocr='BLPWeaponryTechnologygy-' fuzzy_score=89.4
+  skill p02 r01 name        [RECOVERED    ] mode=substitute expected='Baitfishing' ocr='BaitfishingI--' fuzzy_score=88.0
+  skill p02 r02 name        [RECOVERED    ] mode=hallucinate expected='Biology' ocr='Biology--II' fuzzy_score=90.0
+  skill p02 r03 name        [RECOVERED    ] mode=substitute expected='Bioregenesis' ocr='Bioregenesis---' fuzzy_score=88.9
+  skill p02 r04 name        [RECOVERED    ] mode=substitute expected='Body Sculpting' ocr='BodySculpting-II' fuzzy_score=86.7
+  skill p02 r05 name        [RECOVERED    ] mode=hallucinate expected='Botany' ocr='Botany-I--' fuzzy_score=90.0
+  skill p02 r06 name        [RECOVERED    ] mode=hallucinate expected='Bravado' ocr='Bravado>I--' fuzzy_score=90.0
+  skill p02 r07 name        [RECOVERED    ] mode=substitute expected='Butchering' ocr='ButcheringI--' fuzzy_score=87.0
+  skill p02 r08 name        [RECOVERED    ] mode=hallucinate expected='Carpentry' ocr='Carpentryry---' fuzzy_score=90.0
+  skill p02 r09 name        [RECOVERED    ] mode=hallucinate expected='Casting' ocr='Casting----' fuzzy_score=90.0
+  skill p02 r10 name        [RECOVERED    ] mode=substitute expected='Chemistry' ocr='Chemistry---' fuzzy_score=85.7
+  skill p02 r11 name        [RECOVERED    ] mode=hallucinate expected='Clubs' ocr='Clubs---I' fuzzy_score=90.0
+  skill p03 r00 name        [RECOVERED    ] mode=substitute expected='Color Matching' ocr='ColorMatchingI-I' fuzzy_score=86.7
+  skill p03 r01 name        [RECOVERED    ] mode=substitute expected='Coloring' ocr='ColoringII--' fuzzy_score=90.0
+  skill p03 r02 name        [RECOVERED    ] mode=substitute expected='Combat Reflexes' ocr='CombatReflexessII' fuzzy_score=87.5
+  skill p03 r03 name        [RECOVERED    ] mode=hallucinate expected='Computer' ocr='Computerer---' fuzzy_score=90.0
+  skill p03 r04 name        [RECOVERED    ] mode=substitute expected='Concentration' ocr='Concentration-I-' fuzzy_score=89.7
+  skill p03 r05 name        [RECOVERED    ] mode=substitute expected='Coolness' ocr='CoolnessSI-I' fuzzy_score=90.0
+  ... +183 more
+
+--- ONNXTR_MASTER failures (203) ---
+  skill p01 r00 name        [RECOVERED    ] mode=hallucinate expected='Agility' ocr='Agility----' fuzzy_score=90.0
+  skill p01 r01 name        [RECOVERED    ] mode=hallucinate expected='Aim' ocr='Aim----' fuzzy_score=90.0
+  skill p01 r02 name        [RECOVERED    ] mode=substitute expected='Alertness' ocr='Alertnesss---' fuzzy_score=81.8
+  skill p01 r03 name        [RECOVERED    ] mode=substitute expected='Analysis' ocr='Analysiss---' fuzzy_score=90.0
+  skill p01 r04 name        [RECOVERED    ] mode=hallucinate expected='Anatomy' ocr='Anatomyy---' fuzzy_score=90.0
+  skill p01 r05 name        [RECOVERED    ] mode=hallucinate expected='Angling' ocr='Angling----' fuzzy_score=90.0
+  skill p01 r06 name        [RECOVERED    ] mode=substitute expected='Animal Lore' ocr='AnimalLore---' fuzzy_score=83.3
+  skill p01 r07 name        [RECOVERED    ] mode=substitute expected='Animal Taming' ocr='AnimalTaming---' fuzzy_score=85.7
+  skill p01 r08 name        [RECOVERED    ] mode=substitute expected='Armor Technology' ocr='ArmorTechnologygy--' fuzzy_score=85.7
+  skill p01 r09 name        [RECOVERED    ] mode=substitute expected='Artefact Preservation' ocr='ArtefactPreservation--' fuzzy_score=93.0
+  skill p01 r10 name        [RECOVERED    ] mode=substitute expected='Athletics' ocr='Athleticss---' fuzzy_score=81.8
+  skill p01 r11 name        [RECOVERED    ] mode=substitute expected='Attachments Technology' ocr='AttachmentsTechnology--' fuzzy_score=93.3
+  skill p02 r00 name        [RECOVERED    ] mode=substitute expected='BLP Weaponry Technology' ocr='BLPWeaponryTechnologygy-' fuzzy_score=89.4
+  skill p02 r01 name        [RECOVERED    ] mode=substitute expected='Baitfishing' ocr='Baitfishing---' fuzzy_score=88.0
+  skill p02 r02 name        [RECOVERED    ] mode=hallucinate expected='Biology' ocr='Biology----' fuzzy_score=90.0
+  skill p02 r03 name        [RECOVERED    ] mode=substitute expected='Bioregenesis' ocr='Bioregenesis---' fuzzy_score=88.9
+  skill p02 r04 name        [RECOVERED    ] mode=substitute expected='Body Sculpting' ocr='BodySculpting---' fuzzy_score=86.7
+  skill p02 r05 name        [RECOVERED    ] mode=hallucinate expected='Botany' ocr='Botany----' fuzzy_score=90.0
+  skill p02 r06 name        [RECOVERED    ] mode=hallucinate expected='Bravado' ocr='Bravado>---' fuzzy_score=90.0
+  skill p02 r07 name        [RECOVERED    ] mode=substitute expected='Butchering' ocr='Butchering---' fuzzy_score=87.0
+  skill p02 r08 name        [RECOVERED    ] mode=hallucinate expected='Carpentry' ocr='Carpentryry---' fuzzy_score=90.0
+  skill p02 r09 name        [RECOVERED    ] mode=hallucinate expected='Casting' ocr='Casting----' fuzzy_score=90.0
+  skill p02 r10 name        [RECOVERED    ] mode=substitute expected='Chemistry' ocr='Chemistry---' fuzzy_score=85.7
+  skill p02 r11 name        [RECOVERED    ] mode=hallucinate expected='Clubs' ocr='Clubs----' fuzzy_score=90.0
+  skill p03 r00 name        [RECOVERED    ] mode=substitute expected='Color Matching' ocr='ColorMatching---' fuzzy_score=86.7
+  skill p03 r01 name        [RECOVERED    ] mode=substitute expected='Coloring' ocr='Coloring3---' fuzzy_score=90.0
+  skill p03 r02 name        [RECOVERED    ] mode=substitute expected='Combat Reflexes' ocr='CombatReflexeflexess--' fuzzy_score=75.7
+  skill p03 r03 name        [RECOVERED    ] mode=hallucinate expected='Computer' ocr='Computerer---' fuzzy_score=90.0
+  skill p03 r04 name        [RECOVERED    ] mode=substitute expected='Concentration' ocr='Concentration---' fuzzy_score=89.7
+  skill p03 r05 name        [RECOVERED    ] mode=substitute expected='Coolness' ocr='Coolnesss---' fuzzy_score=90.0
+  ... +173 more
+
+--- OPENOCR_SVTRV2 failures (44) ---
+  skill p01 r01 name        [RECOVERED    ] mode=substitute expected='Aim' ocr='Am' fuzzy_score=80.0
+  skill p01 r05 name        [RECOVERED    ] mode=substitute expected='Angling' ocr='AＡngliｎg' fuzzy_score=80.0
+  skill p03 r03 name        [RECOVERED    ] mode=substitute expected='Computer' ocr='Compute' fuzzy_score=93.3
+  skill p03 r05 name        [RECOVERED    ] mode=substitute expected='Coolness' ocr='Cooinessc' fuzzy_score=82.4
+  skill p03 r06 name        [RECOVERED    ] mode=substitute expected='Courage' ocr='Courge' fuzzy_score=92.3
+  skill p04 r02 name        [RECOVERED    ] mode=substitute expected='Electrokinesis' ocr='Electrkinesis' fuzzy_score=96.3
+  skill p05 r04 name        [RECOVERED    ] mode=substitute expected='Gastronomy' ocr='Gastrnomy' fuzzy_score=94.7
+  skill p07 r00 name        [RECOVERED    ] mode=substitute expected='Manufacture Attachments' ocr='Manufacture  ttachments' fuzzy_score=95.7
+  skill p07 r08 name        [RECOVERED    ] mode=substitute expected='Marksmanship' ocr='Marksmanshi' fuzzy_score=95.7
+  skill p08 r00 name        [RECOVERED    ] mode=substitute expected='Melee Damage Assessment' ocr='Melee  Damage  ssessmen.' fuzzy_score=89.4
+  skill p10 r01 name        [RECOVERED    ] mode=substitute expected='Rifle' ocr='Rifie' fuzzy_score=80.0
+  skill p10 r02 name        [RECOVERED    ] mode=substitute expected='Scan Animal' ocr='ScanAnima' fuzzy_score=90.0
+  skill p10 r03 name        [RECOVERED    ] mode=substitute expected='Scan Human' ocr='Scanuman' fuzzy_score=88.9
+  skill p11 r03 name        [RECOVERED    ] mode=substitute expected='Stamina' ocr='stamia' fuzzy_score=76.9
+  skill p11 r04 name        [RECOVERED    ] mode=substitute expected='Strength' ocr='sstrength' fuzzy_score=82.4
+  skill p12 r02 name        [RECOVERED    ] mode=substitute expected='Translocation' ocr='Transocation' fuzzy_score=96.0
+  skill p12 r03 name        [RECOVERED    ] mode=substitute expected='Treasure Sense' ocr='Treasureense' fuzzy_score=92.3
+  profession p01 r00 name        [RECOVERED    ] mode=substitute expected='Electro Kinetic (Dmg)' ocr='Electro Kinetic(Dmg）' fuzzy_score=92.7
+  profession p01 r02 name        [RECOVERED    ] mode=substitute expected='Swordsman (Dmg)' ocr='Swordsman(Dmg）' fuzzy_score=89.7
+  profession p01 r04 name        [RECOVERED    ] mode=substitute expected='Knifefighter (Dmg)' ocr='Knifefighter (Dmg.）' fuzzy_score=91.9
+  profession p01 r05 name        [RECOVERED    ] mode=substitute expected='Pyro Kinetic (Dmg)' ocr='Pyro  Kinetic (Dmg.)）' fuzzy_score=92.3
+  profession p01 r06 name        [RECOVERED    ] mode=substitute expected='Cryogenic (Dmg)' ocr='Cryogenic (Dmg.）' fuzzy_score=90.3
+  profession p02 r03 name        [RECOVERED    ] mode=substitute expected='Whipper (Dmg)' ocr='Whipper(Dmg）' fuzzy_score=88.0
+  profession p02 r05 name        [RECOVERED    ] mode=substitute expected='Ranged Plasma (Dmg)' ocr='Ranged Plasma(Dmg）' fuzzy_score=91.9
+  profession p02 r06 name        [RECOVERED    ] mode=substitute expected='Ranged Gauss (Dmg)' ocr='Ranged Gauss(Dmg）' fuzzy_score=91.4
+  profession p03 r02 name        [RECOVERED    ] mode=substitute expected='Cryogenic (Hit)' ocr='Cryogenic (Hit)）' fuzzy_score=96.8
+  profession p04 r05 name        [RECOVERED    ] mode=substitute expected='Plasma Sniper (Hit)' ocr='Plasma Sniper (Hit.)' fuzzy_score=97.4
+  profession p06 r04 name        [RECOVERED    ] mode=substitute expected='Longblades Engineer' ocr='Longblades Enginee' fuzzy_score=97.3
+  profession p06 r06 name        [RECOVERED    ] mode=substitute expected='Electronics Engineer' ocr='Electronics Enginee' fuzzy_score=97.4
+  profession p06 r07 name        [RECOVERED    ] mode=substitute expected='Metal Engineer' ocr='Metal Enginee' fuzzy_score=96.3
+  ... +14 more
+
+--- TESSERACT failures (344) ---
+  skill p01 r00 level       [UNRECOVERABLE] mode=substitute expected=68 ocr='te'
+  skill p01 r01 name        [UNRECOVERABLE] mode=substitute expected='Aim' ocr='vi'
+  skill p01 r02 name        [UNRECOVERABLE] mode=drop       expected='Alertness' ocr='Pe'
+  skill p01 r02 level       [UNRECOVERABLE] mode=substitute expected=2937 ocr=9937
+  skill p01 r03 name        [UNRECOVERABLE] mode=substitute expected='Analysis' ocr='PECs'
+  skill p01 r03 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr='cf'
+  skill p01 r04 name        [UNRECOVERABLE] mode=substitute expected='Anatomy' ocr='PE um'
+  skill p01 r04 level       [UNRECOVERABLE] mode=substitute expected=7501 ocr='esi'
+  skill p01 r05 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr='an'
+  skill p01 r06 name        [UNRECOVERABLE] mode=substitute expected='Animal Lore' ocr='Pr eee'
+  skill p01 r07 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=41
+  skill p01 r09 name        [UNRECOVERABLE] mode=substitute expected='Artefact Preservation' ocr='PO aaa elie'
+  skill p01 r09 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr='.o'
+  skill p01 r10 name        [UNRECOVERABLE] mode=substitute expected='Athletics' ocr='PN ie'
+  skill p01 r11 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr='. i'
+  skill p02 r00 name        [UNRECOVERABLE] mode=substitute expected='BLP Weaponry Technology' ocr='c-MAC ee miele Se'
+  skill p02 r01 name        [UNRECOVERABLE] mode=substitute expected='Baitfishing' ocr='aerials'
+  skill p02 r01 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr='an'
+  skill p02 r02 name        [UNRECOVERABLE] mode=hallucinate expected='Biology' ocr='Bite) (ers h a'
+  skill p02 r02 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr='an'
+  skill p02 r03 name        [UNRECOVERABLE] mode=substitute expected='Bioregenesis' ocr='a eytele te te'
+  skill p02 r03 level       [UNRECOVERABLE] mode=hallucinate expected=999 ocr='a etetee'
+  skill p02 r04 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr='an'
+  skill p02 r05 name        [UNRECOVERABLE] mode=substitute expected='Botany' ocr='a=Tele am'
+  skill p02 r05 level       [UNRECOVERABLE] mode=substitute expected=1 ocr=4
+  skill p02 r06 name        [UNRECOVERABLE] mode=substitute expected='Bravado' ocr='caer le'
+  skill p02 r08 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=41
+  skill p02 r09 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr=41
+  skill p02 r10 level       [UNRECOVERABLE] mode=hallucinate expected=1 ocr='ao'
+  skill p02 r11 name        [UNRECOVERABLE] mode=substitute expected='Clubs' ocr='cette'
+  ... +314 more
+
+--- EASYOCR failures (173) ---
+  skill p01 r00 level       [UNRECOVERABLE] mode=reject     expected=68 ocr=''
+  skill p01 r01 level       [UNRECOVERABLE] mode=substitute expected=158 ocr=4158
+  skill p01 r03 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p01 r05 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p01 r06 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p01 r07 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p01 r09 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p01 r11 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p02 r00 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p02 r01 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p02 r02 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p02 r04 name        [RECOVERED    ] mode=substitute expected='Body Sculpting' ocr='Sculpting Body' fuzzy_score=95.0
+  skill p02 r04 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p02 r05 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p02 r08 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p02 r09 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p02 r10 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p02 r11 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p03 r00 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p03 r01 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p03 r03 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p03 r05 level       [UNRECOVERABLE] mode=substitute expected=1147 ocr=1447
+  skill p03 r07 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p03 r08 name        [UNRECOVERABLE] mode=substitute expected='Deep Ocean Fishing' ocr='Ocean Fishing Decp'
+  skill p03 r08 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p03 r11 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p04 r00 level       [UNRECOVERABLE] mode=substitute expected=2534 ocr=7534
+  skill p04 r01 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  skill p04 r03 level       [UNRECOVERABLE] mode=reject     expected=13 ocr=''
+  skill p04 r06 level       [UNRECOVERABLE] mode=reject     expected=1 ocr=''
+  ... +143 more
+
+Total orchestration wall: 119.0 s
+
+Wrote composite summary: /home/lunet/comw2/PersonalWorkspace/ocr-bench/project/calibration/bench/results/cuda/composite.json
+
+>>> report --results-subdir cuda
+Loading results from /home/lunet/comw2/PersonalWorkspace/ocr-bench/project/calibration/bench/results/cuda
+  found 15 engine result file(s)
+Scoring all engine results...
+  scored 15 engine(s)
+Rendering reports...
+
+Reports under: /home/lunet/comw2/PersonalWorkspace/ocr-bench/project/calibration/bench/report/cuda
+  leaderboard.md       (composite ranked table)
+  per_cell_type.md     (accuracy by name/level/rank_level/percent)
+  failure_modes.md     (hallucinate/drop/substitute/reject per engine)
+  failure_overlap.md   (which cells fail across engines — ensembling signal)
+  per_engine/<eng>.md  (15 per-engine deep dives)
+
+# finished_utc: 20260627T121737Z | orchestrator_rc=0
+# log:          /home/lunet/comw2/PersonalWorkspace/ocr-bench/project/calibration/bench/runs/cuda/20260627T121536Z_tier-fast.log
+# leaderboard:  calibration/bench/report/cuda/leaderboard.md

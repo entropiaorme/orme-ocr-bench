@@ -137,7 +137,9 @@ def _device_label(m: dict) -> str:
         return _PROVIDER_SHORT.get(provider, provider)
     device = m.get("device")
     if device:
-        return device.upper() if device == "cpu" else device
+        # Normalise torch-style strings to the same labels as the ONNX
+        # providers above ("cuda" -> CUDA, "cpu" -> CPU, "mps" -> MPS).
+        return {"cuda": "CUDA", "cpu": "CPU", "mps": "MPS"}.get(device, device)
     return "—"
 
 

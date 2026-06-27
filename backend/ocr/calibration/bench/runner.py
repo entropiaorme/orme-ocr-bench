@@ -168,6 +168,8 @@ def main() -> int:
     rss_init = rss_mb()
     overall_t0 = time.perf_counter_ns()
 
+    eng_holder: dict = {}  # holds the engine once loaded, for failure reporting
+
     def _write_failed(stage: str, exc: BaseException) -> None:
         """Record an engine that couldn't run as a structured failure result.
 
@@ -177,7 +179,18 @@ def main() -> int:
         "ran, did not complete" rather than the run silently crashing. The
         scorer skips failed-status results.
         """
-        is_oom = isinstance(exc, MemoryError) or "out of memory" in str(exc).lower()
+        msg = str(exc).lower()
+        is_cuda_oom = "cuda out of memory" in msg or "cuda" in msg and "out of memory" in msg
+        is_oom = isinstance(exc, MemoryError) or "out of memory" in msg
+        # Device the engine was attempting when it failed: a CUDA OOM means it
+        # was on CUDA; an engine that loaded before failing reports its own;
+        # else fall back to the failure being CPU-side.
+        if "engine" in eng_holder:
+            attempted_device = getattr(eng_holder["engine"], "device", "cpu")
+        elif is_cuda_oom:
+            attempted_device = "cuda"
+        else:
+            attempted_device = "cpu"
         reason = f"{type(exc).__name__} during {stage}: {exc}"
         out_dir.mkdir(parents=True, exist_ok=True)
         out_path.write_text(json.dumps({
@@ -186,8 +199,7 @@ def main() -> int:
             "failure_stage": stage,
             "oom": is_oom,
             "skip_reason": reason[:2000],
-            "init": {"device": locals().get("device", "cpu"),
-                     "provider": locals().get("provider")},
+            "init": {"device": attempted_device, "provider": None},
         }, indent=2), encoding="utf-8")
         print(f"[{args.engine}] FAILED at {stage}: {reason[:300]}", flush=True)
 
@@ -195,6 +207,7 @@ def main() -> int:
     try:
         with timed_ms() as t:
             engine = load_engine(args.engine)
+        eng_holder["engine"] = engine
     except Exception as exc:  # OOM at load, missing weights, etc.
         _write_failed("load", exc)
         tracemalloc.stop()
