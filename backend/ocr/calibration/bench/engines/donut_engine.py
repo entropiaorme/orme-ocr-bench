@@ -50,9 +50,12 @@ class DonutEngine(OCREngine):
 
         self._torch = torch
         self.device = torch_device()
+        # fp16 on CUDA halves memory so the 960px-upscaled Swin attention fits
+        # on small cards (fp32 OOMs a 4 GB GPU); CPU stays fp32.
+        self._dtype = torch.float16 if self.device == "cuda" else torch.float32
         self._processor = DonutProcessor.from_pretrained(_MODEL_ID)
         self._model = VisionEncoderDecoderModel.from_pretrained(
-            _MODEL_ID, low_cpu_mem_usage=False
+            _MODEL_ID, low_cpu_mem_usage=False, torch_dtype=self._dtype
         )
         self._model.to(self.device)
         self._model.eval()
@@ -86,7 +89,7 @@ class DonutEngine(OCREngine):
         rgb = cv2.cvtColor(upscaled, cv2.COLOR_BGR2RGB)
         pil = Image.fromarray(rgb)
         pixel_values = self._processor(images=pil, return_tensors="pt").pixel_values
-        pixel_values = pixel_values.to(self.device)
+        pixel_values = pixel_values.to(self.device, dtype=self._dtype)
 
         with self._torch.no_grad():
             out = self._model.generate(

@@ -42,6 +42,9 @@ class TrOCRLargePrintedEngine(OCREngine):
 
         self._torch = torch
         self.device = torch_device()
+        # fp32: this 1.4 GB model fits on a 4 GB card without halving, and its
+        # white-pad preprocessing path mixes dtypes under fp16. Keep it simple.
+        self._dtype = torch.float32
         self._processor = TrOCRProcessor.from_pretrained(_MODEL_ID)
         self._model = VisionEncoderDecoderModel.from_pretrained(
             _MODEL_ID, low_cpu_mem_usage=False
@@ -71,7 +74,7 @@ class TrOCRLargePrintedEngine(OCREngine):
         rgb = cv2.cvtColor(padded, cv2.COLOR_BGR2RGB)
         pil = Image.fromarray(rgb)
         pixel_values = self._processor(images=pil, return_tensors="pt").pixel_values
-        pixel_values = pixel_values.to(self.device)
+        pixel_values = pixel_values.to(self.device, dtype=self._dtype)
         with self._torch.no_grad():
             out = self._model.generate(
                 pixel_values,

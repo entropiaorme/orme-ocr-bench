@@ -251,13 +251,21 @@ python -m venv .venv-5
 .venv-5/bin/python -m pip install --upgrade pip
 .venv-5/bin/python -m pip install numpy opencv-python rapidfuzz psutil
 .venv-5/bin/python -m pip install torch torchvision      # CUDA wheel index on NVIDIA, see below
-.venv-5/bin/python -m pip install transformers pillow sentencepiece protobuf
+.venv-5/bin/python -m pip install "transformers<5" pillow sentencepiece protobuf
 .venv-5/bin/python -m pip install nltk python-Levenshtein   # required by Nougat's tokenizer
 ```
 
-Donut and Nougat load with `trust_remote_code=True`. On CPU, TrOCR-large is
-~1 s/cell, so a full panel run is several minutes; this is recorded as valid
-wall time.
+**Pin `transformers<5`** (4.57.x is known-good). Under transformers 5.x the
+TrOCR / Donut / Nougat decoders crash with `Cannot copy out of meta tensor`
+(position embeddings stay on the meta device after `from_pretrained`), and the
+Nougat image processor rejects its own config (`do_crop_margin expected bool,
+got None`). 4.57.6 loads all three cleanly.
+
+On CUDA the adapters load Donut and Nougat in fp16 so the 960px-upscaled Swin
+encoder fits a 4 GB card (fp32 OOMs); TrOCR-large stays fp32 (it fits, and its
+white-pad path mixes dtypes under fp16). On CPU all three run fp32; TrOCR-large
+is ~1 s/cell, so a full panel run is several minutes (recorded as valid wall
+time).
 
 ### `.venv-6` : Florence-2 family + Surya
 
