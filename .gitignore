@@ -4,13 +4,16 @@
 .venv/
 .venv-*/
 
-# HuggingFace cache (per host; redirect via HF_HOME in engine_venvs.json).
+# HuggingFace cache (per host; redirect via the HF_HOME environment variable).
 huggingface-cache/
 .cache/
 
 # Per-host diagnostic output (validate_panel_ocr.py writes here; the
 # committed corpus under calibration/bench/ stays tracked).
 calibration/validate/
+
+# Throwaway scratchpad (one-off probes / debug dumps; never tracked)
+.scratch/
 
 # Python caches
 __pycache__/

@@ -1,8 +1,7 @@
 {
   "_comment": "Map of engine key -> Python interpreter to use when running that engine. Paths are relative to the repo root unless absolute. Engines absent from this map fall back to sys.executable (the orchestrator's own interpreter). On POSIX hosts replace 'Scripts/python.exe' with 'bin/python' across the engines map; SETUP.md walks the bring-up edits.",
   "global_env": {
-    "_comment": "Environment variables merged into every subprocess. HF_HOME redirects HuggingFace's cache off the system drive on hosts where it lacks headroom. Repoint at a local cache or remove entirely on hosts where the default location (~/.cache/huggingface) is fine.",
-    "HF_HOME": "/path/to/huggingface-cache"
+    "_comment": "Extra environment variables merged into every engine subprocess (keys starting with '_' are ignored). Host-specific paths are NOT hardcoded here: the orchestrator already forwards the parent environment to each subprocess, so set host values like HF_HOME (HuggingFace cache redirect) in your shell before running. Add an entry here only for a value you want pinned for all hosts."
   },
   "engines": {
     "ppocr":                 ".venv/Scripts/python.exe",

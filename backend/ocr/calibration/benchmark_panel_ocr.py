@@ -582,6 +582,20 @@ def _persist_summary(
 
 
 def main() -> int:
+    # Engines can emit arbitrary bytes as OCR output (a misread may contain CJK
+    # or other non-ASCII glyphs). When this orchestrator's stdout is redirected
+    # to a file or pipe on Windows it defaults to the cp1252 locale encoding, so
+    # printing such a read raises UnicodeEncodeError and aborts before the
+    # composite summary is written. Force UTF-8 (replacing anything unmappable)
+    # so the run always completes and persists its summary on every host.
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            try:
+                reconfigure(encoding="utf-8", errors="replace")
+            except (ValueError, OSError):
+                pass
+
     parser = argparse.ArgumentParser(
         description="Run the OCR benchmark across N engines and emit a composite report.",
     )

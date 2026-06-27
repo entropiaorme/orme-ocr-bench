@@ -9,6 +9,7 @@ so the recognizer does not peg idle cores between reads.
 """
 
 import logging
+import os
 import platform
 from pathlib import Path
 
@@ -54,9 +55,13 @@ def _preload_cuda_libs() -> None:
 def _select_onnx_providers() -> list[str]:
     """Pick the best available ONNX Runtime execution provider.
 
-    Priority: CUDA (Linux/NVIDIA) > DirectML (Windows/AMD) > CPU.
+    Priority: CUDA (Linux/NVIDIA) > DirectML (Windows/AMD) > CPU. Setting
+    ``OCR_BENCH_DEVICE=cpu`` pins CPU regardless of available GPUs (used by the
+    bench to produce a CPU latency track from the same GPU-capable venvs).
     """
     _preload_cuda_libs()
+    if os.environ.get("OCR_BENCH_DEVICE", "").strip().lower() == "cpu":
+        return ["CPUExecutionProvider"]
     available = ort.get_available_providers()
     for provider in ["CUDAExecutionProvider", "DmlExecutionProvider"]:
         if provider in available:

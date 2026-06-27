@@ -24,7 +24,10 @@ from __future__ import annotations
 import numpy as np
 
 from backend.ocr.calibration.bench.engines.base import OCREngine
-from backend.ocr.calibration.bench.engines._ort_cuda import ensure_cuda_libs_loaded
+from backend.ocr.calibration.bench.engines._ort_cuda import (
+    ensure_cuda_libs_loaded,
+    force_cpu,
+)
 
 try:
     from rapidocr_onnxruntime import RapidOCR
@@ -45,10 +48,15 @@ class RapidOCREngine(OCREngine):
         # branch of its config). Judge GPU availability by the ONNX Runtime
         # providers (this venv has no torch), not torch.cuda. It honours the
         # request only when a CUDA onnxruntime is actually present, else stays
-        # on CPU; pass it only on a CUDA host.
+        # on CPU; pass it only on a CUDA host. ``OCR_BENCH_DEVICE=cpu`` pins CPU.
+        # Note: rapidocr-onnxruntime has no DirectML path (its provider list is
+        # CUDA-or-CPU only), so on a Windows/DirectML host it runs on CPU.
         import onnxruntime as ort
 
-        want_cuda = "CUDAExecutionProvider" in ort.get_available_providers()
+        want_cuda = (
+            not force_cpu()
+            and "CUDAExecutionProvider" in ort.get_available_providers()
+        )
         self._engine = RapidOCR(rec_use_cuda=True) if want_cuda else RapidOCR()
         # API: the recogniser is ``text_rec`` (older releases: text_recognizer).
         self._recognizer = getattr(

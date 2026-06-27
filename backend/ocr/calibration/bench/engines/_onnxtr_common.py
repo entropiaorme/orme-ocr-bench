@@ -26,11 +26,16 @@ import numpy as np
 import onnxruntime as ort
 
 from backend.ocr.calibration.bench.engines.base import OCREngine
-from backend.ocr.calibration.bench.engines._ort_cuda import ensure_cuda_libs_loaded
+from backend.ocr.calibration.bench.engines._ort_cuda import (
+    ensure_cuda_libs_loaded,
+    force_cpu,
+)
 
 
 def _preferred_providers() -> list[str]:
     ensure_cuda_libs_loaded()
+    if force_cpu():
+        return ["CPUExecutionProvider"]
     available = set(ort.get_available_providers())
     order = ["DmlExecutionProvider", "CUDAExecutionProvider", "CPUExecutionProvider"]
     return [p for p in order if p in available] or ["CPUExecutionProvider"]

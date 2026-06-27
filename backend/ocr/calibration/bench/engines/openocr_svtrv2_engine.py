@@ -28,18 +28,23 @@ from __future__ import annotations
 import numpy as np
 
 from backend.ocr.calibration.bench.engines.base import OCREngine
-from backend.ocr.calibration.bench.engines._ort_cuda import ensure_cuda_libs_loaded
+from backend.ocr.calibration.bench.engines._ort_cuda import (
+    ensure_cuda_libs_loaded,
+    force_cpu,
+)
 
 
 def _preferred_providers() -> list[str]:
     """Best available ONNX Runtime provider, CUDA preferred for this bench.
 
     Order: CUDA (NVIDIA breadth run) > DirectML (Windows) > CPU. Filtered to
-    what the runtime actually exposes.
+    what the runtime actually exposes. ``OCR_BENCH_DEVICE=cpu`` pins CPU.
     """
     import onnxruntime as ort
 
     ensure_cuda_libs_loaded()
+    if force_cpu():
+        return ["CPUExecutionProvider"]
     available = set(ort.get_available_providers())
     order = ["CUDAExecutionProvider", "DmlExecutionProvider", "CPUExecutionProvider"]
     return [p for p in order if p in available] or ["CPUExecutionProvider"]

@@ -111,11 +111,14 @@ Open `calibration/bench/engine_venvs.json`. Two host-specific edits:
 1. **Interpreter paths.** The stock paths use `Scripts/python.exe` (Windows).
    On POSIX hosts replace `Scripts/python.exe` with `bin/python` for every entry
    under `engines:`. One sed pass does it.
-2. **HuggingFace cache redirect.** `global_env.HF_HOME` is a placeholder
-   (`/path/to/huggingface-cache`). Point it at a host-local path with headroom,
-   or delete the entry to let HuggingFace use its default
-   (`~/.cache/huggingface`). This only matters for the transformer / VLM
-   engines that pull weights from the hub.
+2. **HuggingFace cache redirect.** Host-specific paths are not stored in the
+   committed config. The orchestrator forwards the parent environment to every
+   engine subprocess, so to move the HuggingFace cache off a small system drive,
+   export `HF_HOME` in the shell you launch the bench from
+   (PowerShell: `$env:HF_HOME = 'E:\HuggingFaceCache'`; POSIX:
+   `export HF_HOME=/data/huggingface`). Leave it unset to use the default
+   (`~/.cache/huggingface`). This only matters for the transformer / VLM engines
+   that pull weights from the hub.
 
 Engines whose mapped interpreter does not exist are skipped gracefully, so you
 can bring venvs online one at a time.
@@ -151,16 +154,30 @@ python -m venv .venv-1
 The four `ppocrv5_*` adapters read pre-placed ONNX weights from
 `.venv-1/models/<engine>.onnx` plus a sibling character-dict text file; they do
 not auto-download. PaddlePaddle publishes these as Paddle inference models, so
-convert them once into the layout the adapters expect:
+convert them once into the layout the adapters expect. The conversion toolchain
+is independent of the inference venv, so do it in a throwaway environment and
+copy the resulting files into `.venv-1/models/`.
+
+PP-OCRv5 ships in the Paddle 3.x `inference.json` format, which only the newer
+`paddle2onnx` (2.x) can read, and `paddle2onnx`'s native module is ABI-locked to
+a matching `paddlepaddle`. The combination verified to convert these four models
+cleanly is **`paddle2onnx==2.1.0` with `paddlepaddle==3.1.0` on Python 3.10**
+(CPU paddle is fine; conversion only). Other paddle builds tried (3.0.0, 3.2.x,
+3.3.x) import-fail with `DLL load failed` against paddle2onnx 2.1.0, and there is
+no `paddle2onnx` 2.x wheel for Python 3.13, so a 3.13-only host cannot convert
+in place: use a 3.10 venv for this step.
 
 ```
-.venv-1/bin/python -m pip install paddlepaddle paddle2onnx   # CPU paddle is fine; conversion only
+python3.10 -m venv .venv-convert     # disposable; .venv-* is gitignored
+.venv-convert/bin/python -m pip install --upgrade pip
+.venv-convert/bin/python -m pip install paddlepaddle==3.1.0 paddle2onnx==2.1.0 huggingface_hub pyyaml
 ```
 
 For each model, download the HF repo and run `paddle2onnx`, saving to
 `.venv-1/models/<engine>.onnx`; write the character dict from the model's
 `inference.yml` (`character_dict:` list, one entry per line) to the matching
-dict file:
+dict file. (On a Windows host without symlink privilege, set
+`HF_HUB_DISABLE_SYMLINKS=1` so the snapshot download materialises real files.)
 
 | Engine | HF repo | onnx file | dict file |
 | --- | --- | --- | --- |

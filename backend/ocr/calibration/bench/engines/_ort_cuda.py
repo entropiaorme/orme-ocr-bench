@@ -17,7 +17,23 @@ unconditionally regardless of host.
 
 from __future__ import annotations
 
+import os
+
 _done = False
+
+
+def force_cpu() -> bool:
+    """True when the bench is asked to run on CPU regardless of available GPUs.
+
+    Set ``OCR_BENCH_DEVICE=cpu`` in the environment to pin every ONNX-based
+    adapter to ``CPUExecutionProvider`` even on a host whose ONNX Runtime build
+    also exposes DirectML or CUDA. This is what produces the CPU latency track
+    on a GPU host without building a second, CPU-only set of venvs: the same
+    ``onnxruntime-directml`` / ``onnxruntime-gpu`` wheel carries the CPU
+    provider, so the only thing that differs between the GPU and CPU tracks is
+    this knob. Any value other than ``cpu`` (case-insensitive) is ignored.
+    """
+    return os.environ.get("OCR_BENCH_DEVICE", "").strip().lower() == "cpu"
 
 
 def ensure_cuda_libs_loaded() -> None:
