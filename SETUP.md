@@ -218,29 +218,36 @@ python -m venv .venv-3
 The SVTRv2-mobile weights (~24 MB) download from ModelScope on first run. CPU is
 fine; this is the fastest accurate engine in the sweep.
 
-### `.venv-4` : MMOCR family (pinning-fragile)
+### `.venv-4` : MMOCR family (pinning-fragile, Python 3.10, CPU)
 
 Engines: `mmocr_abinet`, `mmocr_robustscanner`, `mmocr_satrn`.
 
-Install torch first, then the OpenMMLab stack via `openmim`. Order matters;
-installing these out of order routinely produces version conflicts.
+The OpenMMLab 1.x stack (`mmcv 2.0.1` / `mmdet 3.1.0` / `mmocr 1.0.1`) carries
+`digit_version()` runtime assertions, so you must land on that exact set. It is
+pinned to **torch 2.0**, which has no Python 3.12 wheel and no current CUDA
+wheel on the standard indices, so build this venv on **Python 3.10 with the
+prebuilt CPU stack**. (MMOCR therefore runs on CPU here; on a host with a
+matching torch-2.0 CUDA build + the cu-tagged mmcv wheel it can run on GPU.)
 
 ```
-python -m venv .venv-4
-.venv-4/bin/python -m pip install --upgrade pip
-.venv-4/bin/python -m pip install numpy opencv-python rapidfuzz psutil
-.venv-4/bin/python -m pip install torch torchvision      # CUDA wheel index on NVIDIA, see below
+python3.10 -m venv .venv-4
+.venv-4/bin/python -m pip install --upgrade pip setuptools wheel
+.venv-4/bin/python -m pip install "numpy<2" "opencv-python<4.10" rapidfuzz psutil
+.venv-4/bin/python -m pip install torch==2.0.0 torchvision==0.15.1 \
+  --index-url https://download.pytorch.org/whl/cpu
 .venv-4/bin/python -m pip install -U openmim
-.venv-4/bin/python -m mim install mmengine
-.venv-4/bin/python -m mim install "mmcv>=2.0.0"
-.venv-4/bin/python -m mim install mmdet
-.venv-4/bin/python -m mim install mmocr
+.venv-4/bin/python -m pip install mmengine==0.10.7
+# mmcv 2.0.1 prebuilt wheel (the pip source build fails without extra headers):
+.venv-4/bin/python -m pip install mmcv==2.0.1 \
+  -f https://download.openmmlab.com/mmcv/dist/cpu/torch2.0.0/index.html
+# mmdet 3.1.0 --no-deps (3.2.0 satisfies pip but re-pulls a newer mmcv):
+.venv-4/bin/python -m pip install mmdet==3.1.0 --no-deps
+.venv-4/bin/python -m pip install mmocr==1.0.1 terminaltables
 ```
 
-MMOCR's last tagged release is old and its pins are fragile. If `mim install`
-fails on version resolution, consult MMOCR's `requirements.txt` upstream for
-known-good pins (torch 2.0 + mmcv 2.0.1 + mmdet 3.1.0 + mmocr 1.0.1 is a
-known-working set).
+`numpy<2` and `opencv-python<4.10` are required by the torch-2.0 ABI. If `mim`
+or pip tries to "upgrade" mmcv/mmdet past these pins, the `digit_version`
+assertions in mmocr will refuse to import.
 
 ### `.venv-5` : TrOCR-large + Donut + Nougat
 
