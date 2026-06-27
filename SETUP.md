@@ -331,6 +331,14 @@ python -m venv .venv-7
 
 All three load with `trust_remote_code=True`. `dots_ocr` is ~6 GB on disk and
 carries a bespoke licence; `nougat`, `surya`, and `dots_ocr` are research-only.
+On CUDA the adapters load fp16/bf16 to save memory.
+
+**Memory:** `got_ocr2` (~580 M) fits a 4 GB card; `kosmos25` (~1.4 B) and
+`dots_ocr` (~1.7 B) do not — they OOM at attention / weight-load respectively
+and need a bigger GPU (≥ ~16 GB). On a 4 GB card the harness records them as a
+structured "did not complete" result (`status="failed"`, `oom=true`) rather
+than crashing the run; they appear in the leaderboard's "Did not complete"
+section. That is the honest outcome for this hardware, not a bug.
 
 ### NVIDIA: install the CUDA PyTorch wheels
 

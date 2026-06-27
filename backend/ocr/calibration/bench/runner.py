@@ -168,9 +168,37 @@ def main() -> int:
     rss_init = rss_mb()
     overall_t0 = time.perf_counter_ns()
 
+    def _write_failed(stage: str, exc: BaseException) -> None:
+        """Record an engine that couldn't run as a structured failure result.
+
+        An out-of-memory or load error is a legitimate, reportable outcome
+        (e.g. a model that doesn't fit this GPU): write a result JSON with
+        ``status="failed"`` + a reason so the leaderboard can list it as
+        "ran, did not complete" rather than the run silently crashing. The
+        scorer skips failed-status results.
+        """
+        is_oom = isinstance(exc, MemoryError) or "out of memory" in str(exc).lower()
+        reason = f"{type(exc).__name__} during {stage}: {exc}"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(json.dumps({
+            "engine": args.engine,
+            "status": "failed",
+            "failure_stage": stage,
+            "oom": is_oom,
+            "skip_reason": reason[:2000],
+            "init": {"device": locals().get("device", "cpu"),
+                     "provider": locals().get("provider")},
+        }, indent=2), encoding="utf-8")
+        print(f"[{args.engine}] FAILED at {stage}: {reason[:300]}", flush=True)
+
     print(f"[{args.engine}] loading...", flush=True)
-    with timed_ms() as t:
-        engine = load_engine(args.engine)
+    try:
+        with timed_ms() as t:
+            engine = load_engine(args.engine)
+    except Exception as exc:  # OOM at load, missing weights, etc.
+        _write_failed("load", exc)
+        tracemalloc.stop()
+        return 0
     load_ms = t[0]
     rss_after_load = rss_mb()
     device = getattr(engine, "device", "cpu")
@@ -183,8 +211,13 @@ def main() -> int:
     )
 
     print(f"[{args.engine}] warming up...", flush=True)
-    with timed_ms() as t:
-        engine.warm_up()
+    try:
+        with timed_ms() as t:
+            engine.warm_up()
+    except Exception as exc:  # OOM on first inference is the common case
+        _write_failed("warmup", exc)
+        tracemalloc.stop()
+        return 0
     warmup_ms = t[0]
     rss_after_warmup = rss_mb()
     print(f"[{args.engine}] warmed up in {warmup_ms:.1f} ms", flush=True)

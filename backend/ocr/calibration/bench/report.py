@@ -68,6 +68,8 @@ def _score_all(
 ) -> dict[str, dict]:
     out: dict[str, dict] = {}
     for engine, raw in raw_results.items():
+        if raw.get("status") == "failed":
+            continue  # listed separately as "did not complete"
         try:
             panels_eval = score_engine(raw, gt_index, vocabs)
             agg = aggregate_engine_metrics(raw, panels_eval)
@@ -76,6 +78,13 @@ def _score_all(
         except Exception as exc:
             print(f"  score-fail {engine}: {exc}")
     return out
+
+
+def _failed_engines(raw_results: dict[str, dict]) -> dict[str, dict]:
+    """Engines that ran but did not complete (e.g. OOM), keyed by engine."""
+    return {
+        e: r for e, r in raw_results.items() if r.get("status") == "failed"
+    }
 
 
 # --- Markdown rendering ------------------------------------------------------
@@ -135,7 +144,7 @@ def _device_label(m: dict) -> str:
 # --- Reports -----------------------------------------------------------------
 
 
-def render_leaderboard(scored: dict[str, dict]) -> str:
+def render_leaderboard(scored: dict[str, dict], failed: dict[str, dict] | None = None) -> str:
     rows = sorted(
         scored.items(),
         key=lambda kv: kv[1].get("effective_accuracy") or 0.0,
@@ -189,6 +198,29 @@ def render_leaderboard(scored: dict[str, dict]) -> str:
         "",
         _md_table(headers, table_rows),
     ]
+    if failed:
+        body += [
+            "",
+            "## Did not complete",
+            "",
+            "Engines that ran on this host but could not finish (e.g. the "
+            "model did not fit this GPU's memory). An honest non-result, "
+            "recorded rather than omitted.",
+            "",
+            _md_table(
+                ["Engine", "Device", "Stage", "Reason"],
+                [
+                    [
+                        f"`{e}`",
+                        (r.get("init") or {}).get("device", "—"),
+                        r.get("failure_stage", "—"),
+                        ("OOM: " if r.get("oom") else "")
+                        + str(r.get("skip_reason", ""))[:140],
+                    ]
+                    for e, r in sorted(failed.items())
+                ],
+            ),
+        ]
     return "\n".join(body) + "\n"
 
 
@@ -514,11 +546,13 @@ def main() -> int:
 
     print("Scoring all engine results...")
     scored = _score_all(raw, gt_index, vocabs)
-    print(f"  scored {len(scored)} engine(s)")
+    failed = _failed_engines(raw)
+    print(f"  scored {len(scored)} engine(s)"
+          + (f", {len(failed)} did not complete" if failed else ""))
 
     print("Rendering reports...")
     (report_dir / "leaderboard.md").write_text(
-        render_leaderboard(scored), encoding="utf-8",
+        render_leaderboard(scored, failed), encoding="utf-8",
     )
     (report_dir / "per_cell_type.md").write_text(
         render_per_cell_type(scored), encoding="utf-8",

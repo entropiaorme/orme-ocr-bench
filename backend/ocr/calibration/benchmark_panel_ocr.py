@@ -702,6 +702,13 @@ def main() -> int:
             )
             continue
         result = json.loads(result_path.read_text(encoding="utf-8"))
+        if result.get("status") == "failed":
+            print(
+                f"\n[{engine}] did not complete "
+                f"({result.get('skip_reason', 'failed')[:120]}); "
+                f"recorded, skipped from scoring",
+            )
+            continue
         panels_eval = score_engine(result, gt_index, vocabs)
         agg = aggregate_engine_metrics(result, panels_eval)
         agg["panels_eval"] = panels_eval
