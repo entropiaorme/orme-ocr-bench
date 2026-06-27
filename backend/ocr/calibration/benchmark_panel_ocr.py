@@ -180,6 +180,7 @@ def run_engine_subprocess(
     global_env: dict[str, str],
     progress: tuple[int, int] | None = None,
     results_subdir: str | None = None,
+    batch_size: int = 1,
 ) -> dict:
     py = python_overrides.get(engine, sys.executable)
     counter = ""
@@ -209,6 +210,8 @@ def run_engine_subprocess(
     cmd = [py, "-m", RUNNER_MODULE, "--engine", engine]
     if results_subdir:
         cmd += ["--results-subdir", results_subdir]
+    if batch_size and batch_size > 1:
+        cmd += ["--batch-size", str(batch_size)]
     proc = subprocess.run(
         cmd,
         check=False,
@@ -620,6 +623,16 @@ def main() -> int:
             "for the in-domain Windows run) so the two leaderboards coexist."
         ),
     )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=1,
+        help=(
+            "Batched throughput mode passed to each engine (>1). Engines "
+            "without a true batched path record 'batched: n/a'. Pair with a "
+            "distinct --results-subdir (e.g. 'cuda-batched')."
+        ),
+    )
     args = parser.parse_args()
     out_dir = results_dir(args.results_subdir)
     comp_path = composite_path(args.results_subdir)
@@ -686,6 +699,7 @@ def main() -> int:
             engine, python_overrides, global_env,
             progress=(idx, n_total),
             results_subdir=args.results_subdir,
+            batch_size=args.batch_size,
         )
         subprocess_meta[engine] = meta
         if meta["exit_code"] != 0:

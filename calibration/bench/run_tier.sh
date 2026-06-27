@@ -8,11 +8,15 @@
 #   calibration/bench/run_tier.sh vlm
 #   calibration/bench/run_tier.sh --engines florence2_large,got_ocr2
 #
-# Idempotent: passes --skip-existing, so results already in results/cuda/ are
-# reused. Each invocation writes a timestamped log + metadata header under
-# calibration/bench/runs/cuda/ and regenerates the cuda report at the end.
+# Env overrides:
+#   SUBDIR=cuda-batched BATCH=16 calibration/bench/run_tier.sh gpu
+#     -> batched throughput track (writes results/cuda-batched/, batch size 16).
+#   SKIP=0 calibration/bench/run_tier.sh gpu
+#     -> re-run even if a result exists (default SKIP=1 reuses landed results).
 #
-# Edit DRIVER_PY / HF_HOME below if your paths differ (see SETUP.md).
+# Each invocation writes a timestamped log + provenance header under
+# calibration/bench/runs/<SUBDIR>/ and regenerates the <SUBDIR> report at the
+# end. Edit DRIVER_PY / HF_HOME below if your paths differ (see SETUP.md).
 set -uo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
@@ -20,7 +24,9 @@ cd "$REPO_ROOT"
 
 DRIVER_PY="${DRIVER_PY:-$REPO_ROOT/.venv/bin/python}"
 export HF_HOME="${HF_HOME:-/home/lunet/comw2/.cache/huggingface}"
-SUBDIR="cuda"
+SUBDIR="${SUBDIR:-cuda}"
+BATCH="${BATCH:-1}"
+SKIP="${SKIP:-1}"
 RUNS_DIR="$REPO_ROOT/calibration/bench/runs/$SUBDIR"
 mkdir -p "$RUNS_DIR"
 
@@ -40,10 +46,17 @@ fi
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 LOG="$RUNS_DIR/${STAMP}_${LABEL}.log"
 
+# ---- Build orchestrator flags from env knobs --------------------------------
+RUN_FLAGS=(--results-subdir "$SUBDIR")
+[[ "$BATCH" -gt 1 ]] && RUN_FLAGS+=(--batch-size "$BATCH")
+[[ "$SKIP" == "1" ]] && RUN_FLAGS+=(--skip-existing)
+
 # ---- Provenance header: host, GPU, drivers, git state -----------------------
 {
-  echo "# orme-ocr-bench Experiment-A run log"
-  echo "# track:        $SUBDIR (unconstrained research breadth; best device per engine)"
+  echo "# orme-ocr-bench Experiment run log"
+  echo "# track:        $SUBDIR"
+  echo "# mode:         $([[ "$BATCH" -gt 1 ]] && echo "batched (batch_size=$BATCH)" || echo "serial")"
+  echo "# skip_existing: $SKIP"
   echo "# selection:    ${SEL_FLAG[*]:-<all engines>}"
   echo "# started_utc:  $STAMP"
   echo "# host:         $(hostname)"
@@ -59,9 +72,9 @@ LOG="$RUNS_DIR/${STAMP}_${LABEL}.log"
 } | tee "$LOG"
 
 # ---- Run the tier -----------------------------------------------------------
-echo ">>> benchmark_panel_ocr ${SEL_FLAG[*]:-} --results-subdir $SUBDIR --skip-existing" | tee -a "$LOG"
+echo ">>> benchmark_panel_ocr ${SEL_FLAG[*]:-} ${RUN_FLAGS[*]}" | tee -a "$LOG"
 "$DRIVER_PY" -m backend.ocr.calibration.benchmark_panel_ocr \
-  "${SEL_FLAG[@]}" --results-subdir "$SUBDIR" --skip-existing 2>&1 | tee -a "$LOG"
+  "${SEL_FLAG[@]}" "${RUN_FLAGS[@]}" 2>&1 | tee -a "$LOG"
 RUN_RC=${PIPESTATUS[0]}
 
 # ---- Regenerate the cuda report so leaderboard reflects all results so far ---
