@@ -154,14 +154,23 @@ sourced write-up is summarised inline below.
 Accuracy: DONE (full corpus, once). Below are latency/throughput cells only.
 
 ### This machine — Linux + NVIDIA RTX A1000 (4 GB). GPU-only cells.
-- [ ] **I. Instrumentation code** — preprocess/model split, peak-VRAM, batched path.
-- [ ] **II. CUDA-serial** — re-run the 22 CUDA-capable engines instrumented
-      (`--results-subdir cuda`, overwriting A's uninstrumented latency; accuracy
-      unchanged). kosmos25/dots_ocr stay OOM.
-- [ ] **III. CUDA-batched** — batched throughput for all GPU-capable engines
-      (`--results-subdir cuda-batched` or a batched flag).
+- [x] **I. Instrumentation code** — preprocess/model split, peak-VRAM, batched
+      path, width-bucketed CTC batching. DONE + committed.
+- [ ] **II. CUDA-serial (instrumented)** — re-run all 26 runnable engines into
+      `results/cuda/` with `SKIP=0` so the split/VRAM columns populate, **except
+      `got_ocr2`** (deferred: see below). kosmos25/dots_ocr stay OOM.
+- [ ] **III. CUDA-batched** — the 12 batch-capable engines (openocr_svtrv2,
+      rapidocr, ppocr, ppocrv5 ×4, onnxtr ×6, surya, got_ocr2) at batch 16 into
+      `results/cuda-batched/`.
 - Rationale: these are the cells ONLY this NVIDIA box can produce. CPU latency
   is deliberately deferred to Windows (stronger CPU there).
+
+**Deferred to async / Windows-side fresh agent:**
+- **got_ocr2 serial re-run** — skipped in II to not block the handover (~90 min
+  for only a peak-VRAM number; its 8.6 s/cell serial latency is already recorded
+  and it has no preprocess/model split mark). Fill its `peak_vram_mb` later with:
+  `SKIP=0 calibration/bench/run_tier.sh --engines got_ocr2`. It DOES get its
+  batched run in III (where it is the interesting case).
 
 ### Windows machine — later, by a Windows agent. CPU + DirectML cells.
 - [ ] **IV. DirectML-serial** — ONNX recognisers (`--results-subdir directml`).
