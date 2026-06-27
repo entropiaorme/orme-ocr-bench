@@ -121,6 +121,7 @@ class PPocrRecReader:
         self._input_name = self._session.get_inputs()[0].name
 
         provider = self._session.get_providers()[0]
+        self.provider = provider
         log.info(
             "PP-OCR rec loaded: %s (%d chars, provider=%s)",
             model_path.name, len(self._chars), provider,

@@ -30,7 +30,7 @@ import math
 import cv2
 import numpy as np
 
-from backend.ocr.calibration.bench.engines.base import OCREngine
+from backend.ocr.calibration.bench.engines.base import OCREngine, torch_device
 
 _MODEL_ID = "rednote-hilab/dots.ocr"
 _PROMPT = (
@@ -53,7 +53,9 @@ class DotsOcrEngine(OCREngine):
             ) from exc
 
         self._torch = torch
-        self._dtype = torch.float32  # CPU path
+        self.device = torch_device()
+        # Qwen2.5-VL-style; bfloat16 on GPU, fp32 on CPU.
+        self._dtype = torch.bfloat16 if self.device == "cuda" else torch.float32
         # trust_remote_code=True: dots.ocr ships custom modelling code on the
         # hub. The licence on that hub repo is bespoke — see module docstring.
         self._processor = AutoProcessor.from_pretrained(
@@ -65,6 +67,7 @@ class DotsOcrEngine(OCREngine):
             low_cpu_mem_usage=True,
             trust_remote_code=True,
         )
+        self._model.to(self.device)
         self._model.eval()
 
     def warm_up(self) -> None:
@@ -98,6 +101,7 @@ class DotsOcrEngine(OCREngine):
         )
 
         input_len = inputs["input_ids"].shape[1] if "input_ids" in inputs else 0
+        inputs = inputs.to(self.device)
 
         with self._torch.no_grad():
             out = self._model.generate(

@@ -31,7 +31,7 @@ import math
 import cv2
 import numpy as np
 
-from backend.ocr.calibration.bench.engines.base import OCREngine
+from backend.ocr.calibration.bench.engines.base import OCREngine, torch_device
 
 _MODEL_ID = "microsoft/kosmos-2.5"
 _PROMPT = "<ocr>"
@@ -53,13 +53,17 @@ class Kosmos25Engine(OCREngine):
             ) from exc
 
         self._torch = torch
-        self._dtype = torch.float32  # CPU path; bfloat16 is GPU-only here
+        self.device = torch_device()
+        # Kosmos-2.5 prefers bfloat16 on GPU (the model card's GPU path);
+        # CPU has no bf16 kernels for it, so fall back to fp32 there.
+        self._dtype = torch.bfloat16 if self.device == "cuda" else torch.float32
         self._processor = AutoProcessor.from_pretrained(_MODEL_ID)
         self._model = Kosmos2_5ForConditionalGeneration.from_pretrained(
             _MODEL_ID,
             torch_dtype=self._dtype,
             low_cpu_mem_usage=True,
         )
+        self._model.to(self.device)
         self._model.eval()
 
     def warm_up(self) -> None:
@@ -87,6 +91,7 @@ class Kosmos25Engine(OCREngine):
             inputs["flattened_patches"] = inputs["flattened_patches"].to(self._dtype)
 
         input_len = inputs["input_ids"].shape[1] if "input_ids" in inputs else 0
+        inputs = inputs.to(self.device)
 
         with self._torch.no_grad():
             out = self._model.generate(

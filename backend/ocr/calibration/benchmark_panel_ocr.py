@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 import time
@@ -41,10 +42,10 @@ import numpy as np
 
 from backend.ocr.calibration.bench.common import (
     BENCH_DIR,
-    COMPOSITE_PATH,
     MANIFEST_PATH,
-    RESULTS_DIR,
     WORKTREE_ROOT,
+    composite_path,
+    results_dir,
     evaluate_int,
     evaluate_name,
     evaluate_percent,
@@ -159,7 +160,12 @@ def load_engine_runtime_config() -> tuple[dict[str, str], dict[str, str]]:
     for engine, raw in (data.get("engines") or {}).items():
         path = Path(raw)
         if not path.is_absolute():
-            path = (WORKTREE_ROOT / path).resolve()
+            # Make absolute against the repo root, but do NOT resolve symlinks:
+            # a POSIX venv's bin/python is a symlink back to the base
+            # interpreter, and dereferencing it (Path.resolve) would run the
+            # engine under the base environment instead of the venv, losing all
+            # the venv's installed deps (ModuleNotFoundError: cv2, etc).
+            path = Path(os.path.normpath(WORKTREE_ROOT / path))
         overrides[engine] = str(path)
     global_env_raw = data.get("global_env") or {}
     global_env = {
@@ -173,6 +179,7 @@ def run_engine_subprocess(
     python_overrides: dict[str, str],
     global_env: dict[str, str],
     progress: tuple[int, int] | None = None,
+    results_subdir: str | None = None,
 ) -> dict:
     py = python_overrides.get(engine, sys.executable)
     counter = ""
@@ -197,11 +204,13 @@ def run_engine_subprocess(
             "skipped": True,
             "skip_reason": f"missing interpreter {py}",
         }
-    import os
     sub_env = os.environ.copy()
     sub_env.update(global_env)
+    cmd = [py, "-m", RUNNER_MODULE, "--engine", engine]
+    if results_subdir:
+        cmd += ["--results-subdir", results_subdir]
     proc = subprocess.run(
-        [py, "-m", RUNNER_MODULE, "--engine", engine],
+        cmd,
         check=False,
         cwd=str(WORKTREE_ROOT),
         env=sub_env,
@@ -416,6 +425,10 @@ def aggregate_engine_metrics(engine_result: dict, panels_eval: dict) -> dict:
         "init_warmup_ms": engine_result["init"]["warmup_ms"],
         "rss_init_mb": engine_result["init"]["rss_init_mb"],
         "rss_after_warmup_mb": engine_result["init"]["rss_after_warmup_mb"],
+        # Optional: present on results produced after the device-aware
+        # harness change; legacy result JSONs omit them (default below).
+        "device": engine_result["init"].get("device", "cpu"),
+        "provider": engine_result["init"].get("provider"),
         "final_rss_mb": engine_result["overall"]["final_rss_mb"],
         "subprocess_wall_ms": engine_result["overall"]["subprocess_wall_ms"],
     }
@@ -524,6 +537,7 @@ def _persist_summary(
     subprocess_meta: dict,
     per_engine: dict[str, dict],
     overall_ms: float,
+    out_path: Path,
 ) -> None:
     """Write a slim composite summary; full per-cell detail lives in
     ``calibration/bench/results/<engine>.json``."""
@@ -550,7 +564,8 @@ def _persist_summary(
         },
         "orchestration_wall_ms": overall_ms,
     }
-    COMPOSITE_PATH.write_text(
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(
         json.dumps(persist, indent=2), encoding="utf-8",
     )
 
@@ -587,7 +602,19 @@ def main() -> int:
         action="store_true",
         help="Skip an engine if its result file already exists in calibration/bench/results/.",
     )
+    parser.add_argument(
+        "--results-subdir",
+        default=None,
+        help=(
+            "Read/write results under results/<subdir>/ instead of bare "
+            "results/. Use one subdir per execution-provider track (e.g. "
+            "'cuda' for the unconstrained NVIDIA breadth run, 'directml' "
+            "for the in-domain Windows run) so the two leaderboards coexist."
+        ),
+    )
     args = parser.parse_args()
+    out_dir = results_dir(args.results_subdir)
+    comp_path = composite_path(args.results_subdir)
 
     if args.engines and args.tier:
         raise SystemExit("--engines and --tier are mutually exclusive.")
@@ -620,7 +647,7 @@ def main() -> int:
     vocabs = {p: load_vocab(p) for p in panel_keys}
 
     BENCH_DIR.mkdir(parents=True, exist_ok=True)
-    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     python_overrides, global_env = load_engine_runtime_config()
     if global_env:
@@ -633,7 +660,7 @@ def main() -> int:
     subprocess_meta: dict[str, dict] = {}
     n_total = len(engines)
     for idx, engine in enumerate(engines, 1):
-        result_path = RESULTS_DIR / f"{engine}.json"
+        result_path = out_dir / f"{engine}.json"
         if args.skip_existing and result_path.exists():
             print(
                 f"\n[engine {idx}/{n_total}] {engine}: result exists, "
@@ -650,6 +677,7 @@ def main() -> int:
         meta = run_engine_subprocess(
             engine, python_overrides, global_env,
             progress=(idx, n_total),
+            results_subdir=args.results_subdir,
         )
         subprocess_meta[engine] = meta
         if meta["exit_code"] != 0:
@@ -663,7 +691,7 @@ def main() -> int:
 
     per_engine: dict[str, dict] = {}
     for engine in engines:
-        result_path = RESULTS_DIR / f"{engine}.json"
+        result_path = out_dir / f"{engine}.json"
         if not result_path.exists():
             print(f"\n[{engine}] no result file; skipping scoring")
             continue
@@ -692,8 +720,8 @@ def main() -> int:
     print_failures(per_engine)
     print(f"\nTotal orchestration wall: {overall_ms / 1000:.1f} s")
 
-    _persist_summary(engines, subprocess_meta, per_engine, overall_ms)
-    print(f"\nWrote composite summary: {COMPOSITE_PATH}")
+    _persist_summary(engines, subprocess_meta, per_engine, overall_ms, comp_path)
+    print(f"\nWrote composite summary: {comp_path}")
     return 0
 
 

@@ -57,9 +57,9 @@ import cv2
 from backend.ocr.calibration.bench.common import (
     CROPS_DIR,
     MANIFEST_PATH,
-    RESULTS_DIR,
     heap_mb,
     ms_distribution,
+    results_dir,
     rss_mb,
     timed_ms,
 )
@@ -142,7 +142,17 @@ def main() -> int:
             "Currently discoverable: " + ",".join(discover_engine_keys())
         ),
     )
+    parser.add_argument(
+        "--results-subdir",
+        default=None,
+        help=(
+            "Write the result JSON to results/<subdir>/ instead of bare "
+            "results/. Use one subdir per execution-provider track (e.g. "
+            "'cuda', 'directml') so leaderboards from different hosts coexist."
+        ),
+    )
     args = parser.parse_args()
+    out_dir = results_dir(args.results_subdir)
 
     if not MANIFEST_PATH.exists():
         raise SystemExit(
@@ -151,8 +161,8 @@ def main() -> int:
         )
 
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
-    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    out_path = RESULTS_DIR / f"{args.engine}.json"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / f"{args.engine}.json"
 
     tracemalloc.start()
     rss_init = rss_mb()
@@ -163,9 +173,13 @@ def main() -> int:
         engine = load_engine(args.engine)
     load_ms = t[0]
     rss_after_load = rss_mb()
+    device = getattr(engine, "device", "cpu")
+    provider = getattr(engine, "provider", None)
     print(
         f"[{args.engine}] loaded in {load_ms:.1f} ms "
-        f"(RSS {rss_after_load:.1f} MB)", flush=True,
+        f"(RSS {rss_after_load:.1f} MB, device={device}"
+        + (f", provider={provider}" if provider else "")
+        + ")", flush=True,
     )
 
     print(f"[{args.engine}] warming up...", flush=True)
@@ -290,6 +304,8 @@ def main() -> int:
             "rss_after_load_mb": rss_after_load,
             "warmup_ms": warmup_ms,
             "rss_after_warmup_mb": rss_after_warmup,
+            "device": device,
+            "provider": provider,
         },
         "panels": panels_out,
         "overall": {

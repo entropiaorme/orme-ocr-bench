@@ -16,7 +16,7 @@ from __future__ import annotations
 import cv2
 import numpy as np
 
-from backend.ocr.calibration.bench.engines.base import OCREngine
+from backend.ocr.calibration.bench.engines.base import OCREngine, torch_device
 
 
 class EasyOCREngine(OCREngine):
@@ -29,8 +29,12 @@ class EasyOCREngine(OCREngine):
             raise ModuleNotFoundError(
                 "easyocr not installed. pip install easyocr"
             ) from exc
-        # gpu=False explicitly: AMD/Windows has no CUDA path.
-        self._reader = easyocr.Reader(["en"], gpu=False, verbose=False)
+        # Use CUDA when this host has it (NVIDIA breadth run); CPU otherwise
+        # (AMD/Windows has no CUDA path, so EasyOCR stays CPU there).
+        self.device = torch_device()
+        self._reader = easyocr.Reader(
+            ["en"], gpu=(self.device == "cuda"), verbose=False
+        )
 
     def warm_up(self) -> None:
         # First call is heavily warmed by EasyOCR's model loading; do an

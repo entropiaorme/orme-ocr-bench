@@ -21,7 +21,7 @@ from __future__ import annotations
 import cv2
 import numpy as np
 
-from backend.ocr.calibration.bench.engines.base import OCREngine
+from backend.ocr.calibration.bench.engines.base import OCREngine, torch_device
 
 _MODEL_ID = "microsoft/Florence-2-large"
 _TASK = "<OCR>"
@@ -43,6 +43,10 @@ class Florence2LargeEngine(OCREngine):
             ) from exc
 
         self._torch = torch
+        self.device = torch_device()
+        # On CUDA use fp16 to halve activation/weight memory (matters on small
+        # cards); CPU stays fp32 (no fp16 CPU kernels for this path).
+        self._dtype = torch.float16 if self.device == "cuda" else torch.float32
         self._processor = AutoProcessor.from_pretrained(
             _MODEL_ID, trust_remote_code=True
         )
@@ -52,8 +56,10 @@ class Florence2LargeEngine(OCREngine):
         # attribute Florence's class doesn't define. Eager attention sidesteps
         # the dispatch entirely.
         self._model = AutoModelForCausalLM.from_pretrained(
-            _MODEL_ID, trust_remote_code=True, attn_implementation="eager"
+            _MODEL_ID, trust_remote_code=True, attn_implementation="eager",
+            torch_dtype=self._dtype,
         )
+        self._model.to(self.device)
         self._model.eval()
 
     def warm_up(self) -> None:
@@ -71,10 +77,12 @@ class Florence2LargeEngine(OCREngine):
             )
 
         inputs = self._processor(text=_TASK, images=pil, return_tensors="pt")
+        input_ids = inputs["input_ids"].to(self.device)
+        pixel_values = inputs["pixel_values"].to(self.device, dtype=self._dtype)
         with self._torch.no_grad():
             out = self._model.generate(
-                input_ids=inputs["input_ids"],
-                pixel_values=inputs["pixel_values"],
+                input_ids=input_ids,
+                pixel_values=pixel_values,
                 max_new_tokens=64,
                 num_beams=1,
                 do_sample=False,

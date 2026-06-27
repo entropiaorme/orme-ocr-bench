@@ -54,6 +54,12 @@ class OnnxTRRecogEngine(OCREngine):
             ) from exc
 
         self._providers = _preferred_providers()
+        self.provider = self._providers[0]
+        self.device = (
+            "cuda" if self.provider == "CUDAExecutionProvider"
+            else "directml" if self.provider == "DmlExecutionProvider"
+            else "cpu"
+        )
         engine_cfg = EngineConfig(providers=self._providers)
         kwargs: dict[str, Any] = {
             "arch": self.ARCH,

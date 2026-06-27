@@ -26,7 +26,7 @@ import re
 import cv2
 import numpy as np
 
-from backend.ocr.calibration.bench.engines.base import OCREngine
+from backend.ocr.calibration.bench.engines.base import OCREngine, torch_device
 
 _MODEL_ID = "facebook/nougat-base"
 _TARGET_WIDTH = 960
@@ -47,11 +47,12 @@ class NougatEngine(OCREngine):
             ) from exc
 
         self._torch = torch
+        self.device = torch_device()
         self._processor = NougatProcessor.from_pretrained(_MODEL_ID)
         self._model = VisionEncoderDecoderModel.from_pretrained(
             _MODEL_ID, low_cpu_mem_usage=False
         )
-        self._model.to("cpu")
+        self._model.to(self.device)
         self._model.eval()
 
     def warm_up(self) -> None:
@@ -75,6 +76,7 @@ class NougatEngine(OCREngine):
         rgb = cv2.cvtColor(upscaled, cv2.COLOR_BGR2RGB)
         pil = Image.fromarray(rgb)
         pixel_values = self._processor(images=pil, return_tensors="pt").pixel_values
+        pixel_values = pixel_values.to(self.device)
 
         with self._torch.no_grad():
             out = self._model.generate(

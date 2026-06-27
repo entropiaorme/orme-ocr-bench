@@ -22,10 +22,12 @@ Notes:
 
 from __future__ import annotations
 
+import os
+
 import cv2
 import numpy as np
 
-from backend.ocr.calibration.bench.engines.base import OCREngine
+from backend.ocr.calibration.bench.engines.base import OCREngine, torch_device
 
 
 class SuryaEngine(OCREngine):
@@ -41,6 +43,12 @@ class SuryaEngine(OCREngine):
                 "surya-ocr not installed. pip install surya-ocr"
             ) from exc
 
+        # Surya selects its torch device from the TORCH_DEVICE env var (it
+        # otherwise auto-detects). Pin it to CUDA when this host has it so the
+        # predictors load on GPU; surya owns tensor placement internally.
+        self.device = torch_device()
+        if self.device == "cuda":
+            os.environ.setdefault("TORCH_DEVICE", "cuda")
         self._foundation = FoundationPredictor()
         self._recognizer = RecognitionPredictor(self._foundation)
 

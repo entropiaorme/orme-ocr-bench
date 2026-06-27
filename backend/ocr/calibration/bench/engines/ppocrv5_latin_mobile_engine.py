@@ -32,6 +32,7 @@ class PPOCRv5LatinMobileEngine(OCREngine):
             MODELS_DIR / "ppocrv5_latin_mobile.onnx",
             MODELS_DIR / "ppocrv5_latin_dict.txt",
         )
+        self._adopt_device(self._reader)
 
     def warm_up(self) -> None:
         self._reader.warm_up()

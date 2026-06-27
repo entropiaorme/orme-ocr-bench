@@ -27,7 +27,7 @@ import math
 import cv2
 import numpy as np
 
-from backend.ocr.calibration.bench.engines.base import OCREngine
+from backend.ocr.calibration.bench.engines.base import OCREngine, torch_device
 
 _MODEL_ID = "stepfun-ai/GOT-OCR-2.0-hf"
 
@@ -47,12 +47,15 @@ class GotOcr2Engine(OCREngine):
             ) from exc
 
         self._torch = torch
+        self.device = torch_device()
+        self._dtype = torch.float16 if self.device == "cuda" else torch.float32
         self._processor = AutoProcessor.from_pretrained(_MODEL_ID)
         self._model = GotOcr2ForConditionalGeneration.from_pretrained(
             _MODEL_ID,
-            torch_dtype=torch.float32,
+            torch_dtype=self._dtype,
             low_cpu_mem_usage=True,
         )
+        self._model.to(self.device)
         self._model.eval()
 
     def warm_up(self) -> None:
@@ -66,6 +69,7 @@ class GotOcr2Engine(OCREngine):
         pil = Image.fromarray(rgb)
         inputs = self._processor(images=pil, return_tensors="pt")
         input_len = inputs["input_ids"].shape[1] if "input_ids" in inputs else 0
+        inputs = inputs.to(self.device)
 
         with self._torch.no_grad():
             out = self._model.generate(

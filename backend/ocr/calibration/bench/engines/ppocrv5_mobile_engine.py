@@ -105,10 +105,16 @@ class _PPocrV5Reader:
             str(model_path), so, providers=_select_providers(),
         )
         self._input_name = self._session.get_inputs()[0].name
+        self.provider = self._session.get_providers()[0]
+        self.device = (
+            "cuda" if self.provider == "CUDAExecutionProvider"
+            else "directml" if self.provider == "DmlExecutionProvider"
+            else "cpu"
+        )
         log.info(
             "PP-OCRv5 rec loaded: %s (%d chars, provider=%s, classes=%s)",
             model_path.name, len(self._chars),
-            self._session.get_providers()[0],
+            self.provider,
             self._session.get_outputs()[0].shape,
         )
 
@@ -173,6 +179,7 @@ class PPOCRv5MobileEngine(OCREngine):
             MODELS_DIR / "ppocrv5_mobile.onnx",
             MODELS_DIR / "ppocrv5_multilingual_dict.txt",
         )
+        self._adopt_device(self._reader)
 
     def warm_up(self) -> None:
         self._reader.warm_up()

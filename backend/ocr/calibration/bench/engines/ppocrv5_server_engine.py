@@ -33,6 +33,7 @@ class PPOCRv5ServerEngine(OCREngine):
             MODELS_DIR / "ppocrv5_server.onnx",
             MODELS_DIR / "ppocrv5_multilingual_dict.txt",
         )
+        self._adopt_device(self._reader)
 
     def warm_up(self) -> None:
         self._reader.warm_up()

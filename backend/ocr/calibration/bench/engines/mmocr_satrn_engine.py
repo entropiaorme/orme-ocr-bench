@@ -21,7 +21,7 @@ import io
 
 import numpy as np
 
-from backend.ocr.calibration.bench.engines.base import OCREngine
+from backend.ocr.calibration.bench.engines.base import OCREngine, torch_device
 
 
 class MMOCRSATRNEngine(OCREngine):
@@ -32,12 +32,13 @@ class MMOCRSATRNEngine(OCREngine):
             from mmocr.apis import MMOCRInferencer
         except ModuleNotFoundError as exc:
             raise ModuleNotFoundError(
-                "mmocr not installed. See agents/4/ROOM.md for the install "
+                "mmocr not installed. See SETUP.md (.venv-4) for the install "
                 "recipe (torch 2.0.0 + mmcv 2.0.1 + mmdet 3.1.0 + mmocr 1.0.1)."
             ) from exc
 
+        self.device = torch_device()
         with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
-            self._inferencer = MMOCRInferencer(rec="satrn", device="cpu")
+            self._inferencer = MMOCRInferencer(rec="satrn", device=self.device)
 
     def warm_up(self) -> None:
         dummy = np.full((48, 200, 3), 255, dtype=np.uint8)

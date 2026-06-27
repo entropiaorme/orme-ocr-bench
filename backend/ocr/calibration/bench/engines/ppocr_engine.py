@@ -13,6 +13,12 @@ class PPOCREngine(OCREngine):
 
     def __init__(self) -> None:
         self._reader = PPocrRecReader()
+        self.provider = getattr(self._reader, "provider", None)
+        self.device = (
+            "cuda" if self.provider == "CUDAExecutionProvider"
+            else "directml" if self.provider == "DmlExecutionProvider"
+            else "cpu"
+        )
 
     def warm_up(self) -> None:
         self._reader.warm_up()

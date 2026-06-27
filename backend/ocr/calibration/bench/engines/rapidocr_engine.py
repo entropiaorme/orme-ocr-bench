@@ -38,9 +38,37 @@ class RapidOCREngine(OCREngine):
 
     def __init__(self) -> None:
         # Construct the full pipeline so RapidOCR's own session config /
-        # provider selection runs; we then call only the recognizer.
-        self._engine = RapidOCR()
+        # provider selection runs; we then call only the recognizer. Request
+        # CUDA so the breadth run uses GPU where available; RapidOCR ignores
+        # the flag and stays on CPU if onnxruntime-gpu / CUDA isn't present.
+        try:
+            self._engine = RapidOCR(
+                config={
+                    "Global": {"use_cuda": True},
+                    "Rec": {"use_cuda": True},
+                }
+            )
+        except Exception:
+            # Older/newer RapidOCR signatures differ; fall back to defaults.
+            self._engine = RapidOCR()
         self._recognizer = self._engine.text_recognizer
+        self.provider = self._detect_provider()
+        self.device = (
+            "cuda" if self.provider == "CUDAExecutionProvider"
+            else "directml" if self.provider == "DmlExecutionProvider"
+            else "cpu"
+        )
+
+    def _detect_provider(self) -> str | None:
+        """Best-effort read of the recogniser's active ONNX provider."""
+        for attr in ("session", "_session", "onnx_session"):
+            sess = getattr(self._recognizer, attr, None)
+            get = getattr(sess, "get_providers", None)
+            if callable(get):
+                provs = get()
+                if provs:
+                    return provs[0]
+        return None
 
     def warm_up(self) -> None:
         # A few dummy passes at typical bench widths to pre-allocate

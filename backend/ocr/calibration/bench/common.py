@@ -52,6 +52,26 @@ COMPOSITE_PATH = BENCH_DIR / "composite.json"
 GROUND_TRUTH_PATH = BENCH_DIR / "ground_truth.json"
 
 
+def results_dir(subdir: str | None = None) -> Path:
+    """Directory holding per-engine result JSONs for one run track.
+
+    The bench runs the same corpus under different execution-provider
+    "tracks" (e.g. ``cuda`` for the unconstrained research breadth on an
+    NVIDIA box, ``directml`` for the in-domain Windows/end-user posture).
+    Each track writes to its own ``results/<subdir>/`` so leaderboards can
+    coexist without filename collisions. ``subdir=None`` returns the bare
+    ``results/`` directory, which holds the original (legacy) result set.
+    """
+    return RESULTS_DIR / subdir if subdir else RESULTS_DIR
+
+
+def composite_path(subdir: str | None = None) -> Path:
+    """Composite summary path for one run track (mirrors results_dir)."""
+    if subdir:
+        return RESULTS_DIR / subdir / "composite.json"
+    return COMPOSITE_PATH
+
+
 # --- Regex parsers ------------------------------------------------------------
 
 LEVEL_RE = re.compile(r"\d+")

@@ -35,10 +35,10 @@ import numpy as np
 
 from backend.ocr.calibration.bench.common import (
     BENCH_DIR,
-    RESULTS_DIR,
     index_ground_truth,
     load_ground_truth,
     load_vocab,
+    results_dir,
 )
 from backend.ocr.calibration.benchmark_panel_ocr import (
     aggregate_engine_metrics,
@@ -48,10 +48,12 @@ from backend.ocr.calibration.benchmark_panel_ocr import (
 REPORT_DIR = BENCH_DIR / "report"
 
 
-def _load_results() -> dict[str, dict]:
+def _load_results(src_dir: Path) -> dict[str, dict]:
     out: dict[str, dict] = {}
-    for path in sorted(RESULTS_DIR.glob("*.json")):
+    for path in sorted(src_dir.glob("*.json")):
         engine = path.stem
+        if engine == "composite":  # the run's composite summary, not an engine
+            continue
         try:
             out[engine] = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
@@ -106,6 +108,30 @@ def _mb(num: float | None) -> str:
     return f"{num:.0f}"
 
 
+_PROVIDER_SHORT = {
+    "CUDAExecutionProvider": "CUDA",
+    "TensorrtExecutionProvider": "TensorRT",
+    "DmlExecutionProvider": "DirectML",
+    "CPUExecutionProvider": "CPU",
+}
+
+
+def _device_label(m: dict) -> str:
+    """Compact device cell for the leaderboard.
+
+    Prefers the precise ONNX Runtime provider when present (e.g. CUDA,
+    DirectML), else the torch-style device string ("cuda"/"cpu"). Legacy
+    results without device info fall back to a dash.
+    """
+    provider = m.get("provider")
+    if provider:
+        return _PROVIDER_SHORT.get(provider, provider)
+    device = m.get("device")
+    if device:
+        return device.upper() if device == "cpu" else device
+    return "—"
+
+
 # --- Reports -----------------------------------------------------------------
 
 
@@ -117,7 +143,7 @@ def render_leaderboard(scored: dict[str, dict]) -> str:
     )
     headers = [
         "Rank", "Engine", "Eff Acc", "PASS", "REC", "FAIL", "Total",
-        "Mean ms/cell", "Init load (ms)", "RSS warm (MB)", "Wall (s)",
+        "Device", "Mean ms/cell", "Init load (ms)", "RSS warm (MB)", "Wall (s)",
     ]
     table_rows = []
     for i, (engine, m) in enumerate(rows, 1):
@@ -130,6 +156,7 @@ def render_leaderboard(scored: dict[str, dict]) -> str:
             c.get("RECOVERED", 0),
             c.get("UNRECOVERABLE", 0),
             m.get("total", 0),
+            _device_label(m),
             f"{m.get('ocr_mean_ms', 0):.1f}",
             _ms(m.get("init_load_ms")),
             _mb(m.get("rss_after_warmup_mb")),
@@ -455,13 +482,24 @@ def main() -> int:
         default=None,
         help="Restrict report to a comma-separated subset.",
     )
+    parser.add_argument(
+        "--results-subdir",
+        default=None,
+        help=(
+            "Render the report for one execution-provider track: read "
+            "results/<subdir>/ and write report/<subdir>/. Omit for the "
+            "legacy bare results/ -> report/ set."
+        ),
+    )
     args = parser.parse_args()
 
-    REPORT_DIR.mkdir(parents=True, exist_ok=True)
-    (REPORT_DIR / "per_engine").mkdir(exist_ok=True)
+    src_dir = results_dir(args.results_subdir)
+    report_dir = REPORT_DIR / args.results_subdir if args.results_subdir else REPORT_DIR
+    report_dir.mkdir(parents=True, exist_ok=True)
+    (report_dir / "per_engine").mkdir(exist_ok=True)
 
-    print(f"Loading results from {RESULTS_DIR}")
-    raw = _load_results()
+    print(f"Loading results from {src_dir}")
+    raw = _load_results(src_dir)
     if args.engines:
         wanted = {e.strip() for e in args.engines.split(",") if e.strip()}
         raw = {k: v for k, v in raw.items() if k in wanted}
@@ -479,24 +517,24 @@ def main() -> int:
     print(f"  scored {len(scored)} engine(s)")
 
     print("Rendering reports...")
-    (REPORT_DIR / "leaderboard.md").write_text(
+    (report_dir / "leaderboard.md").write_text(
         render_leaderboard(scored), encoding="utf-8",
     )
-    (REPORT_DIR / "per_cell_type.md").write_text(
+    (report_dir / "per_cell_type.md").write_text(
         render_per_cell_type(scored), encoding="utf-8",
     )
-    (REPORT_DIR / "failure_modes.md").write_text(
+    (report_dir / "failure_modes.md").write_text(
         render_failure_modes(scored), encoding="utf-8",
     )
-    (REPORT_DIR / "failure_overlap.md").write_text(
+    (report_dir / "failure_overlap.md").write_text(
         render_failure_overlap(scored), encoding="utf-8",
     )
     for engine, m in scored.items():
-        (REPORT_DIR / "per_engine" / f"{engine}.md").write_text(
+        (report_dir / "per_engine" / f"{engine}.md").write_text(
             render_per_engine(engine, m), encoding="utf-8",
         )
 
-    print(f"\nReports under: {REPORT_DIR}")
+    print(f"\nReports under: {report_dir}")
     print(f"  leaderboard.md       (composite ranked table)")
     print(f"  per_cell_type.md     (accuracy by name/level/rank_level/percent)")
     print(f"  failure_modes.md     (hallucinate/drop/substitute/reject per engine)")
