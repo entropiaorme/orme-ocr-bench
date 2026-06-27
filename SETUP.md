@@ -392,40 +392,49 @@ python -m backend.ocr.calibration.bench.report                             # reg
 so staged runs are idempotent. Long runs (the VLM tier has minutes-per-cell CPU
 wall time) are best fired from a terminal you can leave running.
 
-## 7. Completing the remaining 15 engines on a Linux + NVIDIA host
+## 7. Experiment A — the CUDA "research breadth" sweep on a Linux + NVIDIA host
 
-The committed leaderboard covers the 13 engines that ran on the AMD + Windows
-capture host (DirectML, no CUDA). The other 15 (`mmocr_abinet`,
-`mmocr_robustscanner`, `mmocr_satrn`, `trocr_large_printed`, `donut`, `nougat`,
-`florence2_base`, `florence2_large`, `surya`, `got_ocr2`, `kosmos25`,
-`dots_ocr`, and the heavier OnnxTR recognisers if you want to re-run them on
-GPU) need CUDA or ROCm. To complete them:
+This is the unconstrained-breadth track (see the README's two-experiment
+section): every engine on its best device, results under `results/cuda/` and
+`report/cuda/` so they never collide with the in-domain DirectML track.
 
-1. Clone the repo onto a Linux + NVIDIA box and build the driver venv (step 2),
-   uncommenting `onnxruntime-gpu` in `requirements-driver.txt`.
-2. Build the per-engine venvs you need (`.venv-4` through `.venv-7` carry the
-   bulk of the pending engines), installing PyTorch from the CUDA wheel index as
-   noted above.
-3. Point `engine_venvs.json` at the POSIX interpreter paths (`bin/python`) and
+1. Build the driver venv (step 2) with `onnxruntime-gpu` + the CUDA pip wheels
+   (the NVIDIA subsection under step 2), and the per-engine venvs you want
+   (steps 3-4). Point `engine_venvs.json` at the POSIX `bin/python` paths and
    set `HF_HOME` to a path with room for multi-GB weights.
-4. Healthcheck the new engines, then run them. The cheapest-to-heaviest order is
-   roughly: MMOCR family, then TrOCR-large / Donut / Nougat, then Florence-2,
-   then the large VLMs.
+2. Healthcheck, then run in staged tiers (cheapest first). The committed helper
+   `calibration/bench/run_tier.sh` wraps the orchestrator + report for one tier
+   and writes a timestamped, provenance-stamped log under
+   `calibration/bench/runs/cuda/` (host, GPU, driver, git commit) so each run is
+   self-documenting for the write-up:
 
    ```
-   python -m backend.ocr.calibration.benchmark_panel_ocr --tier gpu --skip-existing
-   python -m backend.ocr.calibration.benchmark_panel_ocr --tier vlm --skip-existing
-   python -m backend.ocr.calibration.benchmark_panel_ocr --skip-existing
+   calibration/bench/run_tier.sh gpu     # ONNX recognisers (fast)
+   calibration/bench/run_tier.sh fast    # + openocr_svtrv2, tesseract, easyocr
+   calibration/bench/run_tier.sh vlm     # MMOCR + transformer/VLM tier (slow)
    ```
 
-5. Regenerate the report so the aggregates cover the full set:
+   Each is idempotent (`--skip-existing`), so re-running a tier reuses landed
+   results and only fills gaps. Equivalent raw form if you prefer:
 
    ```
-   python -m backend.ocr.calibration.bench.report
+   python -m backend.ocr.calibration.benchmark_panel_ocr --tier gpu \
+     --results-subdir cuda --skip-existing
+   python -m backend.ocr.calibration.bench.report --results-subdir cuda
    ```
 
-   New result JSONs land under `calibration/bench/results/`, and the rendered
-   leaderboard and analyses under `calibration/bench/report/` pick them up.
+3. New result JSONs land under `calibration/bench/results/cuda/`; the rendered
+   leaderboard and analyses under `calibration/bench/report/cuda/` pick them up,
+   with a `Device` column and a "Did not complete" section for any engine that
+   OOM'd (e.g. `kosmos25` / `dots_ocr` on a small card).
+
+### Experiment B — the in-domain DirectML sweep (Windows)
+
+For the end-user-representative numbers, repeat on a Windows + DirectML host
+with `onnxruntime-directml`, writing to a separate track:
+`--results-subdir directml` (and `run_tier.sh` adapted, or the raw form). The
+PyTorch-only VLM engines have no DirectML path and are expected to be absent or
+CPU there; that narrower coverage is the point of the in-domain table.
 
 ## Troubleshooting
 

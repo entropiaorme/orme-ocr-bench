@@ -113,6 +113,33 @@ completing them on a Linux + NVIDIA box.
 This is stated plainly so there is no confusion: not all 28 ran here. The
 leaderboard is 13 engines. The remaining 15 are an open item, not a result.
 
+## Two experiments: unconstrained breadth vs in-domain
+
+Accuracy is device-independent, but latency is not, and the engines do not
+share one runtime: the ONNX recognisers reach a GPU through DirectML (the
+shipped app's path) or CUDA, while the PyTorch VLMs only ever reach a GPU
+through CUDA, and Tesseract has no GPU build at all. There is therefore no
+single host on which every engine runs on its production device. Rather than
+force one misleading uniform number, the sweep is reported as two experiments,
+each with its own leaderboard and a per-row `Device` column.
+
+- **Experiment A — unconstrained / research breadth** (`results/cuda/`,
+  `report/cuda/`). "If each model ran in its most comfortable environment, how
+  does the full 28-engine fleet compare?" Run on a Linux + NVIDIA host: every
+  engine on CUDA except the ones that genuinely cannot (Tesseract and the MMOCR
+  1.x stack run CPU; `kosmos25` and `dots_ocr` OOM a 4 GB card and are recorded
+  as honest non-results). This is an upper-bound proxy, not what an end user
+  sees.
+
+- **Experiment B — in-domain / end-user-targeted** (`results/directml/`, a
+  later pass on a Windows host). "Given the product's actual constraints, which
+  engines run, and how do they do?" DirectML on Windows, matching the shipped
+  app exactly. Narrower (the CUDA-only PyTorch engines have no DirectML path),
+  but these are the representative numbers.
+
+A CPU-only third experiment is deliberately omitted: this is a companion app
+for a GPU game, so every user has a GPU; a CPU table would represent nobody.
+
 ## What the sweep found
 
 The architectural picture, drawn from the results and the per-engine
