@@ -62,7 +62,13 @@ class SuryaEngine(OCREngine):
         rgb = cv2.cvtColor(crop_bgr, cv2.COLOR_BGR2RGB)
         pil = Image.fromarray(rgb)
 
-        predictions = self._recognizer([pil])
+        # Each bench crop is already a single tightly-cropped text line, so we
+        # skip detection: pass the whole-image box as the one "detected" line
+        # (recognition-only). Surya's RecognitionPredictor requires either a
+        # detection predictor or explicit bboxes/polygons.
+        w, h = pil.size
+        bboxes = [[[0, 0, w, h]]]  # one image -> one box
+        predictions = self._recognizer([pil], bboxes=bboxes)
         if not predictions:
             return "", 0.0
 

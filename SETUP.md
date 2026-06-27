@@ -267,21 +267,47 @@ white-pad path mixes dtypes under fp16). On CPU all three run fp32; TrOCR-large
 is ~1 s/cell, so a full panel run is several minutes (recorded as valid wall
 time).
 
-### `.venv-6` : Florence-2 family + Surya
+### `.venv-6` : Florence-2 family  (Surya is a separate venv, see below)
 
-Engines: `florence2_base`, `florence2_large`, `surya`.
+Engines: `florence2_base`, `florence2_large`.
 
 ```
 python -m venv .venv-6
 .venv-6/bin/python -m pip install --upgrade pip
 .venv-6/bin/python -m pip install numpy opencv-python rapidfuzz psutil
 .venv-6/bin/python -m pip install torch torchvision      # CUDA wheel index on NVIDIA, see below
-.venv-6/bin/python -m pip install transformers pillow einops
-.venv-6/bin/python -m pip install surya-ocr
+.venv-6/bin/python -m pip install "transformers==4.49.0" pillow einops timm
 ```
 
-Florence-2 uses `trust_remote_code=True`. `surya` is non-commercial (GPL-3.0
-code + CC-BY-NC weights): research-only, not shippable.
+**Pin `transformers==4.49.0`.** Florence-2's vendored modelling code
+(`trust_remote_code=True`) breaks on newer transformers: 5.x crashes in
+`prepare_inputs_for_generation` (the legacy tuple-shaped `past_key_values`),
+and 4.5x intermediate versions hit other vendored-code mismatches. `timm` is
+required by Florence's image encoder. Keep `attn_implementation="eager"` in the
+adapters (Florence's class lacks `_supports_sdpa`). On CUDA the adapters load
+fp16 (fits a 4 GB card); CPU runs fp32.
+
+### `.venv-6-surya` : Surya (separate venv)
+
+Engine: `surya`. Split out because Surya and Florence-2 have incompatible
+dependency requirements. Surya is non-commercial (GPL-3.0 code + CC-BY-NC
+weights): research-only, not shippable.
+
+```
+python -m venv .venv-6-surya
+.venv-6-surya/bin/python -m pip install --upgrade pip
+.venv-6-surya/bin/python -m pip install numpy opencv-python rapidfuzz psutil requests
+.venv-6-surya/bin/python -m pip install "surya-ocr==0.17.1" "transformers==4.49.0"
+```
+
+**Pin `surya-ocr==0.17.1`** (the last library-style release) **and
+`transformers==4.49.0`.** Surya 0.20 ("Surya2") dropped the local-torch
+recogniser entirely: it only runs via a Docker/vLLM service or llama.cpp, which
+does not fit a per-crop library benchmark. 0.17.1's model code also needs
+`transformers<5` (5.x removed `pad_token_id` from the decoder config it relies
+on). Point `engine_venvs.json`'s `surya` entry at `.venv-6-surya/bin/python`.
+The adapter passes a whole-image bbox so Surya runs recognition-only (no
+detection predictor needed) on the pre-cropped cells.
 
 ### `.venv-7` : large VLMs (GOT-OCR2 + Kosmos-2.5 + dots.ocr)
 
