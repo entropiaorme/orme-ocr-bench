@@ -24,6 +24,7 @@ from __future__ import annotations
 import numpy as np
 
 from backend.ocr.calibration.bench.engines.base import OCREngine
+from backend.ocr.calibration.bench.engines._ort_cuda import ensure_cuda_libs_loaded
 
 try:
     from rapidocr_onnxruntime import RapidOCR
@@ -37,21 +38,22 @@ class RapidOCREngine(OCREngine):
     name = "rapidocr"
 
     def __init__(self) -> None:
-        # Construct the full pipeline so RapidOCR's own session config /
-        # provider selection runs; we then call only the recognizer. Request
-        # CUDA so the breadth run uses GPU where available; RapidOCR ignores
-        # the flag and stays on CPU if onnxruntime-gpu / CUDA isn't present.
-        try:
-            self._engine = RapidOCR(
-                config={
-                    "Global": {"use_cuda": True},
-                    "Rec": {"use_cuda": True},
-                }
-            )
-        except Exception:
-            # Older/newer RapidOCR signatures differ; fall back to defaults.
-            self._engine = RapidOCR()
-        self._recognizer = self._engine.text_recognizer
+        # Make the pip-wheel CUDA libs visible before RapidOCR builds its
+        # session (it reads onnxruntime's available providers at construction).
+        ensure_cuda_libs_loaded()
+        # rapidocr-onnxruntime takes flat ``rec_use_cuda`` kwargs (the Rec
+        # branch of its config). Judge GPU availability by the ONNX Runtime
+        # providers (this venv has no torch), not torch.cuda. It honours the
+        # request only when a CUDA onnxruntime is actually present, else stays
+        # on CPU; pass it only on a CUDA host.
+        import onnxruntime as ort
+
+        want_cuda = "CUDAExecutionProvider" in ort.get_available_providers()
+        self._engine = RapidOCR(rec_use_cuda=True) if want_cuda else RapidOCR()
+        # API: the recogniser is ``text_rec`` (older releases: text_recognizer).
+        self._recognizer = getattr(
+            self._engine, "text_rec", None
+        ) or self._engine.text_recognizer
         self.provider = self._detect_provider()
         self.device = (
             "cuda" if self.provider == "CUDAExecutionProvider"
@@ -60,10 +62,24 @@ class RapidOCREngine(OCREngine):
         )
 
     def _detect_provider(self) -> str | None:
-        """Best-effort read of the recogniser's active ONNX provider."""
-        for attr in ("session", "_session", "onnx_session"):
-            sess = getattr(self._recognizer, attr, None)
-            get = getattr(sess, "get_providers", None)
+        """Best-effort read of the recogniser's active ONNX provider.
+
+        rapidocr wraps the ORT session: ``text_rec.session`` is an
+        ``OrtInferSession`` whose ``.session`` is the real InferenceSession.
+        """
+        rec = self._recognizer
+        for path in (
+            ("session", "session"),  # OrtInferSession -> InferenceSession
+            ("session",),
+            ("_session",),
+            ("onnx_session",),
+        ):
+            obj = rec
+            for attr in path:
+                obj = getattr(obj, attr, None)
+                if obj is None:
+                    break
+            get = getattr(obj, "get_providers", None)
             if callable(get):
                 provs = get()
                 if provs:

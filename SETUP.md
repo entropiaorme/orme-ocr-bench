@@ -138,13 +138,51 @@ Engines: `ppocrv5_mobile`, `ppocrv5_en_mobile`, `ppocrv5_latin_mobile`,
 python -m venv .venv-1
 .venv-1/bin/python -m pip install --upgrade pip
 .venv-1/bin/python -m pip install numpy opencv-python rapidfuzz psutil
-.venv-1/bin/python -m pip install onnxruntime-directml paddleocr   # DirectML; use onnxruntime-gpu on NVIDIA
 .venv-1/bin/python -m pip install rapidocr-onnxruntime
+# ONNX Runtime provider (pick per host):
+.venv-1/bin/python -m pip install onnxruntime-directml          # Windows / AMD-Intel
+# NVIDIA: install onnxruntime-gpu + the CUDA pip wheels (see the NVIDIA
+# section under "Driver venv"):
+.venv-1/bin/python -m pip install "onnxruntime-gpu==1.22.0" \
+  nvidia-cuda-runtime-cu12 nvidia-cudnn-cu12 nvidia-cublas-cu12 \
+  nvidia-curand-cu12 nvidia-cufft-cu12 nvidia-cuda-nvrtc-cu12
 ```
 
-PP-OCRv5 ONNX weights come from HuggingFace (`PaddlePaddle/PP-OCRv5_mobile_rec`,
-`PaddlePaddle/PP-OCRv5_server_rec`, and the English / Latin variants) or a
-ready-to-use ONNX bundle repo. The adapters fetch and cache on first run.
+The four `ppocrv5_*` adapters read pre-placed ONNX weights from
+`.venv-1/models/<engine>.onnx` plus a sibling character-dict text file; they do
+not auto-download. PaddlePaddle publishes these as Paddle inference models, so
+convert them once into the layout the adapters expect:
+
+```
+.venv-1/bin/python -m pip install paddlepaddle paddle2onnx   # CPU paddle is fine; conversion only
+```
+
+For each model, download the HF repo and run `paddle2onnx`, saving to
+`.venv-1/models/<engine>.onnx`; write the character dict from the model's
+`inference.yml` (`character_dict:` list, one entry per line) to the matching
+dict file:
+
+| Engine | HF repo | onnx file | dict file |
+| --- | --- | --- | --- |
+| `ppocrv5_mobile` | `PaddlePaddle/PP-OCRv5_mobile_rec` | `ppocrv5_mobile.onnx` | `ppocrv5_multilingual_dict.txt` |
+| `ppocrv5_en_mobile` | `PaddlePaddle/en_PP-OCRv5_mobile_rec` | `ppocrv5_en_mobile.onnx` | `ppocrv5_en_dict.txt` |
+| `ppocrv5_latin_mobile` | `PaddlePaddle/latin_PP-OCRv5_mobile_rec` | `ppocrv5_latin_mobile.onnx` | `ppocrv5_latin_dict.txt` |
+| `ppocrv5_server` | `PaddlePaddle/PP-OCRv5_server_rec` | `ppocrv5_server.onnx` | `ppocrv5_multilingual_dict.txt` |
+
+```
+paddle2onnx --model_dir <hf_snapshot_dir> \
+  --model_filename inference.json --params_filename inference.pdiparams \
+  --save_file .venv-1/models/<engine>.onnx --opset_version 14
+```
+
+A clean conversion reproduces the originals exactly: `ppocrv5_en_mobile` reads
+the probe cell as `Agility` (conf ~0.95), and `ppocrv5_mobile`'s multilingual
+decoder spills CJK on it (`Agility大室`, conf ~0.62), matching the committed
+result for that engine.
+
+`rapidocr` carries its own bundled PP-OCR ONNX and downloads on first run; no
+manual weights needed. On NVIDIA it uses CUDA automatically (the adapter passes
+`rec_use_cuda` when a CUDA ONNX Runtime is present).
 
 ### `.venv-2` : OnnxTR (docTR recogniser zoo over ONNX Runtime)
 
@@ -346,6 +384,19 @@ GPU) need CUDA or ROCm. To complete them:
   the mapped interpreter. Check `engine_venvs.json` and that the venv exists.
 - **`ModuleNotFoundError` from inside an engine subprocess**: the venv is wired
   but missing a dep; revisit that engine's recipe above.
+- **An ONNX engine runs on CPU on an NVIDIA host despite `onnxruntime-gpu`**:
+  some packages (`openocr-python`, `paddleocr`) depend on the plain CPU
+  `onnxruntime` wheel and pull it in, shadowing the GPU build (both share the
+  `onnxruntime/` import dir). After installing those, restore the GPU build:
+  `pip uninstall -y onnxruntime && pip install --force-reinstall --no-deps
+  "onnxruntime-gpu==1.22.0"`. Confirm with
+  `python -c "import onnxruntime as o; o.preload_dlls(); print(o.get_device())"`
+  (should print `GPU`).
+- **A POSIX venv engine runs under the base interpreter (e.g. `cv2` not found
+  though the venv has it)**: the orchestrator must not resolve the venv's
+  `bin/python` symlink (doing so dereferences it to the base interpreter). This
+  is handled in `load_engine_runtime_config`; if you see `python=<conda env>`
+  instead of `python=.venv-N` in the launch banner, that resolution regressed.
 - **First-run download stalls**: the auto-download from ModelScope (OpenOCR) or
   HuggingFace (transformer engines) dominates first-run wall time. It runs
   idempotently once the cache populates.
