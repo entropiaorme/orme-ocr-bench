@@ -62,6 +62,37 @@ class GotOcr2Engine(OCREngine):
         dummy = np.full((32, 200, 3), 255, dtype=np.uint8)
         self.read_text(dummy)
 
+    # GOT-OCR2 is an OCR-purpose model whose serial autoregressive decode is
+    # its pathological worst case; batched generate is how it is actually
+    # deployed, so a true batched path is provided.
+    supports_batch = True
+
+    def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
+        from PIL import Image
+
+        pils = [Image.fromarray(cv2.cvtColor(c, cv2.COLOR_BGR2RGB)) for c in crops_bgr]
+        inputs = self._processor(images=pils, return_tensors="pt")
+        input_len = inputs["input_ids"].shape[1] if "input_ids" in inputs else 0
+        inputs = inputs.to(self.device)
+        self._mark_model_start()
+        with self._torch.no_grad():
+            out = self._model.generate(
+                **inputs,
+                do_sample=False,
+                max_new_tokens=256,
+                return_dict_in_generate=True,
+            )
+        results: list[tuple[str, float]] = []
+        for i in range(out.sequences.shape[0]):
+            gen_ids = out.sequences[i][input_len:] if input_len else out.sequences[i]
+            text = self._processor.decode(gen_ids, skip_special_tokens=True).strip()
+            # Batched per-token confidence with padding is unreliable; the
+            # batched track reports text + throughput, not per-cell confidence.
+            results.append((text, 0.0))
+        while len(results) < len(crops_bgr):
+            results.append(("", 0.0))
+        return results
+
     def read_text(self, crop_bgr: np.ndarray) -> tuple[str, float]:
         from PIL import Image
 

@@ -431,6 +431,14 @@ def aggregate_engine_metrics(engine_result: dict, panels_eval: dict) -> dict:
         "provider": engine_result["init"].get("provider"),
         "final_rss_mb": engine_result["overall"]["final_rss_mb"],
         "subprocess_wall_ms": engine_result["overall"]["subprocess_wall_ms"],
+        # Latency-instrumentation fields (present after the timer-split / VRAM /
+        # batched-mode changes; older results omit them, hence .get).
+        "peak_vram_mb": engine_result["overall"].get("peak_vram_mb"),
+        "timing_split": engine_result["overall"].get("timing_split"),
+        "mode": engine_result.get("mode", "serial"),
+        "batch_size": engine_result.get("batch_size", 1),
+        "throughput_cells_per_s": engine_result["overall"].get("throughput_cells_per_s"),
+        "mean_ms_per_cell_batched": engine_result["overall"].get("mean_ms_per_cell_batched"),
     }
 
 

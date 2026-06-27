@@ -41,5 +41,11 @@ class PPOCRv5ServerEngine(OCREngine):
     def read_text(self, crop_bgr: np.ndarray) -> tuple[str, float]:
         return self._reader.read_text(crop_bgr)
 
+    supports_batch = True
+
+    def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
+        self._mark_model_start()
+        return self._reader.read_batch(crops_bgr)
+
 
 ENGINE = PPOCRv5ServerEngine

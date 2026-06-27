@@ -108,13 +108,23 @@ class OpenOCRSVTRv2Engine(OCREngine):
         self.read_text(dummy)
 
     def read_text(self, crop_bgr: np.ndarray) -> tuple[str, float]:
-        results = self._rec(img_numpy=crop_bgr)
-        if not results:
-            return "", 0.0
-        r = results[0]
-        text = str(r.get("text", "") or "")
-        score = float(r.get("score", 0.0) or 0.0)
-        return text, score
+        return self.read_batch([crop_bgr])[0]
+
+    # OpenRecognizer natively batches via img_numpy_list + batch_num.
+    supports_batch = True
+
+    def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
+        self._mark_model_start()
+        results = self._rec(img_numpy_list=list(crops_bgr), batch_num=len(crops_bgr))
+        out: list[tuple[str, float]] = []
+        for r in (results or []):
+            out.append((
+                str(r.get("text", "") or ""),
+                float(r.get("score", 0.0) or 0.0),
+            ))
+        while len(out) < len(crops_bgr):
+            out.append(("", 0.0))
+        return out
 
 
 ENGINE = OpenOCRSVTRv2Engine

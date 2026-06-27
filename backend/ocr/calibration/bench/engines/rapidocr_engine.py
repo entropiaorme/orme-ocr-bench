@@ -94,15 +94,25 @@ class RapidOCREngine(OCREngine):
             self._recognizer([dummy])
 
     def read_text(self, crop_bgr: np.ndarray) -> tuple[str, float]:
-        results, _elapsed_ms = self._recognizer([crop_bgr])
-        if not results:
-            return "", 0.0
-        text, conf = results[0]
-        try:
-            conf_f = float(conf)
-        except (TypeError, ValueError):
-            conf_f = 0.0
-        return str(text or ""), conf_f
+        return self.read_batch([crop_bgr])[0]
+
+    # RapidOCR's text recogniser natively accepts a list of crops as one batch.
+    supports_batch = True
+
+    def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
+        self._mark_model_start()
+        results, _elapsed_ms = self._recognizer(list(crops_bgr))
+        out: list[tuple[str, float]] = []
+        for item in (results or []):
+            text, conf = (item[0], item[1]) if item else ("", 0.0)
+            try:
+                conf_f = float(conf)
+            except (TypeError, ValueError):
+                conf_f = 0.0
+            out.append((str(text or ""), conf_f))
+        while len(out) < len(crops_bgr):
+            out.append(("", 0.0))
+        return out
 
 
 ENGINE = RapidOCREngine

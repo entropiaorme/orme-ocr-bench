@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import time
 from abc import ABC, abstractmethod
 
 import numpy as np
@@ -60,6 +61,40 @@ class OCREngine(ABC):
         device = getattr(source, "device", None)
         if device is not None:
             self.device = device
+
+    # --- Batched inference (opt-in) ------------------------------------------
+    # Engines with a genuine batched path set supports_batch=True and override
+    # read_batch. There is deliberately NO loop-over-read_text fallback: a
+    # looped "batch" would report misleading throughput, so engines without
+    # real batching are recorded as "batched: n/a" by the runner.
+    supports_batch: bool = False
+
+    def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
+        """Recognise a batch of BGR crops in one model call. Override + set
+        ``supports_batch = True`` to provide a true batched path."""
+        raise NotImplementedError("this engine has no batched path")
+
+    # --- Per-cell preprocess/model timing split (opt-in) ---------------------
+    # ms/cell conflates "this adapter upscales 4x" with "this model is slow".
+    # Adapters that want the split call ``self._mark_model_start()`` in
+    # read_text at the boundary between preprocessing and the model call; the
+    # runner then reads ``last_preprocess_ms`` / ``last_model_ms``. Engines
+    # that never mark report the whole cell as model time (preprocess unknown).
+    last_preprocess_ms: float | None = None
+    last_model_ms: float | None = None
+    _cell_t0: float | None = None
+
+    def _begin_cell(self) -> None:
+        """Runner calls this immediately before each read_text (timing anchor)."""
+        self._cell_t0 = time.perf_counter()
+        self.last_preprocess_ms = None
+        self.last_model_ms = None
+
+    def _mark_model_start(self) -> None:
+        """Adapters call this in read_text once preprocessing is done and the
+        model call is about to begin."""
+        if self._cell_t0 is not None:
+            self.last_preprocess_ms = (time.perf_counter() - self._cell_t0) * 1e3
 
     @abstractmethod
     def warm_up(self) -> None:

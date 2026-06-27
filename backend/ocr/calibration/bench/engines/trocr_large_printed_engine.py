@@ -75,6 +75,7 @@ class TrOCRLargePrintedEngine(OCREngine):
         pil = Image.fromarray(rgb)
         pixel_values = self._processor(images=pil, return_tensors="pt").pixel_values
         pixel_values = pixel_values.to(self.device, dtype=self._dtype)
+        self._mark_model_start()
         with self._torch.no_grad():
             out = self._model.generate(
                 pixel_values,

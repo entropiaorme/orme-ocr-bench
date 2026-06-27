@@ -73,16 +73,28 @@ class OnnxTRRecogEngine(OCREngine):
         self._predictor([dummy])
 
     def read_text(self, crop_bgr: np.ndarray) -> tuple[str, float]:
-        # OnnxTR expects RGB uint8 ndarrays.
-        rgb = cv2.cvtColor(crop_bgr, cv2.COLOR_BGR2RGB)
-        out = self._predictor([rgb])
-        if not out:
-            return "", 0.0
-        text, conf = out[0]
-        if text is None:
-            return "", 0.0
-        try:
-            conf_f = float(conf)
-        except (TypeError, ValueError):
-            conf_f = 0.0
-        return str(text), conf_f
+        return self.read_batch([crop_bgr])[0]
+
+    # OnnxTR's recognition_predictor natively accepts a list of crops and runs
+    # them as one batch, so batching is a genuine single-call path here.
+    supports_batch = True
+
+    def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
+        rgbs = [cv2.cvtColor(c, cv2.COLOR_BGR2RGB) for c in crops_bgr]
+        self._mark_model_start()
+        out = self._predictor(rgbs)
+        results: list[tuple[str, float]] = []
+        for item in out:
+            text, conf = (item if item else (None, 0.0))
+            if text is None:
+                results.append(("", 0.0))
+                continue
+            try:
+                conf_f = float(conf)
+            except (TypeError, ValueError):
+                conf_f = 0.0
+            results.append((str(text), conf_f))
+        # Guard against a predictor returning fewer items than inputs.
+        while len(results) < len(crops_bgr):
+            results.append(("", 0.0))
+        return results

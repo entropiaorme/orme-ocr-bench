@@ -152,14 +152,27 @@ def render_leaderboard(scored: dict[str, dict], failed: dict[str, dict] | None =
         key=lambda kv: kv[1].get("effective_accuracy") or 0.0,
         reverse=True,
     )
-    headers = [
-        "Rank", "Engine", "Eff Acc", "PASS", "REC", "FAIL", "Total",
-        "Device", "Mean ms/cell", "Init load (ms)", "RSS warm (MB)", "Wall (s)",
-    ]
+    # Batched track: any result run in batched mode flips the latency columns
+    # from per-cell ms to throughput (cells/sec) + batch size. Serial track
+    # keeps ms/cell and adds the preprocess/model split where available.
+    batched = any(m.get("mode") == "batched" for m in scored.values())
+
+    if batched:
+        headers = [
+            "Rank", "Engine", "Eff Acc", "PASS", "REC", "FAIL", "Total",
+            "Device", "Batch", "Throughput (cells/s)", "ms/cell (batched)",
+            "Peak VRAM (MB)", "Wall (s)",
+        ]
+    else:
+        headers = [
+            "Rank", "Engine", "Eff Acc", "PASS", "REC", "FAIL", "Total",
+            "Device", "ms/cell", "Preprocess ms", "Model ms",
+            "Peak VRAM (MB)", "Wall (s)",
+        ]
     table_rows = []
     for i, (engine, m) in enumerate(rows, 1):
         c = m["counts"]
-        table_rows.append([
+        base = [
             i,
             f"`{engine}`",
             _pct(m.get("effective_accuracy")),
@@ -168,11 +181,26 @@ def render_leaderboard(scored: dict[str, dict], failed: dict[str, dict] | None =
             c.get("UNRECOVERABLE", 0),
             m.get("total", 0),
             _device_label(m),
-            f"{m.get('ocr_mean_ms', 0):.1f}",
-            _ms(m.get("init_load_ms")),
-            _mb(m.get("rss_after_warmup_mb")),
-            f"{m.get('subprocess_wall_ms', 0) / 1000:.1f}",
-        ])
+        ]
+        split = m.get("timing_split") or {}
+        if batched:
+            tp = m.get("throughput_cells_per_s")
+            base += [
+                m.get("batch_size", 1),
+                f"{tp:.1f}" if tp else "—",
+                f"{m.get('mean_ms_per_cell_batched') or 0:.2f}",
+                _mb(m.get("peak_vram_mb")),
+                f"{m.get('subprocess_wall_ms', 0) / 1000:.1f}",
+            ]
+        else:
+            base += [
+                f"{m.get('ocr_mean_ms', 0):.1f}",
+                f"{split['preprocess_ms_mean']:.1f}" if split.get("preprocess_ms_mean") is not None else "—",
+                f"{split['model_ms_mean']:.1f}" if split.get("model_ms_mean") is not None else "—",
+                _mb(m.get("peak_vram_mb")),
+                f"{m.get('subprocess_wall_ms', 0) / 1000:.1f}",
+            ]
+        table_rows.append(base)
 
     body = [
         "# OCR engine leaderboard",
@@ -200,6 +228,24 @@ def render_leaderboard(scored: dict[str, dict], failed: dict[str, dict] | None =
         "",
         _md_table(headers, table_rows),
     ]
+    if batched:
+        body += [
+            "",
+            "**Batched coverage.** Throughput is reported only for engines with "
+            "a genuine batched path (no loop-over-serial fallback, which would "
+            "fake throughput). Engines reported serial-only by design: the "
+            "`trocr` family (a single-line / pre-cropped-region recogniser run "
+            "at its intended batch-1 granularity, and already dominated on both "
+            "accuracy and per-cell latency, so batched throughput would change "
+            "no conclusion); `easyocr`/`tesseract` (no clean multi-image batch "
+            "API); the MMOCR family (CPU-only on this host, where batching is "
+            "not a throughput lever); and the wrong-fit VLMs `florence2`/`donut`/"
+            "`nougat` (batching does not rescue a structurally mismatched, low- "
+            "or zero-accuracy reader). `got_ocr2` IS batched: as an "
+            "autoregressive OCR model its serial batch-1 is the pathological "
+            "case, so batched is its representative regime. See EXPERIMENTS.md "
+            "for the full per-engine decision record.",
+        ]
     if failed:
         body += [
             "",

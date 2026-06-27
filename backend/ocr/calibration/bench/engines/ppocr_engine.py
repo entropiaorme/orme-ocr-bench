@@ -20,11 +20,17 @@ class PPOCREngine(OCREngine):
             else "cpu"
         )
 
+    supports_batch = True
+
     def warm_up(self) -> None:
         self._reader.warm_up()
 
     def read_text(self, crop_bgr: np.ndarray) -> tuple[str, float]:
         return self._reader.read_text(crop_bgr)
+
+    def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
+        self._mark_model_start()
+        return self._reader.read_batch(crops_bgr)
 
 
 ENGINE = PPOCREngine

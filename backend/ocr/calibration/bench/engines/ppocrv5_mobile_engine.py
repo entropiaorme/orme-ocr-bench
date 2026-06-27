@@ -128,6 +128,22 @@ class _PPocrV5Reader:
         output = self._session.run(None, {self._input_name: tensor})
         return self._decode(output[0])
 
+    def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
+        # Preprocess each crop to [1,3,H,w_i] then right-pad all to the batch's
+        # max width (PP-OCR convention) so they stack into one [N,3,H,Wmax]
+        # tensor for a single session run. Padding uses the normalised
+        # background value (-1.0 after the [-1,1] normalisation = white).
+        tensors = [self._preprocess(c) for c in crops_bgr]
+        max_w = max(t.shape[3] for t in tensors)
+        batch = np.full(
+            (len(tensors), 3, TARGET_HEIGHT, max_w), -1.0, dtype=np.float32,
+        )
+        for i, t in enumerate(tensors):
+            batch[i, :, :, : t.shape[3]] = t[0]
+        outputs = self._session.run(None, {self._input_name: batch})
+        preds = outputs[0]  # [N, T, C]
+        return [self._decode(preds[i : i + 1]) for i in range(preds.shape[0])]
+
     @staticmethod
     def _preprocess(bgr: np.ndarray) -> np.ndarray:
         h, w = bgr.shape[:2]
@@ -181,11 +197,17 @@ class PPOCRv5MobileEngine(OCREngine):
         )
         self._adopt_device(self._reader)
 
+    supports_batch = True
+
     def warm_up(self) -> None:
         self._reader.warm_up()
 
     def read_text(self, crop_bgr: np.ndarray) -> tuple[str, float]:
         return self._reader.read_text(crop_bgr)
+
+    def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
+        self._mark_model_start()
+        return self._reader.read_batch(crops_bgr)
 
 
 ENGINE = PPOCRv5MobileEngine

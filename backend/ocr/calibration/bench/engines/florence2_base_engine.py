@@ -79,6 +79,7 @@ class Florence2BaseEngine(OCREngine):
         inputs = self._processor(text=_TASK, images=pil, return_tensors="pt")
         input_ids = inputs["input_ids"].to(self.device)
         pixel_values = inputs["pixel_values"].to(self.device, dtype=self._dtype)
+        self._mark_model_start()
         with self._torch.no_grad():
             out = self._model.generate(
                 input_ids=input_ids,

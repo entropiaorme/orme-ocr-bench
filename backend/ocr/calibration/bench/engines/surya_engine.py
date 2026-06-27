@@ -57,24 +57,25 @@ class SuryaEngine(OCREngine):
         self.read_text(dummy)
 
     def read_text(self, crop_bgr: np.ndarray) -> tuple[str, float]:
+        return self.read_batch([crop_bgr])[0]
+
+    # Surya's RecognitionPredictor takes a list of images with parallel bboxes
+    # and runs them as one batch.
+    supports_batch = True
+
+    def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
         from PIL import Image
 
-        rgb = cv2.cvtColor(crop_bgr, cv2.COLOR_BGR2RGB)
-        pil = Image.fromarray(rgb)
-
-        # Each bench crop is already a single tightly-cropped text line, so we
-        # skip detection: pass the whole-image box as the one "detected" line
-        # (recognition-only). Surya's RecognitionPredictor requires either a
-        # detection predictor or explicit bboxes/polygons.
-        w, h = pil.size
-        bboxes = [[[0, 0, w, h]]]  # one image -> one box
-        predictions = self._recognizer([pil], bboxes=bboxes)
-        if not predictions:
-            return "", 0.0
-
-        first = predictions[0]
-        text, conf = _extract_text_conf(first)
-        return text, conf
+        pils = [Image.fromarray(cv2.cvtColor(c, cv2.COLOR_BGR2RGB)) for c in crops_bgr]
+        # Each crop is one pre-cropped line: pass its whole-image box so Surya
+        # runs recognition-only (no detection predictor needed).
+        bboxes = [[[0, 0, p.size[0], p.size[1]]] for p in pils]
+        self._mark_model_start()
+        predictions = self._recognizer(pils, bboxes=bboxes)
+        out = [_extract_text_conf(p) for p in (predictions or [])]
+        while len(out) < len(crops_bgr):
+            out.append(("", 0.0))
+        return out
 
 
 def _extract_text_conf(pred) -> tuple[str, float]:

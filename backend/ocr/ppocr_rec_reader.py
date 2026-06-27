@@ -143,6 +143,19 @@ class PPocrRecReader:
         output = self._session.run(None, {self._input_name: tensor})
         return self._decode(output[0])
 
+    def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
+        """Batched recognition: pad each preprocessed crop to the batch max
+        width, stack to [N,3,H,Wmax], one session run, decode per sample."""
+        tensors = [self._preprocess(c) for c in crops_bgr]
+        max_w = max(t.shape[3] for t in tensors)
+        batch = np.full(
+            (len(tensors), 3, TARGET_HEIGHT, max_w), -1.0, dtype=np.float32,
+        )
+        for i, t in enumerate(tensors):
+            batch[i, :, :, : t.shape[3]] = t[0]
+        preds = self._session.run(None, {self._input_name: batch})[0]
+        return [self._decode(preds[i : i + 1]) for i in range(preds.shape[0])]
+
     # ------------------------------------------------------------------
     # Preprocessing
     # ------------------------------------------------------------------
