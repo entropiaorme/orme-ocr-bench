@@ -2,8 +2,8 @@
 
 ## Headline
 
-- Effective accuracy: **95.5%** (325 PASS + 242 RECOVERED of 594 data cells)
-- Failure modes: hallucinate=33, drop=0, substitute=236, reject=0
+- Effective accuracy: **95.5%** (375 PASS + 192 RECOVERED of 594 data cells)
+- Failure modes: hallucinate=33, drop=0, substitute=186, reject=0
 - Per-cell mean: **191.4 ms** (p95 318.9 ms, max 356.7 ms)
 - Init: load 7733 ms + warmup 345 ms
 - RSS: warmup 292 MB, final 326 MB
@@ -17,7 +17,7 @@ min=0.757  p25=0.988  median=0.999  p75=1.000  max=1.000  mean=0.988
 
 | Cell type | Eff acc | PASS+REC | Total |
 | --- | --- | --- | --- |
-| `name` | 98.4% | 0+242 | 246 |
+| `name` | 98.4% | 50+192 | 246 |
 | `level` | 100.0% | 144+0 | 144 |
 | `rank_level` | 77.5% | 79+0 | 102 |
 | `percent` | 100.0% | 102+0 | 102 |

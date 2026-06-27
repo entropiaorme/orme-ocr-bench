@@ -5,8 +5,9 @@ visual-transformer encoder and Multi-Size Resizing baked in for irregular
 text. Apache 2.0. The PyPI package ``openocr-python`` exposes the
 recognition-only path via ``OpenRecognizer``; we use ``mode='mobile'`` with
 ``backend='onnx'`` to avoid pulling in PyTorch and to run inference through
-ONNX Runtime (CPU on this AMD/Windows box; the package's auto-download
-fetches ``openocr_rec_model.onnx`` from ModelScope on first construction).
+ONNX Runtime on CPU (the package's GPU provider path is broken upstream; see
+the ``use_gpu`` note in ``__init__``). The auto-download fetches
+``openocr_rec_model.onnx`` from ModelScope on first construction.
 
 SVTRv2's MSR handles narrow / variable-width crops out-of-the-box, so we
 pass the BGR ndarray straight through without padding. Confidence is the
@@ -31,12 +32,16 @@ class OpenOCRSVTRv2Engine(OCREngine):
                 "openocr-python not installed. pip install openocr-python"
             ) from exc
         # mobile + onnx avoids pulling torch and routes through onnxruntime.
-        # use_gpu='false' is deliberate on AMD/Windows: openocr-python's
-        # GPU path hardcodes a (Tensorrt, CUDA, CPU) provider list, so
-        # use_gpu='true' silently falls back to CPU here (no CUDA on
-        # AMD, and DmlExecutionProvider is not in their hardcoded list).
-        # Reaching DirectML would require monkey-patching openocr-python
-        # or contributing an upstream patch; out of bench scope.
+        # use_gpu stays 'false' on every host: openocr-python 0.1.5's GPU path
+        # (tools/infer/onnx_engine.py) wraps its provider list in a stray
+        # one-tuple -- ``providers=(['TensorrtExecutionProvider', ...],)`` --
+        # which ONNX Runtime rejects ("'providers' values must be either
+        # strings or (string, dict) tuples"), so use_gpu='true' throws an EP
+        # error and silently falls back to CPU even where CUDA is present.
+        # Reaching the GPU would require patching the installed package; out
+        # of bench scope. SVTRv2-mobile is CPU-fast regardless (~10-15 ms/cell
+        # here), and accuracy is identical to a GPU run, so this only affects
+        # the headline engine's reported latency.
         self._rec = OpenRecognizer(
             mode="mobile",
             backend="onnx",

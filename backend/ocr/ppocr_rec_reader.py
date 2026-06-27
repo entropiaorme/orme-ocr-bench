@@ -33,11 +33,30 @@ DEFAULT_DICT = ASSETS_DIR / "models" / "dict.txt"
 TARGET_HEIGHT = 48  # model's fixed input height
 
 
+def _preload_cuda_libs() -> None:
+    """Load pip-wheel CUDA libraries so ONNX Runtime can see them.
+
+    On Linux + NVIDIA the CUDA runtime is supplied by the ``nvidia-*-cu12``
+    pip wheels under ``site-packages/nvidia/`` rather than a system toolkit;
+    ONNX Runtime >= 1.21 exposes ``preload_dlls()`` to load them without any
+    ``LD_LIBRARY_PATH`` setup. No-op on the CPU and DirectML wheels (which do
+    not expose the function) and exception-safe so CPU fallback is never lost.
+    """
+    preload = getattr(ort, "preload_dlls", None)
+    if preload is None:
+        return
+    try:
+        preload()
+    except Exception:
+        pass
+
+
 def _select_onnx_providers() -> list[str]:
     """Pick the best available ONNX Runtime execution provider.
 
     Priority: CUDA (Linux/NVIDIA) > DirectML (Windows/AMD) > CPU.
     """
+    _preload_cuda_libs()
     available = ort.get_available_providers()
     for provider in ["CUDAExecutionProvider", "DmlExecutionProvider"]:
         if provider in available:

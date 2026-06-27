@@ -43,6 +43,7 @@ except ModuleNotFoundError as exc:
     ) from exc
 
 from backend.ocr.calibration.bench.engines.base import OCREngine
+from backend.ocr.calibration.bench.engines._ort_cuda import ensure_cuda_libs_loaded
 
 log = logging.getLogger(__name__)
 
@@ -53,6 +54,7 @@ TARGET_HEIGHT = 48
 
 
 def _select_providers() -> list[str]:
+    ensure_cuda_libs_loaded()
     available = ort.get_available_providers()
     for p in ("CUDAExecutionProvider", "DmlExecutionProvider"):
         if p in available:

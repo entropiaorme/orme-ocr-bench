@@ -65,6 +65,41 @@ Edit `requirements-driver.txt` first to uncomment the right `onnxruntime`
 provider line for your host (CPU is the default; DirectML for AMD/Intel on
 Windows; `onnxruntime-gpu` for NVIDIA).
 
+### NVIDIA: supplying the CUDA runtime to ONNX Runtime
+
+`onnxruntime-gpu` does not bundle the CUDA runtime libraries; it expects to
+find them on the loader path. A host with only the NVIDIA *driver* installed
+(no system CUDA toolkit) does not have them, so an unpinned
+`onnxruntime-gpu` (which resolves to a build expecting the very latest CUDA)
+fails to import with `ImportError: libcudart.so.<N>` and the ORT-based
+engines silently fall back to CPU.
+
+The self-contained fix needs no system CUDA and no `sudo`: pin a CUDA-12
+`onnxruntime-gpu` build (1.21+ ships `preload_dlls()`) and let the
+`nvidia-*-cu12` pip wheels carry the runtime inside the venv. The bench calls
+`onnxruntime.preload_dlls()` before its first session, so no `LD_LIBRARY_PATH`
+export is required. In the venv that runs ORT-based engines on GPU:
+
+```
+python -m pip install "onnxruntime-gpu==1.22.0" \
+  nvidia-cuda-runtime-cu12 nvidia-cudnn-cu12 nvidia-cublas-cu12 \
+  nvidia-curand-cu12 nvidia-cufft-cu12 nvidia-cuda-nvrtc-cu12
+```
+
+Confirm CUDA is actually engaged (a clean shell, no `LD_LIBRARY_PATH`):
+
+```
+python -c "import onnxruntime as o; o.preload_dlls(); print(o.get_available_providers())"
+# -> [..., 'CUDAExecutionProvider', 'CPUExecutionProvider']
+```
+
+If a package (for example `openocr-python`) pulls in the CPU `onnxruntime`
+wheel as a dependency, *replace* it with `onnxruntime-gpu` rather than
+installing both: the two share the `onnxruntime` import namespace and having
+both present is fragile (uninstalling one can break the other). Force-reinstall
+the GPU wheel if you hit this: `pip install --force-reinstall --no-deps
+"onnxruntime-gpu==1.22.0"`.
+
 `tesseract` additionally needs the Tesseract binary on `PATH` (`apt install
 tesseract-ocr`, `brew install tesseract`, or the UB-Mannheim Windows installer)
 plus `pytesseract` in whichever venv runs it.
