@@ -27,7 +27,8 @@ engine ran where).
 
 | Engine group | CPU | CUDA (Linux) | DirectML (Win) |
 | --- | --- | --- | --- |
-| ONNX recognisers: openocr_svtrv2, onnxtr ×6, ppocr, ppocrv5 ×4, rapidocr | yes | yes (ran) | yes |
+| ONNX recognisers: openocr_svtrv2, onnxtr ×6, ppocr, ppocrv5 ×4 | yes (ran) | yes (ran) | yes (ran) |
+| rapidocr (rapidocr-onnxruntime) | yes (ran) | yes (ran) | no: the pinned library's provider list is CUDA-or-CPU only (no DirectML), so on Windows it runs CPU |
 | easyocr (torch) | yes | yes (ran) | no (torch has no DirectML) |
 | tesseract | yes (only) | never | never |
 | mmocr_abinet/robustscanner/satrn (torch 2.0 stack) | yes (ran CPU) | needs torch-2.0 CUDA wheel (absent on this host) | no |
@@ -42,8 +43,22 @@ engine ran where).
   VLMs): no DirectML path. On Windows these are CPU-only. This is why
   Experiment B is intentionally narrower than A.
 - **GPU column = N/A for tesseract** (no GPU build, any host).
+- **DirectML N/A for rapidocr** specifically (separate from the rest of the ONNX
+  group): `rapidocr-onnxruntime` only ever offers a CUDA-or-CPU provider list, so
+  on the Windows/DirectML host it falls back to CPU. Its `directml` row therefore
+  records `device=cpu` honestly rather than a DirectML number.
 - **CUDA N/A on this 4 GB card** for kosmos25/dots_ocr (OOM — hardware, not
   principle). Recorded as "did not complete (OOM)".
+
+### Forcing CPU on a GPU host (how the CPU latency track is produced)
+The CPU latency cells run from the *same* `onnxruntime-directml` / `onnxruntime-gpu`
+venvs as the GPU cells (those wheels carry the CPU provider too); setting
+`OCR_BENCH_DEVICE=cpu` pins every ONNX adapter to `CPUExecutionProvider`. This
+avoids building a parallel set of CPU-only venvs and guarantees the only variable
+between the GPU and CPU tracks is the provider. The knob is honoured by all five
+ONNX provider-selection sites (`_ort_cuda.force_cpu` + the openocr, onnxtr, ppocr
+reader, ppocrv5, and rapidocr adapters); torch engines (mmocr) are CPU here
+regardless.
 
 ## Latency modes (both are real app use-cases)
 
@@ -175,19 +190,53 @@ Accuracy: DONE (full corpus, once). Below are latency/throughput cells only.
   `SKIP=0 calibration/bench/run_tier.sh --engines got_ocr2`. It DOES get its
   batched run in III (where it is the interesting case).
 
-### Windows machine — later, by a Windows agent. CPU + DirectML cells.
-- [ ] **IV. DirectML-serial** — ONNX recognisers (`--results-subdir directml`).
-      The torch tier is N/A (no DirectML); only the ONNX group + openocr.
-- [ ] **V. DirectML-batched** — batched throughput, same ONNX group.
-- [ ] **VI. Windows-CPU-serial** — CPU latency for the CPU-relevant engines
-      (ONNX recognisers, tesseract, mmocr). VLM tier = N/A by design.
-- [ ] **VII. Windows-CPU-batched** — optional; batched CPU throughput for the
-      shortlist if useful.
-- The Windows agent owns CPU instrumentation specifics and any Windows-only
-  implementation, iterating on the target environment.
+### Windows machine — AMD RX 6750 XT, DirectML. CPU + DirectML cells. DONE.
+Host: Windows 11, AMD RX 6750 XT, `onnxruntime-directml` 1.24. All four cells
+were measured on an otherwise-idle machine (no concurrent builds/agents) so the
+latency figures are not contended.
+- [x] **IV. DirectML-serial** — ONNX group + openocr in `results/directml/`.
+      12 engines on `DmlExecutionProvider`; rapidocr falls back to CPU (no DML
+      path in its library). Accuracy matches the device-invariant CUDA track
+      exactly, as expected.
+- [x] **V. DirectML-batched** — same group at batch 16 in
+      `results/directml-batched/`. openocr_svtrv2 hits ~225 cells/s.
+- [x] **VI. Windows-CPU-serial** — ONNX group (pinned CPU via
+      `OCR_BENCH_DEVICE=cpu`) + tesseract + mmocr ×3 in `results/cpu-windows/`.
+      All 17 verified `device=cpu`. tesseract reads 84.0% here (vs 42% on Linux)
+      — the documented host-tagged tesseract behaviour.
+- [x] **VII. Windows-CPU-batched** — full ONNX group at batch 16 in
+      `results/cpu-windows-batched/`. Run for all batch-capable engines (not a
+      sample) so the column needs no per-engine subset justification.
+
+#### Finding: CPU batching is engine-dependent, not a flat null
+The prior expectation was "batching is a GPU phenomenon, so CPU batched ≈ CPU
+serial." The data is more nuanced (CPU serial vs batched ms/cell, batch 16):
+- **OnnxTR family wins substantially** (1.85×–5.4×: crnn_mobile 10.4→1.9,
+  viptr 31.7→9.1, parseq/sar/vitstr/master ~1.9–2.1×). These docTR predictors
+  carry heavy per-call Python/pre-post overhead, which batching amortises — a
+  real CPU lever, not just a GPU one.
+- **Classic CTC engines: modest** (openocr 1.15×, ppocr 1.25×, rapidocr 1.27×).
+- **PP-OCRv5 family: flat to marginally slower** (0.94×–0.99×). The width-
+  bucketed CTC path pads each crop to its bucket max; on a compute-bound CPU that
+  padding is wasted work that roughly cancels the batching benefit. (Note: an
+  earlier draft mis-reported a ~2× ppocrv5 *slowdown*; that was an artefact of a
+  contaminated serial baseline — see the provider-knob note below — the clean
+  figure is ~flat.)
+
+#### Repro fixes made during the Windows phase
+- **Force-CPU knob** added (`OCR_BENCH_DEVICE=cpu`, `_ort_cuda.force_cpu`) and
+  wired into all five ONNX provider-selection sites. The fifth site
+  (`_PPocrV5Reader._select_providers`, shared by the four ppocrv5 adapters) was
+  initially missed, so the first CPU-serial run recorded the four ppocrv5
+  engines on DirectML. Fixed and re-run; both CPU tracks are now uniformly CPU.
+- **UTF-8 stdout in the orchestrator**: engine misreads can contain non-cp1252
+  glyphs; on Windows the orchestrator's redirected stdout defaulted to cp1252 and
+  raised `UnicodeEncodeError` while printing failures, aborting before the
+  composite summary was written. `main()` now reconfigures stdout/stderr to UTF-8
+  (errors="replace") so every run completes and persists its summary.
 
 ## Machine cutoff
 
-This session is DONE on the Linux box once I, II, III are committed. Everything
-CPU/DirectML/Windows-specific (IV-VII) is the Windows phase. Accuracy needs no
-further runs anywhere.
+The Linux box owns I, II, III (done). The Windows box owns IV-VII (done).
+Accuracy needs no further runs anywhere; it is device-invariant and already
+measured on the full corpus.

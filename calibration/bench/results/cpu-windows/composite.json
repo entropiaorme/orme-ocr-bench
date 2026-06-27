@@ -1,0 +1,3898 @@
+{
+  "engines": [
+    "openocr_svtrv2",
+    "ppocr",
+    "rapidocr",
+    "ppocrv5_mobile",
+    "ppocrv5_en_mobile",
+    "ppocrv5_latin_mobile",
+    "ppocrv5_server",
+    "onnxtr_crnn_mobile",
+    "onnxtr_parseq",
+    "onnxtr_vitstr",
+    "onnxtr_viptr",
+    "onnxtr_sar",
+    "onnxtr_master",
+    "tesseract",
+    "mmocr_abinet",
+    "mmocr_robustscanner",
+    "mmocr_satrn"
+  ],
+  "subprocess_meta": {
+    "openocr_svtrv2": {
+      "engine": "openocr_svtrv2",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "ppocr": {
+      "engine": "ppocr",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "rapidocr": {
+      "engine": "rapidocr",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "ppocrv5_mobile": {
+      "engine": "ppocrv5_mobile",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "ppocrv5_en_mobile": {
+      "engine": "ppocrv5_en_mobile",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "ppocrv5_latin_mobile": {
+      "engine": "ppocrv5_latin_mobile",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "ppocrv5_server": {
+      "engine": "ppocrv5_server",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "onnxtr_crnn_mobile": {
+      "engine": "onnxtr_crnn_mobile",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "onnxtr_parseq": {
+      "engine": "onnxtr_parseq",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "onnxtr_vitstr": {
+      "engine": "onnxtr_vitstr",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "onnxtr_viptr": {
+      "engine": "onnxtr_viptr",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "onnxtr_sar": {
+      "engine": "onnxtr_sar",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "onnxtr_master": {
+      "engine": "onnxtr_master",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "tesseract": {
+      "engine": "tesseract",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "mmocr_abinet": {
+      "engine": "mmocr_abinet",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "mmocr_robustscanner": {
+      "engine": "mmocr_robustscanner",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    },
+    "mmocr_satrn": {
+      "engine": "mmocr_satrn",
+      "subprocess_wall_ms": 0.0,
+      "exit_code": 0,
+      "skipped": true
+    }
+  },
+  "per_engine_summary": {
+    "openocr_svtrv2": {
+      "counts": {
+        "PASS": 550,
+        "RECOVERED": 44,
+        "UNRECOVERABLE": 0
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 1.0,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 202,
+            "RECOVERED": 44,
+            "UNRECOVERABLE": 0
+          },
+          "total": 246,
+          "effective_accuracy": 1.0
+        },
+        "level": {
+          "counts": {
+            "PASS": 144,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 144,
+          "effective_accuracy": 1.0
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        },
+        "percent": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 0,
+        "drop": 0,
+        "substitute": 44,
+        "reject": 0
+      },
+      "ocr_total_ms": 7634.0337,
+      "ocr_mean_ms": 12.851908585858586,
+      "ocr_p95_ms": 20.21919,
+      "ocr_max_ms": 28.0713,
+      "init_load_ms": 504.2064,
+      "init_warmup_ms": 11.0383,
+      "rss_init_mb": 39.1015625,
+      "rss_after_warmup_mb": 110.890625,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 123.2734375,
+      "subprocess_wall_ms": 8923.5408,
+      "peak_vram_mb": null,
+      "timing_split": {
+        "n_cells_split": 624,
+        "preprocess_ms_mean": 0.0219383012551752,
+        "model_ms_mean": 12.771444391052517
+      },
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 39.1015625,
+        "load_ms": 504.2064,
+        "rss_after_load_mb": 105.41796875,
+        "warmup_ms": 11.0383,
+        "rss_after_warmup_mb": 110.890625,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 8923.5408,
+        "final_rss_mb": 123.2734375,
+        "heap_current_mb": 7.450687408447266,
+        "heap_peak_mb": 8.043867111206055,
+        "peak_vram_mb": null,
+        "timing_split": {
+          "n_cells_split": 624,
+          "preprocess_ms_mean": 0.0219383012551752,
+          "model_ms_mean": 12.771444391052517
+        }
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 271,
+            "RECOVERED": 17,
+            "UNRECOVERABLE": 0
+          },
+          "total": 288,
+          "effective_accuracy": 1.0,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 127,
+                "RECOVERED": 17,
+                "UNRECOVERABLE": 0
+              },
+              "total": 144,
+              "effective_accuracy": 1.0
+            },
+            "level": {
+              "counts": {
+                "PASS": 144,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 144,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 17,
+            "reject": 0
+          },
+          "panel_wall_ms": 4304.2253,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 2811.1674000000003,
+              "mean_ms": 19.521995833333335,
+              "p50_ms": 19.77975,
+              "p95_ms": 20.59167,
+              "max_ms": 28.0713
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 1298.1475999999998,
+              "mean_ms": 9.014913888888888,
+              "p50_ms": 9.1156,
+              "p95_ms": 9.53138,
+              "max_ms": 9.8232
+            }
+          },
+          "rss_after_panel_mb": 122.4375
+        },
+        "profession": {
+          "counts": {
+            "PASS": 279,
+            "RECOVERED": 27,
+            "UNRECOVERABLE": 0
+          },
+          "total": 306,
+          "effective_accuracy": 1.0,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 75,
+                "RECOVERED": 27,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            },
+            "percent": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 27,
+            "reject": 0
+          },
+          "panel_wall_ms": 4081.3818,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 1559.7394,
+              "mean_ms": 13.926244642857142,
+              "p50_ms": 14.1363,
+              "p95_ms": 14.643625,
+              "max_ms": 14.9219
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 1317.5893999999998,
+              "mean_ms": 11.76419107142857,
+              "p50_ms": 12.03035,
+              "p95_ms": 12.460075,
+              "max_ms": 12.7172
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 996.427,
+              "mean_ms": 8.896669642857143,
+              "p50_ms": 9.0053,
+              "p95_ms": 9.401165,
+              "max_ms": 9.6044
+            }
+          },
+          "rss_after_panel_mb": 123.2734375
+        }
+      }
+    },
+    "ppocr": {
+      "counts": {
+        "PASS": 474,
+        "RECOVERED": 41,
+        "UNRECOVERABLE": 79
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.867003367003367,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 165,
+            "RECOVERED": 41,
+            "UNRECOVERABLE": 40
+          },
+          "total": 246,
+          "effective_accuracy": 0.8373983739837398
+        },
+        "level": {
+          "counts": {
+            "PASS": 137,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 7
+          },
+          "total": 144,
+          "effective_accuracy": 0.9513888888888888
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 70,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 32
+          },
+          "total": 102,
+          "effective_accuracy": 0.6862745098039216
+        },
+        "percent": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 7,
+        "drop": 35,
+        "substitute": 61,
+        "reject": 17
+      },
+      "ocr_total_ms": 33566.3142,
+      "ocr_mean_ms": 56.50894646464646,
+      "ocr_p95_ms": 131.20380500000002,
+      "ocr_max_ms": 149.9892,
+      "init_load_ms": 158.2073,
+      "init_warmup_ms": 133.4481,
+      "rss_init_mb": 38.94140625,
+      "rss_after_warmup_mb": 83.84375,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 87.296875,
+      "subprocess_wall_ms": 35673.3547,
+      "peak_vram_mb": null,
+      "timing_split": null,
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.94140625,
+        "load_ms": 158.2073,
+        "rss_after_load_mb": 77.953125,
+        "warmup_ms": 133.4481,
+        "rss_after_warmup_mb": 83.84375,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 35673.3547,
+        "final_rss_mb": 87.296875,
+        "heap_current_mb": 4.164565086364746,
+        "heap_peak_mb": 5.588166236877441,
+        "peak_vram_mb": null,
+        "timing_split": null
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 214,
+            "RECOVERED": 29,
+            "UNRECOVERABLE": 45
+          },
+          "total": 288,
+          "effective_accuracy": 0.84375,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 77,
+                "RECOVERED": 29,
+                "UNRECOVERABLE": 38
+              },
+              "total": 144,
+              "effective_accuracy": 0.7361111111111112
+            },
+            "level": {
+              "counts": {
+                "PASS": 137,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 7
+              },
+              "total": 144,
+              "effective_accuracy": 0.9513888888888888
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 2,
+            "drop": 25,
+            "substitute": 35,
+            "reject": 12
+          },
+          "panel_wall_ms": 18759.2704,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 17219.4075,
+              "mean_ms": 119.57921875000001,
+              "p50_ms": 124.44874999999999,
+              "p95_ms": 144.815135,
+              "max_ms": 149.9892
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 1372.4080000000001,
+              "mean_ms": 9.530611111111112,
+              "p50_ms": 9.56755,
+              "p95_ms": 10.133035,
+              "max_ms": 10.4204
+            }
+          },
+          "rss_after_panel_mb": 82.828125
+        },
+        "profession": {
+          "counts": {
+            "PASS": 260,
+            "RECOVERED": 12,
+            "UNRECOVERABLE": 34
+          },
+          "total": 306,
+          "effective_accuracy": 0.8888888888888888,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 88,
+                "RECOVERED": 12,
+                "UNRECOVERABLE": 2
+              },
+              "total": 102,
+              "effective_accuracy": 0.9803921568627451
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 70,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 32
+              },
+              "total": 102,
+              "effective_accuracy": 0.6862745098039216
+            },
+            "percent": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 5,
+            "drop": 10,
+            "substitute": 26,
+            "reject": 5
+          },
+          "panel_wall_ms": 16620.2627,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 8644.4902,
+              "mean_ms": 77.18294821428572,
+              "p50_ms": 76.30515,
+              "p95_ms": 84.218165,
+              "max_ms": 89.7041
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 7095.6829,
+              "mean_ms": 63.354311607142854,
+              "p50_ms": 63.0941,
+              "p95_ms": 66.53161,
+              "max_ms": 70.1793
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 690.7735,
+              "mean_ms": 6.167620535714286,
+              "p50_ms": 6.1516,
+              "p95_ms": 6.581695,
+              "max_ms": 6.8599
+            }
+          },
+          "rss_after_panel_mb": 87.296875
+        }
+      }
+    },
+    "rapidocr": {
+      "counts": {
+        "PASS": 590,
+        "RECOVERED": 4,
+        "UNRECOVERABLE": 0
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 1.0,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 242,
+            "RECOVERED": 4,
+            "UNRECOVERABLE": 0
+          },
+          "total": 246,
+          "effective_accuracy": 1.0
+        },
+        "level": {
+          "counts": {
+            "PASS": 144,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 144,
+          "effective_accuracy": 1.0
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        },
+        "percent": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 0,
+        "drop": 0,
+        "substitute": 4,
+        "reject": 0
+      },
+      "ocr_total_ms": 5289.4055,
+      "ocr_mean_ms": 8.904723063973064,
+      "ocr_p95_ms": 15.637035000000001,
+      "ocr_max_ms": 66.6589,
+      "init_load_ms": 517.5105,
+      "init_warmup_ms": 69.2781,
+      "rss_init_mb": 38.796875,
+      "rss_after_warmup_mb": 101.39453125,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 107.48828125,
+      "subprocess_wall_ms": 6488.3064,
+      "peak_vram_mb": null,
+      "timing_split": {
+        "n_cells_split": 624,
+        "preprocess_ms_mean": 0.01915240389758438,
+        "model_ms_mean": 8.831807051230621
+      },
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.796875,
+        "load_ms": 517.5105,
+        "rss_after_load_mb": 100.42578125,
+        "warmup_ms": 69.2781,
+        "rss_after_warmup_mb": 101.39453125,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 6488.3064,
+        "final_rss_mb": 107.48828125,
+        "heap_current_mb": 8.179244995117188,
+        "heap_peak_mb": 9.05517864227295,
+        "peak_vram_mb": null,
+        "timing_split": {
+          "n_cells_split": 624,
+          "preprocess_ms_mean": 0.01915240389758438,
+          "model_ms_mean": 8.831807051230621
+        }
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 288,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 288,
+          "effective_accuracy": 1.0,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 144,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 144,
+              "effective_accuracy": 1.0
+            },
+            "level": {
+              "counts": {
+                "PASS": 144,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 144,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 0,
+            "reject": 0
+          },
+          "panel_wall_ms": 2974.274,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 2221.6272,
+              "mean_ms": 15.427966666666666,
+              "p50_ms": 15.13715,
+              "p95_ms": 15.88031,
+              "max_ms": 66.6589
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 586.4592,
+              "mean_ms": 4.072633333333333,
+              "p50_ms": 4.06695,
+              "p95_ms": 4.4502,
+              "max_ms": 4.9713
+            }
+          },
+          "rss_after_panel_mb": 105.078125
+        },
+        "profession": {
+          "counts": {
+            "PASS": 302,
+            "RECOVERED": 4,
+            "UNRECOVERABLE": 0
+          },
+          "total": 306,
+          "effective_accuracy": 1.0,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 98,
+                "RECOVERED": 4,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            },
+            "percent": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 4,
+            "reject": 0
+          },
+          "panel_wall_ms": 2904.7341,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 1269.8256000000001,
+              "mean_ms": 11.337728571428572,
+              "p50_ms": 11.06175,
+              "p95_ms": 11.66593,
+              "max_ms": 40.4584
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 1099.0084,
+              "mean_ms": 9.812574999999999,
+              "p50_ms": 9.593399999999999,
+              "p95_ms": 10.194175,
+              "max_ms": 37.3287
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 346.0783,
+              "mean_ms": 3.0899848214285717,
+              "p50_ms": 3.05875,
+              "p95_ms": 3.44388,
+              "max_ms": 3.7482
+            }
+          },
+          "rss_after_panel_mb": 107.48828125
+        }
+      }
+    },
+    "ppocrv5_mobile": {
+      "counts": {
+        "PASS": 541,
+        "RECOVERED": 27,
+        "UNRECOVERABLE": 26
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.9562289562289562,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 216,
+            "RECOVERED": 27,
+            "UNRECOVERABLE": 3
+          },
+          "total": 246,
+          "effective_accuracy": 0.9878048780487805
+        },
+        "level": {
+          "counts": {
+            "PASS": 136,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 8
+          },
+          "total": 144,
+          "effective_accuracy": 0.9444444444444444
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 87,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 15
+          },
+          "total": 102,
+          "effective_accuracy": 0.8529411764705882
+        },
+        "percent": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 9,
+        "drop": 0,
+        "substitute": 44,
+        "reject": 0
+      },
+      "ocr_total_ms": 27499.1776,
+      "ocr_mean_ms": 46.29491178451178,
+      "ocr_p95_ms": 97.668595,
+      "ocr_max_ms": 112.0577,
+      "init_load_ms": 183.1254,
+      "init_warmup_ms": 107.2626,
+      "rss_init_mb": 38.83984375,
+      "rss_after_warmup_mb": 91.64453125,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 97.41796875,
+      "subprocess_wall_ms": 29334.2512,
+      "peak_vram_mb": null,
+      "timing_split": null,
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.83984375,
+        "load_ms": 183.1254,
+        "rss_after_load_mb": 91.1875,
+        "warmup_ms": 107.2626,
+        "rss_after_warmup_mb": 91.64453125,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 29334.2512,
+        "final_rss_mb": 97.41796875,
+        "heap_current_mb": 5.3606977462768555,
+        "heap_peak_mb": 6.787883758544922,
+        "peak_vram_mb": null,
+        "timing_split": null
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 271,
+            "RECOVERED": 9,
+            "UNRECOVERABLE": 8
+          },
+          "total": 288,
+          "effective_accuracy": 0.9722222222222222,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 135,
+                "RECOVERED": 9,
+                "UNRECOVERABLE": 0
+              },
+              "total": 144,
+              "effective_accuracy": 1.0
+            },
+            "level": {
+              "counts": {
+                "PASS": 136,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 8
+              },
+              "total": 144,
+              "effective_accuracy": 0.9444444444444444
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 9,
+            "drop": 0,
+            "substitute": 8,
+            "reject": 0
+          },
+          "panel_wall_ms": 15481.6655,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 13856.4234,
+              "mean_ms": 96.2251625,
+              "p50_ms": 95.6056,
+              "p95_ms": 100.883945,
+              "max_ms": 112.0577
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 1458.5101,
+              "mean_ms": 10.12854236111111,
+              "p50_ms": 9.883849999999999,
+              "p95_ms": 11.408959999999999,
+              "max_ms": 11.7465
+            }
+          },
+          "rss_after_panel_mb": 96.5078125
+        },
+        "profession": {
+          "counts": {
+            "PASS": 270,
+            "RECOVERED": 18,
+            "UNRECOVERABLE": 18
+          },
+          "total": 306,
+          "effective_accuracy": 0.9411764705882353,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 81,
+                "RECOVERED": 18,
+                "UNRECOVERABLE": 3
+              },
+              "total": 102,
+              "effective_accuracy": 0.9705882352941176
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 87,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 15
+              },
+              "total": 102,
+              "effective_accuracy": 0.8529411764705882
+            },
+            "percent": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 36,
+            "reject": 0
+          },
+          "panel_wall_ms": 13560.2608,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 6886.9145,
+              "mean_ms": 61.490308035714285,
+              "p50_ms": 61.2389,
+              "p95_ms": 65.189245,
+              "max_ms": 67.4497
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 5812.532499999999,
+              "mean_ms": 51.89761160714285,
+              "p50_ms": 51.549,
+              "p95_ms": 55.74226999999999,
+              "max_ms": 57.7482
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 669.1425999999999,
+              "mean_ms": 5.9744874999999995,
+              "p50_ms": 5.85805,
+              "p95_ms": 6.71187,
+              "max_ms": 7.2749
+            }
+          },
+          "rss_after_panel_mb": 97.41796875
+        }
+      }
+    },
+    "ppocrv5_en_mobile": {
+      "counts": {
+        "PASS": 474,
+        "RECOVERED": 41,
+        "UNRECOVERABLE": 79
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.867003367003367,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 165,
+            "RECOVERED": 41,
+            "UNRECOVERABLE": 40
+          },
+          "total": 246,
+          "effective_accuracy": 0.8373983739837398
+        },
+        "level": {
+          "counts": {
+            "PASS": 137,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 7
+          },
+          "total": 144,
+          "effective_accuracy": 0.9513888888888888
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 70,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 32
+          },
+          "total": 102,
+          "effective_accuracy": 0.6862745098039216
+        },
+        "percent": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 7,
+        "drop": 35,
+        "substitute": 61,
+        "reject": 17
+      },
+      "ocr_total_ms": 25331.5814,
+      "ocr_mean_ms": 42.64575993265993,
+      "ocr_p95_ms": 90.95908,
+      "ocr_max_ms": 104.0796,
+      "init_load_ms": 162.1528,
+      "init_warmup_ms": 92.7736,
+      "rss_init_mb": 38.9453125,
+      "rss_after_warmup_mb": 80.09765625,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 83.1640625,
+      "subprocess_wall_ms": 27016.6384,
+      "peak_vram_mb": null,
+      "timing_split": null,
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.9453125,
+        "load_ms": 162.1528,
+        "rss_after_load_mb": 79.50390625,
+        "warmup_ms": 92.7736,
+        "rss_after_warmup_mb": 80.09765625,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 27016.6384,
+        "final_rss_mb": 83.1640625,
+        "heap_current_mb": 4.178426742553711,
+        "heap_peak_mb": 5.603769302368164,
+        "peak_vram_mb": null,
+        "timing_split": null
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 214,
+            "RECOVERED": 29,
+            "UNRECOVERABLE": 45
+          },
+          "total": 288,
+          "effective_accuracy": 0.84375,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 77,
+                "RECOVERED": 29,
+                "UNRECOVERABLE": 38
+              },
+              "total": 144,
+              "effective_accuracy": 0.7361111111111112
+            },
+            "level": {
+              "counts": {
+                "PASS": 137,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 7
+              },
+              "total": 144,
+              "effective_accuracy": 0.9513888888888888
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 2,
+            "drop": 25,
+            "substitute": 35,
+            "reject": 12
+          },
+          "panel_wall_ms": 14264.4964,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 12887.7351,
+              "mean_ms": 89.49816041666666,
+              "p50_ms": 88.95915,
+              "p95_ms": 94.155105,
+              "max_ms": 104.0796
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 1220.1718999999998,
+              "mean_ms": 8.47341597222222,
+              "p50_ms": 8.27355,
+              "p95_ms": 9.66085,
+              "max_ms": 10.2365
+            }
+          },
+          "rss_after_panel_mb": 83.91796875
+        },
+        "profession": {
+          "counts": {
+            "PASS": 260,
+            "RECOVERED": 12,
+            "UNRECOVERABLE": 34
+          },
+          "total": 306,
+          "effective_accuracy": 0.8888888888888888,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 88,
+                "RECOVERED": 12,
+                "UNRECOVERABLE": 2
+              },
+              "total": 102,
+              "effective_accuracy": 0.9803921568627451
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 70,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 32
+              },
+              "total": 102,
+              "effective_accuracy": 0.6862745098039216
+            },
+            "percent": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 5,
+            "drop": 10,
+            "substitute": 26,
+            "reject": 5
+          },
+          "panel_wall_ms": 12495.2451,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 6238.5158,
+              "mean_ms": 55.70103392857143,
+              "p50_ms": 54.987899999999996,
+              "p95_ms": 59.338175,
+              "max_ms": 61.9704
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 5451.8688999999995,
+              "mean_ms": 48.677400892857136,
+              "p50_ms": 48.55445,
+              "p95_ms": 51.316689999999994,
+              "max_ms": 52.8562
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 623.1375,
+              "mean_ms": 5.563727678571429,
+              "p50_ms": 5.3959,
+              "p95_ms": 6.422815,
+              "max_ms": 6.5868
+            }
+          },
+          "rss_after_panel_mb": 83.1640625
+        }
+      }
+    },
+    "ppocrv5_latin_mobile": {
+      "counts": {
+        "PASS": 460,
+        "RECOVERED": 81,
+        "UNRECOVERABLE": 53
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.9107744107744108,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 129,
+            "RECOVERED": 81,
+            "UNRECOVERABLE": 36
+          },
+          "total": 246,
+          "effective_accuracy": 0.8536585365853658
+        },
+        "level": {
+          "counts": {
+            "PASS": 143,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 1
+          },
+          "total": 144,
+          "effective_accuracy": 0.9930555555555556
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 86,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 16
+          },
+          "total": 102,
+          "effective_accuracy": 0.8431372549019608
+        },
+        "percent": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 5,
+        "drop": 35,
+        "substitute": 93,
+        "reject": 1
+      },
+      "ocr_total_ms": 25360.9215,
+      "ocr_mean_ms": 42.69515404040404,
+      "ocr_p95_ms": 90.93082,
+      "ocr_max_ms": 104.6441,
+      "init_load_ms": 151.0873,
+      "init_warmup_ms": 93.3747,
+      "rss_init_mb": 38.890625,
+      "rss_after_warmup_mb": 84.90625,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 83.2578125,
+      "subprocess_wall_ms": 27038.0352,
+      "peak_vram_mb": null,
+      "timing_split": null,
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.890625,
+        "load_ms": 151.0873,
+        "rss_after_load_mb": 79.73046875,
+        "warmup_ms": 93.3747,
+        "rss_after_warmup_mb": 84.90625,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 27038.0352,
+        "final_rss_mb": 83.2578125,
+        "heap_current_mb": 4.2055206298828125,
+        "heap_peak_mb": 5.628720283508301,
+        "peak_vram_mb": null,
+        "timing_split": null
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 202,
+            "RECOVERED": 54,
+            "UNRECOVERABLE": 32
+          },
+          "total": 288,
+          "effective_accuracy": 0.8888888888888888,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 59,
+                "RECOVERED": 54,
+                "UNRECOVERABLE": 31
+              },
+              "total": 144,
+              "effective_accuracy": 0.7847222222222222
+            },
+            "level": {
+              "counts": {
+                "PASS": 143,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 1
+              },
+              "total": 144,
+              "effective_accuracy": 0.9930555555555556
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 24,
+            "substitute": 61,
+            "reject": 1
+          },
+          "panel_wall_ms": 14255.9283,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 12881.645199999999,
+              "mean_ms": 89.45586944444443,
+              "p50_ms": 88.98705,
+              "p95_ms": 93.694705,
+              "max_ms": 104.6441
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 1220.1672,
+              "mean_ms": 8.473383333333334,
+              "p50_ms": 8.2406,
+              "p95_ms": 9.715995,
+              "max_ms": 10.158
+            }
+          },
+          "rss_after_panel_mb": 83.578125
+        },
+        "profession": {
+          "counts": {
+            "PASS": 258,
+            "RECOVERED": 27,
+            "UNRECOVERABLE": 21
+          },
+          "total": 306,
+          "effective_accuracy": 0.9313725490196079,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 70,
+                "RECOVERED": 27,
+                "UNRECOVERABLE": 5
+              },
+              "total": 102,
+              "effective_accuracy": 0.9509803921568627
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 86,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 16
+              },
+              "total": 102,
+              "effective_accuracy": 0.8431372549019608
+            },
+            "percent": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 5,
+            "drop": 11,
+            "substitute": 32,
+            "reject": 0
+          },
+          "panel_wall_ms": 12535.8236,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 6413.6271,
+              "mean_ms": 57.264527678571426,
+              "p50_ms": 56.9166,
+              "p95_ms": 60.166505,
+              "max_ms": 61.0702
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 5320.9118,
+              "mean_ms": 47.50814107142857,
+              "p50_ms": 47.0436,
+              "p95_ms": 50.25282,
+              "max_ms": 53.1538
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 619.6414,
+              "mean_ms": 5.5325125,
+              "p50_ms": 5.4209499999999995,
+              "p95_ms": 6.332005,
+              "max_ms": 6.5109
+            }
+          },
+          "rss_after_panel_mb": 83.2578125
+        }
+      }
+    },
+    "ppocrv5_server": {
+      "counts": {
+        "PASS": 383,
+        "RECOVERED": 103,
+        "UNRECOVERABLE": 108
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.8181818181818182,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 53,
+            "RECOVERED": 103,
+            "UNRECOVERABLE": 90
+          },
+          "total": 246,
+          "effective_accuracy": 0.6341463414634146
+        },
+        "level": {
+          "counts": {
+            "PASS": 143,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 1
+          },
+          "total": 144,
+          "effective_accuracy": 0.9930555555555556
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 88,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 14
+          },
+          "total": 102,
+          "effective_accuracy": 0.8627450980392157
+        },
+        "percent": {
+          "counts": {
+            "PASS": 99,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 3
+          },
+          "total": 102,
+          "effective_accuracy": 0.9705882352941176
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 1,
+        "drop": 73,
+        "substitute": 137,
+        "reject": 0
+      },
+      "ocr_total_ms": 68218.5852,
+      "ocr_mean_ms": 114.84610303030303,
+      "ocr_p95_ms": 226.58823,
+      "ocr_max_ms": 242.2435,
+      "init_load_ms": 280.8026,
+      "init_warmup_ms": 318.0579,
+      "rss_init_mb": 38.68359375,
+      "rss_after_warmup_mb": 158.24609375,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 167.6875,
+      "subprocess_wall_ms": 72157.7467,
+      "peak_vram_mb": null,
+      "timing_split": null,
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.68359375,
+        "load_ms": 280.8026,
+        "rss_after_load_mb": 155.68359375,
+        "warmup_ms": 318.0579,
+        "rss_after_warmup_mb": 158.24609375,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 72157.7467,
+        "final_rss_mb": 167.6875,
+        "heap_current_mb": 5.352089881896973,
+        "heap_peak_mb": 6.778306007385254,
+        "peak_vram_mb": null,
+        "timing_split": null
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 158,
+            "RECOVERED": 72,
+            "UNRECOVERABLE": 58
+          },
+          "total": 288,
+          "effective_accuracy": 0.7986111111111112,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 15,
+                "RECOVERED": 72,
+                "UNRECOVERABLE": 57
+              },
+              "total": 144,
+              "effective_accuracy": 0.6041666666666666
+            },
+            "level": {
+              "counts": {
+                "PASS": 143,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 1
+              },
+              "total": 144,
+              "effective_accuracy": 0.9930555555555556
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 1,
+            "drop": 50,
+            "substitute": 79,
+            "reject": 0
+          },
+          "panel_wall_ms": 38341.978,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 31914.3225,
+              "mean_ms": 221.62723958333333,
+              "p50_ms": 220.26395000000002,
+              "p95_ms": 232.676195,
+              "max_ms": 242.2435
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 6245.7690999999995,
+              "mean_ms": 43.37339652777777,
+              "p50_ms": 42.9031,
+              "p95_ms": 48.037775,
+              "max_ms": 50.0099
+            }
+          },
+          "rss_after_panel_mb": 163.16796875
+        },
+        "profession": {
+          "counts": {
+            "PASS": 225,
+            "RECOVERED": 31,
+            "UNRECOVERABLE": 50
+          },
+          "total": 306,
+          "effective_accuracy": 0.8366013071895425,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 38,
+                "RECOVERED": 31,
+                "UNRECOVERABLE": 33
+              },
+              "total": 102,
+              "effective_accuracy": 0.6764705882352942
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 88,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 14
+              },
+              "total": 102,
+              "effective_accuracy": 0.8627450980392157
+            },
+            "percent": {
+              "counts": {
+                "PASS": 99,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 3
+              },
+              "total": 102,
+              "effective_accuracy": 0.9705882352941176
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 23,
+            "substitute": 58,
+            "reject": 0
+          },
+          "panel_wall_ms": 33214.8609,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 16444.591399999998,
+              "mean_ms": 146.8267089285714,
+              "p50_ms": 145.3767,
+              "p95_ms": 158.123935,
+              "max_ms": 159.651
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 13696.431199999999,
+              "mean_ms": 122.28956428571428,
+              "p50_ms": 121.13075,
+              "p95_ms": 131.885135,
+              "max_ms": 135.1439
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 2867.6998000000003,
+              "mean_ms": 25.604462500000004,
+              "p50_ms": 25.45555,
+              "p95_ms": 28.481765,
+              "max_ms": 29.7556
+            }
+          },
+          "rss_after_panel_mb": 167.6875
+        }
+      }
+    },
+    "onnxtr_crnn_mobile": {
+      "counts": {
+        "PASS": 366,
+        "RECOVERED": 196,
+        "UNRECOVERABLE": 32
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.9461279461279462,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 46,
+            "RECOVERED": 196,
+            "UNRECOVERABLE": 4
+          },
+          "total": 246,
+          "effective_accuracy": 0.983739837398374
+        },
+        "level": {
+          "counts": {
+            "PASS": 144,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 144,
+          "effective_accuracy": 1.0
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 74,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 28
+          },
+          "total": 102,
+          "effective_accuracy": 0.7254901960784313
+        },
+        "percent": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 29,
+        "drop": 0,
+        "substitute": 199,
+        "reject": 0
+      },
+      "ocr_total_ms": 6153.3905,
+      "ocr_mean_ms": 10.359243265993266,
+      "ocr_p95_ms": 12.488265,
+      "ocr_max_ms": 15.5072,
+      "init_load_ms": 3046.2557,
+      "init_warmup_ms": 28.829,
+      "rss_init_mb": 38.77734375,
+      "rss_after_warmup_mb": 177.92578125,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 181.26953125,
+      "subprocess_wall_ms": 9880.6612,
+      "peak_vram_mb": null,
+      "timing_split": {
+        "n_cells_split": 624,
+        "preprocess_ms_mean": 0.02817019231735265,
+        "model_ms_mean": 10.338030929477519
+      },
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.77734375,
+        "load_ms": 3046.2557,
+        "rss_after_load_mb": 176.3046875,
+        "warmup_ms": 28.829,
+        "rss_after_warmup_mb": 177.92578125,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 9880.6612,
+        "final_rss_mb": 181.26953125,
+        "heap_current_mb": 44.7325963973999,
+        "heap_peak_mb": 51.9580602645874,
+        "peak_vram_mb": null,
+        "timing_split": {
+          "n_cells_split": 624,
+          "preprocess_ms_mean": 0.02817019231735265,
+          "model_ms_mean": 10.338030929477519
+        }
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 151,
+            "RECOVERED": 134,
+            "UNRECOVERABLE": 3
+          },
+          "total": 288,
+          "effective_accuracy": 0.9895833333333334,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 7,
+                "RECOVERED": 134,
+                "UNRECOVERABLE": 3
+              },
+              "total": 144,
+              "effective_accuracy": 0.9791666666666666
+            },
+            "level": {
+              "counts": {
+                "PASS": 144,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 144,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 29,
+            "drop": 0,
+            "substitute": 108,
+            "reject": 0
+          },
+          "panel_wall_ms": 3210.0394,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 1738.9469,
+              "mean_ms": 12.076020138888888,
+              "p50_ms": 12.0931,
+              "p95_ms": 12.773235,
+              "max_ms": 15.5072
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 1316.7056,
+              "mean_ms": 9.143788888888889,
+              "p50_ms": 9.1832,
+              "p95_ms": 9.658265,
+              "max_ms": 9.8799
+            }
+          },
+          "rss_after_panel_mb": 181.0703125
+        },
+        "profession": {
+          "counts": {
+            "PASS": 215,
+            "RECOVERED": 62,
+            "UNRECOVERABLE": 29
+          },
+          "total": 306,
+          "effective_accuracy": 0.9052287581699346,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 39,
+                "RECOVERED": 62,
+                "UNRECOVERABLE": 1
+              },
+              "total": 102,
+              "effective_accuracy": 0.9901960784313726
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 74,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 28
+              },
+              "total": 102,
+              "effective_accuracy": 0.7254901960784313
+            },
+            "percent": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 91,
+            "reject": 0
+          },
+          "panel_wall_ms": 3593.2096,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 1190.0947999999999,
+              "mean_ms": 10.625846428571426,
+              "p50_ms": 10.5766,
+              "p95_ms": 12.07192,
+              "max_ms": 12.7812
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 1207.3303,
+              "mean_ms": 10.779734821428573,
+              "p50_ms": 10.6116,
+              "p95_ms": 12.43971,
+              "max_ms": 15.1289
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 1015.4318999999999,
+              "mean_ms": 9.06635625,
+              "p50_ms": 9.0165,
+              "p95_ms": 10.57486,
+              "max_ms": 11.7199
+            }
+          },
+          "rss_after_panel_mb": 181.26953125
+        }
+      }
+    },
+    "onnxtr_parseq": {
+      "counts": {
+        "PASS": 375,
+        "RECOVERED": 192,
+        "UNRECOVERABLE": 27
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.9545454545454546,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 50,
+            "RECOVERED": 192,
+            "UNRECOVERABLE": 4
+          },
+          "total": 246,
+          "effective_accuracy": 0.983739837398374
+        },
+        "level": {
+          "counts": {
+            "PASS": 144,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 144,
+          "effective_accuracy": 1.0
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 79,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 23
+          },
+          "total": 102,
+          "effective_accuracy": 0.7745098039215687
+        },
+        "percent": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 33,
+        "drop": 0,
+        "substitute": 186,
+        "reject": 0
+      },
+      "ocr_total_ms": 40195.3389,
+      "ocr_mean_ms": 67.66892070707071,
+      "ocr_p95_ms": 115.185705,
+      "ocr_max_ms": 117.4495,
+      "init_load_ms": 5999.3193,
+      "init_warmup_ms": 60.8633,
+      "rss_init_mb": 38.78125,
+      "rss_after_warmup_mb": 294.5390625,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 316.2890625,
+      "subprocess_wall_ms": 48490.4628,
+      "peak_vram_mb": null,
+      "timing_split": {
+        "n_cells_split": 624,
+        "preprocess_ms_mean": 0.03549182689218865,
+        "model_ms_mean": 67.3114814102873
+      },
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.78125,
+        "load_ms": 5999.3193,
+        "rss_after_load_mb": 289.5078125,
+        "warmup_ms": 60.8633,
+        "rss_after_warmup_mb": 294.5390625,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 48490.4628,
+        "final_rss_mb": 316.2890625,
+        "heap_current_mb": 44.750389099121094,
+        "heap_peak_mb": 136.1277208328247,
+        "peak_vram_mb": null,
+        "timing_split": {
+          "n_cells_split": 624,
+          "preprocess_ms_mean": 0.03549182689218865,
+          "model_ms_mean": 67.3114814102873
+        }
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 152,
+            "RECOVERED": 133,
+            "UNRECOVERABLE": 3
+          },
+          "total": 288,
+          "effective_accuracy": 0.9895833333333334,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 8,
+                "RECOVERED": 133,
+                "UNRECOVERABLE": 3
+              },
+              "total": 144,
+              "effective_accuracy": 0.9791666666666666
+            },
+            "level": {
+              "counts": {
+                "PASS": 144,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 144,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 33,
+            "drop": 0,
+            "substitute": 103,
+            "reject": 0
+          },
+          "panel_wall_ms": 21599.7576,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 16182.768399999999,
+              "mean_ms": 112.3803361111111,
+              "p50_ms": 113.43430000000001,
+              "p95_ms": 116.379875,
+              "max_ms": 117.4495
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 5227.7687000000005,
+              "mean_ms": 36.30394930555556,
+              "p50_ms": 36.6941,
+              "p95_ms": 37.783584999999995,
+              "max_ms": 38.2954
+            }
+          },
+          "rss_after_panel_mb": 316.0625
+        },
+        "profession": {
+          "counts": {
+            "PASS": 223,
+            "RECOVERED": 59,
+            "UNRECOVERABLE": 24
+          },
+          "total": 306,
+          "effective_accuracy": 0.9215686274509803,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 42,
+                "RECOVERED": 59,
+                "UNRECOVERABLE": 1
+              },
+              "total": 102,
+              "effective_accuracy": 0.9901960784313726
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 79,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 23
+              },
+              "total": 102,
+              "effective_accuracy": 0.7745098039215687
+            },
+            "percent": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 83,
+            "reject": 0
+          },
+          "panel_wall_ms": 20828.0581,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 8280.4003,
+              "mean_ms": 73.93214553571428,
+              "p50_ms": 74.56105,
+              "p95_ms": 76.496595,
+              "max_ms": 77.1574
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 8264.5429,
+              "mean_ms": 73.79056160714286,
+              "p50_ms": 74.60565,
+              "p95_ms": 76.26568,
+              "max_ms": 77.3998
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 4069.031,
+              "mean_ms": 36.33063392857143,
+              "p50_ms": 36.7304,
+              "p95_ms": 37.634004999999995,
+              "max_ms": 38.0208
+            }
+          },
+          "rss_after_panel_mb": 316.2890625
+        }
+      }
+    },
+    "onnxtr_vitstr": {
+      "counts": {
+        "PASS": 291,
+        "RECOVERED": 205,
+        "UNRECOVERABLE": 98
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.835016835016835,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 33,
+            "RECOVERED": 205,
+            "UNRECOVERABLE": 8
+          },
+          "total": 246,
+          "effective_accuracy": 0.967479674796748
+        },
+        "level": {
+          "counts": {
+            "PASS": 144,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 144,
+          "effective_accuracy": 1.0
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 64,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 38
+          },
+          "total": 102,
+          "effective_accuracy": 0.6274509803921569
+        },
+        "percent": {
+          "counts": {
+            "PASS": 50,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 52
+          },
+          "total": 102,
+          "effective_accuracy": 0.49019607843137253
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 33,
+        "drop": 0,
+        "substitute": 270,
+        "reject": 0
+      },
+      "ocr_total_ms": 32414.4217,
+      "ocr_mean_ms": 54.5697335016835,
+      "ocr_p95_ms": 95.2372,
+      "ocr_max_ms": 97.3518,
+      "init_load_ms": 3138.9017,
+      "init_warmup_ms": 47.1136,
+      "rss_init_mb": 38.8984375,
+      "rss_after_warmup_mb": 254.68359375,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 279.14453125,
+      "subprocess_wall_ms": 37519.4418,
+      "peak_vram_mb": null,
+      "timing_split": {
+        "n_cells_split": 624,
+        "preprocess_ms_mean": 0.038004487161439705,
+        "model_ms_mean": 54.27058493591549
+      },
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.8984375,
+        "load_ms": 3138.9017,
+        "rss_after_load_mb": 249.67578125,
+        "warmup_ms": 47.1136,
+        "rss_after_warmup_mb": 254.68359375,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 37519.4418,
+        "final_rss_mb": 279.14453125,
+        "heap_current_mb": 44.7476921081543,
+        "heap_peak_mb": 125.89218711853027,
+        "peak_vram_mb": null,
+        "timing_split": {
+          "n_cells_split": 624,
+          "preprocess_ms_mean": 0.038004487161439705,
+          "model_ms_mean": 54.27058493591549
+        }
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 148,
+            "RECOVERED": 133,
+            "UNRECOVERABLE": 7
+          },
+          "total": 288,
+          "effective_accuracy": 0.9756944444444444,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 4,
+                "RECOVERED": 133,
+                "UNRECOVERABLE": 7
+              },
+              "total": 144,
+              "effective_accuracy": 0.9513888888888888
+            },
+            "level": {
+              "counts": {
+                "PASS": 144,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 144,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 33,
+            "drop": 0,
+            "substitute": 107,
+            "reject": 0
+          },
+          "panel_wall_ms": 17547.8641,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 13406.091,
+              "mean_ms": 93.09785416666666,
+              "p50_ms": 94.25735,
+              "p95_ms": 95.77599000000001,
+              "max_ms": 97.3518
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 3938.9636,
+              "mean_ms": 27.35391388888889,
+              "p50_ms": 27.55655,
+              "p95_ms": 28.4153,
+              "max_ms": 28.9066
+            }
+          },
+          "rss_after_panel_mb": 278.91015625
+        },
+        "profession": {
+          "counts": {
+            "PASS": 143,
+            "RECOVERED": 72,
+            "UNRECOVERABLE": 91
+          },
+          "total": 306,
+          "effective_accuracy": 0.7026143790849673,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 29,
+                "RECOVERED": 72,
+                "UNRECOVERABLE": 1
+              },
+              "total": 102,
+              "effective_accuracy": 0.9901960784313726
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 64,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 38
+              },
+              "total": 102,
+              "effective_accuracy": 0.6274509803921569
+            },
+            "percent": {
+              "counts": {
+                "PASS": 50,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 52
+              },
+              "total": 102,
+              "effective_accuracy": 0.49019607843137253
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 163,
+            "reject": 0
+          },
+          "panel_wall_ms": 16782.6725,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 6741.3683,
+              "mean_ms": 60.190788392857144,
+              "p50_ms": 60.50735,
+              "p95_ms": 61.79656,
+              "max_ms": 62.2883
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 6725.3684,
+              "mean_ms": 60.04793214285714,
+              "p50_ms": 60.55355,
+              "p95_ms": 61.87007,
+              "max_ms": 62.1761
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 3076.7685,
+              "mean_ms": 27.47114732142857,
+              "p50_ms": 27.6289,
+              "p95_ms": 28.348145,
+              "max_ms": 29.678
+            }
+          },
+          "rss_after_panel_mb": 279.14453125
+        }
+      }
+    },
+    "onnxtr_viptr": {
+      "counts": {
+        "PASS": 469,
+        "RECOVERED": 100,
+        "UNRECOVERABLE": 25
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.9579124579124579,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 143,
+            "RECOVERED": 100,
+            "UNRECOVERABLE": 3
+          },
+          "total": 246,
+          "effective_accuracy": 0.9878048780487805
+        },
+        "level": {
+          "counts": {
+            "PASS": 142,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 2
+          },
+          "total": 144,
+          "effective_accuracy": 0.9861111111111112
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 82,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 20
+          },
+          "total": 102,
+          "effective_accuracy": 0.803921568627451
+        },
+        "percent": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 0,
+        "drop": 0,
+        "substitute": 125,
+        "reject": 0
+      },
+      "ocr_total_ms": 18808.176699999996,
+      "ocr_mean_ms": 31.66359713804713,
+      "ocr_p95_ms": 42.208735000000004,
+      "ocr_max_ms": 49.4267,
+      "init_load_ms": 18513.2298,
+      "init_warmup_ms": 51.5356,
+      "rss_init_mb": 39.04296875,
+      "rss_after_warmup_mb": 289.6484375,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 296.515625,
+      "subprocess_wall_ms": 38656.3458,
+      "peak_vram_mb": null,
+      "timing_split": {
+        "n_cells_split": 624,
+        "preprocess_ms_mean": 0.03480977561710647,
+        "model_ms_mean": 31.53549487181879
+      },
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 39.04296875,
+        "load_ms": 18513.2298,
+        "rss_after_load_mb": 286.8125,
+        "warmup_ms": 51.5356,
+        "rss_after_warmup_mb": 289.6484375,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 38656.3458,
+        "final_rss_mb": 296.515625,
+        "heap_current_mb": 44.73557472229004,
+        "heap_peak_mb": 63.18626022338867,
+        "peak_vram_mb": null,
+        "timing_split": {
+          "n_cells_split": 624,
+          "preprocess_ms_mean": 0.03480977561710647,
+          "model_ms_mean": 31.53549487181879
+        }
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 223,
+            "RECOVERED": 61,
+            "UNRECOVERABLE": 4
+          },
+          "total": 288,
+          "effective_accuracy": 0.9861111111111112,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 81,
+                "RECOVERED": 61,
+                "UNRECOVERABLE": 2
+              },
+              "total": 144,
+              "effective_accuracy": 0.9861111111111112
+            },
+            "level": {
+              "counts": {
+                "PASS": 142,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 2
+              },
+              "total": 144,
+              "effective_accuracy": 0.9861111111111112
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 65,
+            "reject": 0
+          },
+          "panel_wall_ms": 9700.5658,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 5934.8974,
+              "mean_ms": 41.21456527777778,
+              "p50_ms": 41.21865,
+              "p95_ms": 43.355535,
+              "max_ms": 49.4267
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 3582.1125,
+              "mean_ms": 24.875781250000003,
+              "p50_ms": 24.98185,
+              "p95_ms": 26.568994999999997,
+              "max_ms": 27.8389
+            }
+          },
+          "rss_after_panel_mb": 296.03515625
+        },
+        "profession": {
+          "counts": {
+            "PASS": 246,
+            "RECOVERED": 39,
+            "UNRECOVERABLE": 21
+          },
+          "total": 306,
+          "effective_accuracy": 0.9313725490196079,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 62,
+                "RECOVERED": 39,
+                "UNRECOVERABLE": 1
+              },
+              "total": 102,
+              "effective_accuracy": 0.9901960784313726
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 82,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 20
+              },
+              "total": 102,
+              "effective_accuracy": 0.803921568627451
+            },
+            "percent": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 60,
+            "reject": 0
+          },
+          "panel_wall_ms": 10388.3621,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 3702.9435000000003,
+              "mean_ms": 33.06199553571429,
+              "p50_ms": 33.1191,
+              "p95_ms": 35.34502499999999,
+              "max_ms": 38.8799
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 3695.2095,
+              "mean_ms": 32.99294196428571,
+              "p50_ms": 33.017849999999996,
+              "p95_ms": 35.27028,
+              "max_ms": 36.9828
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 2784.7072,
+              "mean_ms": 24.86345714285714,
+              "p50_ms": 24.65665,
+              "p95_ms": 26.997405,
+              "max_ms": 28.1699
+            }
+          },
+          "rss_after_panel_mb": 296.515625
+        }
+      }
+    },
+    "onnxtr_sar": {
+      "counts": {
+        "PASS": 381,
+        "RECOVERED": 190,
+        "UNRECOVERABLE": 23
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.9612794612794613,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 52,
+            "RECOVERED": 190,
+            "UNRECOVERABLE": 4
+          },
+          "total": 246,
+          "effective_accuracy": 0.983739837398374
+        },
+        "level": {
+          "counts": {
+            "PASS": 144,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 144,
+          "effective_accuracy": 1.0
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 83,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 19
+          },
+          "total": 102,
+          "effective_accuracy": 0.8137254901960784
+        },
+        "percent": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 34,
+        "drop": 0,
+        "substitute": 179,
+        "reject": 0
+      },
+      "ocr_total_ms": 70411.14689999999,
+      "ocr_mean_ms": 118.53728434343434,
+      "ocr_p95_ms": 215.207365,
+      "ocr_max_ms": 230.6033,
+      "init_load_ms": 4928.3322,
+      "init_warmup_ms": 75.3542,
+      "rss_init_mb": 38.84765625,
+      "rss_after_warmup_mb": 395.60546875,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 421.8125,
+      "subprocess_wall_ms": 78974.8452,
+      "peak_vram_mb": null,
+      "timing_split": {
+        "n_cells_split": 624,
+        "preprocess_ms_mean": 0.03319855770127898,
+        "model_ms_mean": 117.88478798076027
+      },
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.84765625,
+        "load_ms": 4928.3322,
+        "rss_after_load_mb": 391.25,
+        "warmup_ms": 75.3542,
+        "rss_after_warmup_mb": 395.60546875,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 78974.8452,
+        "final_rss_mb": 421.8125,
+        "heap_current_mb": 44.73738956451416,
+        "heap_peak_mb": 255.95166110992432,
+        "peak_vram_mb": null,
+        "timing_split": {
+          "n_cells_split": 624,
+          "preprocess_ms_mean": 0.03319855770127898,
+          "model_ms_mean": 117.88478798076027
+        }
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 150,
+            "RECOVERED": 135,
+            "UNRECOVERABLE": 3
+          },
+          "total": 288,
+          "effective_accuracy": 0.9895833333333334,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 6,
+                "RECOVERED": 135,
+                "UNRECOVERABLE": 3
+              },
+              "total": 144,
+              "effective_accuracy": 0.9791666666666666
+            },
+            "level": {
+              "counts": {
+                "PASS": 144,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 144,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 34,
+            "drop": 0,
+            "substitute": 104,
+            "reject": 0
+          },
+          "panel_wall_ms": 38236.7751,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 30015.815300000002,
+              "mean_ms": 208.44316180555558,
+              "p50_ms": 210.3284,
+              "p95_ms": 218.55977,
+              "max_ms": 230.6033
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 8040.3562999999995,
+              "mean_ms": 55.83580763888889,
+              "p50_ms": 56.29115,
+              "p95_ms": 58.95222,
+              "max_ms": 62.4749
+            }
+          },
+          "rss_after_panel_mb": 421.6796875
+        },
+        "profession": {
+          "counts": {
+            "PASS": 231,
+            "RECOVERED": 55,
+            "UNRECOVERABLE": 20
+          },
+          "total": 306,
+          "effective_accuracy": 0.934640522875817,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 46,
+                "RECOVERED": 55,
+                "UNRECOVERABLE": 1
+              },
+              "total": 102,
+              "effective_accuracy": 0.9901960784313726
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 83,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 19
+              },
+              "total": 102,
+              "effective_accuracy": 0.8137254901960784
+            },
+            "percent": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 75,
+            "reject": 0
+          },
+          "panel_wall_ms": 35731.6547,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 14622.804500000002,
+              "mean_ms": 130.56075446428574,
+              "p50_ms": 131.6256,
+              "p95_ms": 135.245295,
+              "max_ms": 136.2197
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 14664.247599999999,
+              "mean_ms": 130.93078214285714,
+              "p50_ms": 131.85155,
+              "p95_ms": 135.18463500000001,
+              "max_ms": 136.1877
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 6237.599899999999,
+              "mean_ms": 55.69285624999999,
+              "p50_ms": 56.16655,
+              "p95_ms": 58.67946,
+              "max_ms": 60.4164
+            }
+          },
+          "rss_after_panel_mb": 421.8125
+        }
+      }
+    },
+    "onnxtr_master": {
+      "counts": {
+        "PASS": 391,
+        "RECOVERED": 184,
+        "UNRECOVERABLE": 19
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.968013468013468,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 58,
+            "RECOVERED": 184,
+            "UNRECOVERABLE": 4
+          },
+          "total": 246,
+          "effective_accuracy": 0.983739837398374
+        },
+        "level": {
+          "counts": {
+            "PASS": 144,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 144,
+          "effective_accuracy": 1.0
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 87,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 15
+          },
+          "total": 102,
+          "effective_accuracy": 0.8529411764705882
+        },
+        "percent": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 33,
+        "drop": 0,
+        "substitute": 170,
+        "reject": 0
+      },
+      "ocr_total_ms": 367725.6592,
+      "ocr_mean_ms": 619.0667663299663,
+      "ocr_p95_ms": 1178.530415,
+      "ocr_max_ms": 1211.8334,
+      "init_load_ms": 29316.1071,
+      "init_warmup_ms": 301.3411,
+      "rss_init_mb": 38.64453125,
+      "rss_after_warmup_mb": 481.43359375,
+      "device": "cpu",
+      "provider": "CPUExecutionProvider",
+      "final_rss_mb": 527.16015625,
+      "subprocess_wall_ms": 411167.3865,
+      "peak_vram_mb": null,
+      "timing_split": {
+        "n_cells_split": 624,
+        "preprocess_ms_mean": 0.03888846159346334,
+        "model_ms_mean": 610.7034217948168
+      },
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.64453125,
+        "load_ms": 29316.1071,
+        "rss_after_load_mb": 474.078125,
+        "warmup_ms": 301.3411,
+        "rss_after_warmup_mb": 481.43359375,
+        "device": "cpu",
+        "provider": "CPUExecutionProvider"
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 411167.3865,
+        "final_rss_mb": 527.16015625,
+        "heap_current_mb": 44.738962173461914,
+        "heap_peak_mb": 279.611177444458,
+        "peak_vram_mb": null,
+        "timing_split": {
+          "n_cells_split": 624,
+          "preprocess_ms_mean": 0.03888846159346334,
+          "model_ms_mean": 610.7034217948168
+        }
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 152,
+            "RECOVERED": 133,
+            "UNRECOVERABLE": 3
+          },
+          "total": 288,
+          "effective_accuracy": 0.9895833333333334,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 8,
+                "RECOVERED": 133,
+                "UNRECOVERABLE": 3
+              },
+              "total": 144,
+              "effective_accuracy": 0.9791666666666666
+            },
+            "level": {
+              "counts": {
+                "PASS": 144,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 144,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 33,
+            "drop": 0,
+            "substitute": 103,
+            "reject": 0
+          },
+          "panel_wall_ms": 207605.394,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 167068.5962,
+              "mean_ms": 1160.1985847222222,
+              "p50_ms": 1163.13935,
+              "p95_ms": 1189.974635,
+              "max_ms": 1211.8334
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 40330.69780000001,
+              "mean_ms": 280.07429027777783,
+              "p50_ms": 281.1775,
+              "p95_ms": 288.098095,
+              "max_ms": 297.8869
+            }
+          },
+          "rss_after_panel_mb": 525.52734375
+        },
+        "profession": {
+          "counts": {
+            "PASS": 239,
+            "RECOVERED": 51,
+            "UNRECOVERABLE": 16
+          },
+          "total": 306,
+          "effective_accuracy": 0.9477124183006536,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 50,
+                "RECOVERED": 51,
+                "UNRECOVERABLE": 1
+              },
+              "total": 102,
+              "effective_accuracy": 0.9901960784313726
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 87,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 15
+              },
+              "total": 102,
+              "effective_accuracy": 0.8529411764705882
+            },
+            "percent": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 67,
+            "reject": 0
+          },
+          "panel_wall_ms": 173942.0051,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 73346.8017,
+              "mean_ms": 654.8821580357143,
+              "p50_ms": 709.31185,
+              "p95_ms": 758.647805,
+              "max_ms": 773.0593
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 72722.92569999999,
+              "mean_ms": 649.3118366071428,
+              "p50_ms": 697.43875,
+              "p95_ms": 757.77586,
+              "max_ms": 770.1454
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 27634.180199999995,
+              "mean_ms": 246.73375178571425,
+              "p50_ms": 264.40155000000004,
+              "p95_ms": 289.80864,
+              "max_ms": 296.399
+            }
+          },
+          "rss_after_panel_mb": 527.16015625
+        }
+      }
+    },
+    "tesseract": {
+      "counts": {
+        "PASS": 491,
+        "RECOVERED": 8,
+        "UNRECOVERABLE": 95
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.8400673400673401,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 238,
+            "RECOVERED": 8,
+            "UNRECOVERABLE": 0
+          },
+          "total": 246,
+          "effective_accuracy": 1.0
+        },
+        "level": {
+          "counts": {
+            "PASS": 56,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 88
+          },
+          "total": 144,
+          "effective_accuracy": 0.3888888888888889
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 0
+          },
+          "total": 102,
+          "effective_accuracy": 1.0
+        },
+        "percent": {
+          "counts": {
+            "PASS": 95,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 7
+          },
+          "total": 102,
+          "effective_accuracy": 0.9313725490196079
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 66,
+        "drop": 1,
+        "substitute": 36,
+        "reject": 0
+      },
+      "ocr_total_ms": 375621.404,
+      "ocr_mean_ms": 632.3592659932659,
+      "ocr_p95_ms": 1114.28454,
+      "ocr_max_ms": 1125.3547,
+      "init_load_ms": 135.3189,
+      "init_warmup_ms": 297.2222,
+      "rss_init_mb": 38.89453125,
+      "rss_after_warmup_mb": 46.23828125,
+      "device": "cpu",
+      "provider": null,
+      "final_rss_mb": 53.76171875,
+      "subprocess_wall_ms": 396310.5723,
+      "peak_vram_mb": null,
+      "timing_split": null,
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 38.89453125,
+        "load_ms": 135.3189,
+        "rss_after_load_mb": 43.26953125,
+        "warmup_ms": 297.2222,
+        "rss_after_warmup_mb": 46.23828125,
+        "device": "cpu",
+        "provider": null
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 396310.5723,
+        "final_rss_mb": 53.76171875,
+        "heap_current_mb": 6.225341796875,
+        "heap_peak_mb": 6.390888214111328,
+        "peak_vram_mb": null,
+        "timing_split": null
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 192,
+            "RECOVERED": 8,
+            "UNRECOVERABLE": 88
+          },
+          "total": 288,
+          "effective_accuracy": 0.6944444444444444,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 136,
+                "RECOVERED": 8,
+                "UNRECOVERABLE": 0
+              },
+              "total": 144,
+              "effective_accuracy": 1.0
+            },
+            "level": {
+              "counts": {
+                "PASS": 56,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 88
+              },
+              "total": 144,
+              "effective_accuracy": 0.3888888888888889
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 66,
+            "drop": 0,
+            "substitute": 30,
+            "reject": 0
+          },
+          "panel_wall_ms": 182461.1707,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 23618.132299999997,
+              "mean_ms": 164.01480763888887,
+              "p50_ms": 163.49105,
+              "p95_ms": 174.14184,
+              "max_ms": 179.9731
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 158698.9024,
+              "mean_ms": 1102.075711111111,
+              "p50_ms": 1102.1833000000001,
+              "p95_ms": 1110.365475,
+              "max_ms": 1120.5218
+            }
+          },
+          "rss_after_panel_mb": 51.546875
+        },
+        "profession": {
+          "counts": {
+            "PASS": 299,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 7
+          },
+          "total": 306,
+          "effective_accuracy": 0.9771241830065359,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            },
+            "percent": {
+              "counts": {
+                "PASS": 95,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 7
+              },
+              "total": 102,
+              "effective_accuracy": 0.9313725490196079
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 1,
+            "substitute": 6,
+            "reject": 0
+          },
+          "panel_wall_ms": 213399.4159,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 71368.1349,
+              "mean_ms": 637.2154901785715,
+              "p50_ms": 633.97895,
+              "p95_ms": 1118.5699299999999,
+              "max_ms": 1125.3547
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 71255.2677,
+              "mean_ms": 636.2077473214285,
+              "p50_ms": 635.2803,
+              "p95_ms": 1116.2849,
+              "max_ms": 1121.8419
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 70607.4645,
+              "mean_ms": 630.4237901785715,
+              "p50_ms": 630.8489000000001,
+              "p95_ms": 1108.703555,
+              "max_ms": 1113.1384
+            }
+          },
+          "rss_after_panel_mb": 53.76171875
+        }
+      }
+    },
+    "mmocr_abinet": {
+      "counts": {
+        "PASS": 71,
+        "RECOVERED": 134,
+        "UNRECOVERABLE": 389
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.3451178451178451,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 1,
+            "RECOVERED": 134,
+            "UNRECOVERABLE": 111
+          },
+          "total": 246,
+          "effective_accuracy": 0.5487804878048781
+        },
+        "level": {
+          "counts": {
+            "PASS": 69,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 75
+          },
+          "total": 144,
+          "effective_accuracy": 0.4791666666666667
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 1,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 101
+          },
+          "total": 102,
+          "effective_accuracy": 0.00980392156862745
+        },
+        "percent": {
+          "counts": {
+            "PASS": 0,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 102
+          },
+          "total": 102,
+          "effective_accuracy": 0.0
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 176,
+        "drop": 0,
+        "substitute": 347,
+        "reject": 0
+      },
+      "ocr_total_ms": 56645.2692,
+      "ocr_mean_ms": 95.36240606060606,
+      "ocr_p95_ms": 112.0419,
+      "ocr_max_ms": 116.864,
+      "init_load_ms": 12293.1805,
+      "init_warmup_ms": 105.2639,
+      "rss_init_mb": 39.77734375,
+      "rss_after_warmup_mb": 618.61328125,
+      "device": "cpu",
+      "provider": null,
+      "final_rss_mb": 622.67578125,
+      "subprocess_wall_ms": 72243.9856,
+      "peak_vram_mb": null,
+      "timing_split": null,
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 39.77734375,
+        "load_ms": 12293.1805,
+        "rss_after_load_mb": 596.8515625,
+        "warmup_ms": 105.2639,
+        "rss_after_warmup_mb": 618.61328125,
+        "device": "cpu",
+        "provider": null
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 72243.9856,
+        "final_rss_mb": 622.67578125,
+        "heap_current_mb": 152.37989616394043,
+        "heap_peak_mb": 152.4823579788208,
+        "peak_vram_mb": null,
+        "timing_split": null
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 69,
+            "RECOVERED": 52,
+            "UNRECOVERABLE": 167
+          },
+          "total": 288,
+          "effective_accuracy": 0.4201388888888889,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 0,
+                "RECOVERED": 52,
+                "UNRECOVERABLE": 92
+              },
+              "total": 144,
+              "effective_accuracy": 0.3611111111111111
+            },
+            "level": {
+              "counts": {
+                "PASS": 69,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 75
+              },
+              "total": 144,
+              "effective_accuracy": 0.4791666666666667
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 147,
+            "drop": 0,
+            "substitute": 72,
+            "reject": 0
+          },
+          "panel_wall_ms": 27424.8693,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 13607.0706,
+              "mean_ms": 94.49354583333333,
+              "p50_ms": 94.04255,
+              "p95_ms": 112.47384999999998,
+              "max_ms": 115.3634
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 13678.6436,
+              "mean_ms": 94.99058055555555,
+              "p50_ms": 94.85825,
+              "p95_ms": 112.887335,
+              "max_ms": 116.864
+            }
+          },
+          "rss_after_panel_mb": 621.33984375
+        },
+        "profession": {
+          "counts": {
+            "PASS": 2,
+            "RECOVERED": 82,
+            "UNRECOVERABLE": 222
+          },
+          "total": 306,
+          "effective_accuracy": 0.27450980392156865,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 1,
+                "RECOVERED": 82,
+                "UNRECOVERABLE": 19
+              },
+              "total": 102,
+              "effective_accuracy": 0.8137254901960784
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 1,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 101
+              },
+              "total": 102,
+              "effective_accuracy": 0.00980392156862745
+            },
+            "percent": {
+              "counts": {
+                "PASS": 0,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 102
+              },
+              "total": 102,
+              "effective_accuracy": 0.0
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 29,
+            "drop": 0,
+            "substitute": 275,
+            "reject": 0
+          },
+          "panel_wall_ms": 32419.0535,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 10765.721300000001,
+              "mean_ms": 96.12251160714287,
+              "p50_ms": 96.09440000000001,
+              "p95_ms": 109.97377499999999,
+              "max_ms": 116.6841
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 10680.2467,
+              "mean_ms": 95.35934553571428,
+              "p50_ms": 94.74275,
+              "p95_ms": 111.26862,
+              "max_ms": 114.019
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 10810.412400000001,
+              "mean_ms": 96.5215392857143,
+              "p50_ms": 95.88669999999999,
+              "p95_ms": 111.90996499999997,
+              "max_ms": 114.8495
+            }
+          },
+          "rss_after_panel_mb": 622.67578125
+        }
+      }
+    },
+    "mmocr_robustscanner": {
+      "counts": {
+        "PASS": 379,
+        "RECOVERED": 132,
+        "UNRECOVERABLE": 83
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.8602693602693603,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 65,
+            "RECOVERED": 132,
+            "UNRECOVERABLE": 49
+          },
+          "total": 246,
+          "effective_accuracy": 0.8008130081300813
+        },
+        "level": {
+          "counts": {
+            "PASS": 117,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 27
+          },
+          "total": 144,
+          "effective_accuracy": 0.8125
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 96,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 6
+          },
+          "total": 102,
+          "effective_accuracy": 0.9411764705882353
+        },
+        "percent": {
+          "counts": {
+            "PASS": 101,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 1
+          },
+          "total": 102,
+          "effective_accuracy": 0.9901960784313726
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 32,
+        "drop": 0,
+        "substitute": 183,
+        "reject": 0
+      },
+      "ocr_total_ms": 60751.4592,
+      "ocr_mean_ms": 102.27518383838384,
+      "ocr_p95_ms": 117.69552,
+      "ocr_max_ms": 130.8077,
+      "init_load_ms": 8971.8704,
+      "init_warmup_ms": 137.9728,
+      "rss_init_mb": 39.18359375,
+      "rss_after_warmup_mb": 656.78515625,
+      "device": "cpu",
+      "provider": null,
+      "final_rss_mb": 662.54296875,
+      "subprocess_wall_ms": 73303.9623,
+      "peak_vram_mb": null,
+      "timing_split": null,
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 39.18359375,
+        "load_ms": 8971.8704,
+        "rss_after_load_mb": 635.60546875,
+        "warmup_ms": 137.9728,
+        "rss_after_warmup_mb": 656.78515625,
+        "device": "cpu",
+        "provider": null
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 73303.9623,
+        "final_rss_mb": 662.54296875,
+        "heap_current_mb": 151.48505401611328,
+        "heap_peak_mb": 151.55667972564697,
+        "peak_vram_mb": null,
+        "timing_split": null
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 139,
+            "RECOVERED": 76,
+            "UNRECOVERABLE": 73
+          },
+          "total": 288,
+          "effective_accuracy": 0.7465277777777778,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 22,
+                "RECOVERED": 76,
+                "UNRECOVERABLE": 46
+              },
+              "total": 144,
+              "effective_accuracy": 0.6805555555555556
+            },
+            "level": {
+              "counts": {
+                "PASS": 117,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 27
+              },
+              "total": 144,
+              "effective_accuracy": 0.8125
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 31,
+            "drop": 0,
+            "substitute": 118,
+            "reject": 0
+          },
+          "panel_wall_ms": 29818.1587,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 14890.1297,
+              "mean_ms": 103.40367847222223,
+              "p50_ms": 102.95779999999999,
+              "p95_ms": 117.96768,
+              "max_ms": 128.0006
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 14793.9444,
+              "mean_ms": 102.735725,
+              "p50_ms": 101.87955,
+              "p95_ms": 121.28591499999999,
+              "max_ms": 130.8077
+            }
+          },
+          "rss_after_panel_mb": 661.5703125
+        },
+        "profession": {
+          "counts": {
+            "PASS": 240,
+            "RECOVERED": 56,
+            "UNRECOVERABLE": 10
+          },
+          "total": 306,
+          "effective_accuracy": 0.9673202614379085,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 43,
+                "RECOVERED": 56,
+                "UNRECOVERABLE": 3
+              },
+              "total": 102,
+              "effective_accuracy": 0.9705882352941176
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 96,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 6
+              },
+              "total": 102,
+              "effective_accuracy": 0.9411764705882353
+            },
+            "percent": {
+              "counts": {
+                "PASS": 101,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 1
+              },
+              "total": 102,
+              "effective_accuracy": 0.9901960784313726
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 1,
+            "drop": 0,
+            "substitute": 65,
+            "reject": 0
+          },
+          "panel_wall_ms": 34374.3186,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 11466.343700000001,
+              "mean_ms": 102.37806875000001,
+              "p50_ms": 102.7705,
+              "p95_ms": 117.12189500000001,
+              "max_ms": 131.2132
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 11458.4649,
+              "mean_ms": 102.30772232142859,
+              "p50_ms": 102.17665,
+              "p95_ms": 120.35314499999994,
+              "max_ms": 127.706
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 11293.4294,
+              "mean_ms": 100.83419107142858,
+              "p50_ms": 99.13895,
+              "p95_ms": 114.72353,
+              "max_ms": 124.4043
+            }
+          },
+          "rss_after_panel_mb": 662.54296875
+        }
+      }
+    },
+    "mmocr_satrn": {
+      "counts": {
+        "PASS": 138,
+        "RECOVERED": 111,
+        "UNRECOVERABLE": 345
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.41919191919191917,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 6,
+            "RECOVERED": 111,
+            "UNRECOVERABLE": 129
+          },
+          "total": 246,
+          "effective_accuracy": 0.47560975609756095
+        },
+        "level": {
+          "counts": {
+            "PASS": 35,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 109
+          },
+          "total": 144,
+          "effective_accuracy": 0.24305555555555555
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 0,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 102
+          },
+          "total": 102,
+          "effective_accuracy": 0.0
+        },
+        "percent": {
+          "counts": {
+            "PASS": 97,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 5
+          },
+          "total": 102,
+          "effective_accuracy": 0.9509803921568627
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 200,
+        "drop": 2,
+        "substitute": 254,
+        "reject": 0
+      },
+      "ocr_total_ms": 352460.55340000003,
+      "ocr_mean_ms": 593.3679350168351,
+      "ocr_p95_ms": 652.49256,
+      "ocr_max_ms": 730.9299,
+      "init_load_ms": 9340.3037,
+      "init_warmup_ms": 619.5491,
+      "rss_init_mb": 39.4609375,
+      "rss_after_warmup_mb": 721.89453125,
+      "device": "cpu",
+      "provider": null,
+      "final_rss_mb": 726.75,
+      "subprocess_wall_ms": 380387.8423,
+      "peak_vram_mb": null,
+      "timing_split": null,
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 39.4609375,
+        "load_ms": 9340.3037,
+        "rss_after_load_mb": 708.734375,
+        "warmup_ms": 619.5491,
+        "rss_after_warmup_mb": 721.89453125,
+        "device": "cpu",
+        "provider": null
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 380387.8423,
+        "final_rss_mb": 726.75,
+        "heap_current_mb": 152.4079465866089,
+        "heap_peak_mb": 152.46793842315674,
+        "peak_vram_mb": null,
+        "timing_split": null
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 36,
+            "RECOVERED": 19,
+            "UNRECOVERABLE": 233
+          },
+          "total": 288,
+          "effective_accuracy": 0.1909722222222222,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 1,
+                "RECOVERED": 19,
+                "UNRECOVERABLE": 124
+              },
+              "total": 144,
+              "effective_accuracy": 0.1388888888888889
+            },
+            "level": {
+              "counts": {
+                "PASS": 35,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 109
+              },
+              "total": 144,
+              "effective_accuracy": 0.24305555555555555
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 151,
+            "drop": 2,
+            "substitute": 99,
+            "reject": 0
+          },
+          "panel_wall_ms": 171514.0731,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 85752.47959999999,
+              "mean_ms": 595.5033305555555,
+              "p50_ms": 590.7609,
+              "p95_ms": 659.92197,
+              "max_ms": 713.6918
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 85619.6574,
+              "mean_ms": 594.5809541666666,
+              "p50_ms": 589.6375,
+              "p95_ms": 651.23577,
+              "max_ms": 693.295
+            }
+          },
+          "rss_after_panel_mb": 725.83203125
+        },
+        "profession": {
+          "counts": {
+            "PASS": 102,
+            "RECOVERED": 92,
+            "UNRECOVERABLE": 112
+          },
+          "total": 306,
+          "effective_accuracy": 0.6339869281045751,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 5,
+                "RECOVERED": 92,
+                "UNRECOVERABLE": 5
+              },
+              "total": 102,
+              "effective_accuracy": 0.9509803921568627
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 0,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 102
+              },
+              "total": 102,
+              "effective_accuracy": 0.0
+            },
+            "percent": {
+              "counts": {
+                "PASS": 97,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 5
+              },
+              "total": 102,
+              "effective_accuracy": 0.9509803921568627
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 49,
+            "drop": 0,
+            "substitute": 155,
+            "reject": 0
+          },
+          "panel_wall_ms": 198912.2081,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 66037.71449999999,
+              "mean_ms": 589.622450892857,
+              "p50_ms": 584.5512,
+              "p95_ms": 644.6309799999999,
+              "max_ms": 708.7589
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 66205.4615,
+              "mean_ms": 591.1201919642857,
+              "p50_ms": 587.7835,
+              "p95_ms": 647.7315099999998,
+              "max_ms": 712.0463
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 66503.4513,
+              "mean_ms": 593.7808151785714,
+              "p50_ms": 585.52835,
+              "p95_ms": 654.415265,
+              "max_ms": 730.9299
+            }
+          },
+          "rss_after_panel_mb": 726.75
+        }
+      }
+    }
+  },
+  "orchestration_wall_ms": 585.3886
+}
