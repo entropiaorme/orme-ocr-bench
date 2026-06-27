@@ -153,17 +153,20 @@ sourced write-up is summarised inline below.
 
 Accuracy: DONE (full corpus, once). Below are latency/throughput cells only.
 
-### This machine — Linux + NVIDIA RTX A1000 (4 GB). GPU-only cells.
+### This machine — Linux + NVIDIA RTX A1000 (4 GB). GPU-only cells. DONE.
 - [x] **I. Instrumentation code** — preprocess/model split, peak-VRAM, batched
-      path, width-bucketed CTC batching. DONE + committed.
-- [ ] **II. CUDA-serial (instrumented)** — re-run all 26 runnable engines into
-      `results/cuda/` with `SKIP=0` so the split/VRAM columns populate, **except
-      `got_ocr2`** (deferred: see below). kosmos25/dots_ocr stay OOM.
-- [ ] **III. CUDA-batched** — the 12 batch-capable engines (openocr_svtrv2,
-      rapidocr, ppocr, ppocrv5 ×4, onnxtr ×6, surya, got_ocr2) at batch 16 into
-      `results/cuda-batched/`.
+      path, width-bucketed CTC batching. Committed.
+- [x] **II. CUDA-serial (instrumented)** — all 26 runnable engines in
+      `results/cuda/` with split/VRAM columns populated (got_ocr2 kept its prior
+      serial result, deferred re-run below). kosmos25/dots_ocr recorded OOM.
+      Committed.
+- [x] **III. CUDA-batched** — the 12 batch-capable engines at batch 16 in
+      `results/cuda-batched/`. got_ocr2 OOMs at batch-16 (fits serial, not
+      batched) — recorded as did-not-complete. Committed.
 - Rationale: these are the cells ONLY this NVIDIA box can produce. CPU latency
   is deliberately deferred to Windows (stronger CPU there).
+- **Linux session cutoff reached** — see HANDOVER.md (workspace root) for the
+  Windows-phase brief.
 
 **Deferred to async / Windows-side fresh agent:**
 - **got_ocr2 serial re-run** — skipped in II to not block the handover (~90 min
