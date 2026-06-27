@@ -163,19 +163,43 @@ def _run_batched(
     outputs: list[tuple[str, float]] = []
     model_ms_total = 0.0
     t_engine0 = time.perf_counter_ns()
-    for start in range(0, total, bs):
-        chunk = [f[4] for f in flat[start:start + bs]]
-        with timed_ms() as t:
-            res = engine.read_batch(chunk)
-        model_ms_total += t[0]
-        if len(res) != len(chunk):  # defensive: pad/truncate to chunk length
-            res = (list(res) + [("", 0.0)] * len(chunk))[:len(chunk)]
-        outputs.extend(res)
-        done = min(start + bs, total)
-        rate = done / ((time.perf_counter_ns() - t_engine0) / 1e9)
-        print(f"\r[{args.engine}] batched {done}/{total} ({rate:5.1f}/s)  ",
-              end="", flush=True)
-    print(flush=True)
+    try:
+        for start in range(0, total, bs):
+            chunk = [f[4] for f in flat[start:start + bs]]
+            with timed_ms() as t:
+                res = engine.read_batch(chunk)
+            model_ms_total += t[0]
+            if len(res) != len(chunk):  # defensive: pad/truncate to chunk length
+                res = (list(res) + [("", 0.0)] * len(chunk))[:len(chunk)]
+            outputs.extend(res)
+            done = min(start + bs, total)
+            rate = done / ((time.perf_counter_ns() - t_engine0) / 1e9)
+            print(f"\r[{args.engine}] batched {done}/{total} ({rate:5.1f}/s)  ",
+                  end="", flush=True)
+        print(flush=True)
+    except Exception as exc:
+        # OOM (or any failure) during batched inference is a legitimate,
+        # reportable outcome (e.g. an autoregressive VLM that fits serial but
+        # not at this batch size): record it structured instead of crashing.
+        is_oom = isinstance(exc, MemoryError) or "out of memory" in str(exc).lower()
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(json.dumps({
+            "engine": args.engine,
+            "status": "failed",
+            "mode": "batched",
+            "batch_size": bs,
+            "failure_stage": "batched_inference",
+            "oom": is_oom,
+            "skip_reason": (
+                f"{type(exc).__name__} during batched inference "
+                f"(batch_size={bs}): {exc}"
+            )[:2000],
+            "init": {"device": device, "provider": provider},
+        }, indent=2), encoding="utf-8")
+        print(f"\n[{args.engine}] batched FAILED "
+              f"({'OOM' if is_oom else type(exc).__name__}) at batch_size={bs}",
+              flush=True)
+        return 0
 
     # Scatter results back into the panel/page/row/cell schema.
     panels_out: dict = {}

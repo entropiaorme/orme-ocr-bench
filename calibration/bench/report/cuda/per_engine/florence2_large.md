@@ -4,10 +4,10 @@
 
 - Effective accuracy: **65.0%** (295 PASS + 91 RECOVERED of 594 data cells)
 - Failure modes: hallucinate=0, drop=100, substitute=199, reject=0
-- Per-cell mean: **342.9 ms** (p95 390.5 ms, max 484.0 ms)
-- Init: load 17434 ms + warmup 834 ms
-- RSS: warmup 1775 MB, final 1841 MB
-- Subprocess wall: **232.2 s**
+- Per-cell mean: **341.7 ms** (p95 389.6 ms, max 479.1 ms)
+- Init: load 17362 ms + warmup 844 ms
+- RSS: warmup 1782 MB, final 1811 MB
+- Subprocess wall: **231.3 s**
 
 ## Confidence distribution
 

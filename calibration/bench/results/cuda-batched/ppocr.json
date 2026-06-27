@@ -1,0 +1,3977 @@
+{
+  "engine": "ppocr",
+  "mode": "batched",
+  "batch_size": 16,
+  "init": {
+    "rss_init_mb": 46.14453125,
+    "load_ms": 507.183267,
+    "rss_after_load_mb": 327.62890625,
+    "warmup_ms": 585.98264,
+    "rss_after_warmup_mb": 940.97265625,
+    "device": "cuda",
+    "provider": "CUDAExecutionProvider"
+  },
+  "panels": {
+    "skill": {
+      "n_rows": 12,
+      "cell_names": [
+        "name",
+        "level"
+      ],
+      "pages": [
+        {
+          "page_index": 1,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Agility",
+                  "ocr_conf": 0.005905462655944774
+                },
+                "level": {
+                  "ocr_text": "68",
+                  "ocr_conf": 0.006093501984308331
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Aim",
+                  "ocr_conf": 0.006072377041983916
+                },
+                "level": {
+                  "ocr_text": "158",
+                  "ocr_conf": 0.0061813626195200535
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Alertness",
+                  "ocr_conf": 0.006128563154427223
+                },
+                "level": {
+                  "ocr_text": "2937",
+                  "ocr_conf": 0.006179664227439489
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Analysis",
+                  "ocr_conf": 0.0059903713730646594
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0033913767965270034
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Anatomy",
+                  "ocr_conf": 0.005566945378620255
+                },
+                "level": {
+                  "ocr_text": "7501",
+                  "ocr_conf": 0.006181147734065519
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Angli",
+                  "ocr_conf": 0.0034730553439833753
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005515265378518199
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "nmo",
+                  "ocr_conf": 0.0032061992405152703
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006113967958254909
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0059722234563661545
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "Amoeolo",
+                  "ocr_conf": 0.002884235946564143
+                },
+                "level": {
+                  "ocr_text": "101",
+                  "ocr_conf": 0.004882505720203983
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "Arteftreservation",
+                  "ocr_conf": 0.0032037018104997526
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005631350080831148
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "Athletics",
+                  "ocr_conf": 0.005541208964066745
+                },
+                "level": {
+                  "ocr_text": "3075",
+                  "ocr_conf": 0.006181759743107354
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": "enolo",
+                  "ocr_conf": 0.0027149186238476022
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005040871545089579
+                }
+              }
+            }
+          ]
+        },
+        {
+          "page_index": 2,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "BLP Weaponry Technology",
+                  "ocr_conf": 0.005881413447206326
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.00603434034378657
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Baithing",
+                  "ocr_conf": 0.0033913905541770864
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0033738008768988605
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Biology",
+                  "ocr_conf": 0.006152090203868187
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.004588646448565817
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Bioregenesis",
+                  "ocr_conf": 0.0052592436238433375
+                },
+                "level": {
+                  "ocr_text": "999",
+                  "ocr_conf": 0.006156042936531477
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Body Sculpting",
+                  "ocr_conf": 0.004938150599193368
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005849034625454045
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Botany",
+                  "ocr_conf": 0.0055703783699107366
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005935952167375184
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "ceaaolowb",
+                  "ocr_conf": 0.0037272655724029623
+                },
+                "level": {
+                  "ocr_text": "4893",
+                  "ocr_conf": 0.006180963547584542
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Butchering",
+                  "ocr_conf": 0.0035899486158504704
+                },
+                "level": {
+                  "ocr_text": "1753",
+                  "ocr_conf": 0.0061815341278267716
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "Carpentry",
+                  "ocr_conf": 0.004415356107983034
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005563778437091207
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "Casting",
+                  "ocr_conf": 0.004055616735898382
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0054687919163836
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "Chemistry",
+                  "ocr_conf": 0.0051191465751413414
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0047199987875057225
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": "Clubs",
+                  "ocr_conf": 0.006155916112747136
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005040871545089579
+                }
+              }
+            }
+          ]
+        },
+        {
+          "page_index": 3,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Color Matching",
+                  "ocr_conf": 0.006149175993224884
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0048785373637212255
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Coloring",
+                  "ocr_conf": 0.005883641509121729
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.003130861658020115
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Combt ef es",
+                  "ocr_conf": 0.003013328726149974
+                },
+                "level": {
+                  "ocr_text": "3204",
+                  "ocr_conf": 0.00618113707744537
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Computer",
+                  "ocr_conf": 0.005686235433833021
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.003971940937800502
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Concentration",
+                  "ocr_conf": 0.0056097529093408205
+                },
+                "level": {
+                  "ocr_text": "6038",
+                  "ocr_conf": 0.00618166055561501
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Coolness",
+                  "ocr_conf": 0.004045185932352617
+                },
+                "level": {
+                  "ocr_text": "1147",
+                  "ocr_conf": 0.006175243400012507
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Couraow",
+                  "ocr_conf": 0.0032996158073843214
+                },
+                "level": {
+                  "ocr_text": "4839",
+                  "ocr_conf": 0.006181341689164343
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Cryogenics",
+                  "ocr_conf": 0.003958978570064252
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.00606899020017514
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "eihin",
+                  "ocr_conf": 0.0027300196446019176
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005601232505751945
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "Dexterity",
+                  "ocr_conf": 0.0053727503871597495
+                },
+                "level": {
+                  "ocr_text": "4600",
+                  "ocr_conf": 0.006181244818766688
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "Diagnosis",
+                  "ocr_conf": 0.0044635697883333375
+                },
+                "level": {
+                  "ocr_text": "1562",
+                  "ocr_conf": 0.0061817605571229265
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": "Dispense Decoy",
+                  "ocr_conf": 0.003274057533460585
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005040871545089579
+                }
+              }
+            }
+          ]
+        },
+        {
+          "page_index": 4,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Dodge",
+                  "ocr_conf": 0.006133739447991359
+                },
+                "level": {
+                  "ocr_text": "2534",
+                  "ocr_conf": 0.006181038373081466
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Drilling",
+                  "ocr_conf": 0.00542373140371374
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0029750583762062546
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Electrokinesso",
+                  "ocr_conf": 0.0040090145680291185
+                },
+                "level": {
+                  "ocr_text": "10317",
+                  "ocr_conf": 0.006181732198280519
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Electronics",
+                  "ocr_conf": 0.005764358150816249
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0026745943886918775
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Engineering",
+                  "ocr_conf": 0.004988529065747468
+                },
+                "level": {
+                  "ocr_text": "842",
+                  "ocr_conf": 0.006167590730374294
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Evade",
+                  "ocr_conf": 0.004722600702868011
+                },
+                "level": {
+                  "ocr_text": "2665",
+                  "ocr_conf": 0.006181324672144997
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Explosive Projectile Weaponry Technology",
+                  "ocr_conf": 0.006132870848635509
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005715982157154178
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "F lpti",
+                  "ocr_conf": 0.002937011949681043
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.00495684762240777
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "First Aid",
+                  "ocr_conf": 0.005574180235176079
+                },
+                "level": {
+                  "ocr_text": "1131",
+                  "ocr_conf": 0.006181591639269243
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "Fishing",
+                  "ocr_conf": 0.005371404436424043
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005658579158945177
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "Fishingttchment Technology",
+                  "ocr_conf": 0.003839614551755351
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0047199987875057225
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": "Fo  no",
+                  "ocr_conf": 0.002779783834533569
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005040871545089579
+                }
+              }
+            }
+          ]
+        },
+        {
+          "page_index": 5,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Fly Fishing",
+                  "ocr_conf": 0.006106661617243506
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006017407502396204
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Foo  hnolo",
+                  "ocr_conf": 0.0034151397618218888
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005557381647987461
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Force Merge",
+                  "ocr_conf": 0.004718983003884763
+                },
+                "level": {
+                  "ocr_text": "4775",
+                  "ocr_conf": 0.006180888571466882
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Fragt",
+                  "ocr_conf": 0.0029486885687592256
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006053267146809198
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": " stronomy",
+                  "ocr_conf": 0.0035513047583381717
+                },
+                "level": {
+                  "ocr_text": "12",
+                  "ocr_conf": 0.004333740922241664
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": " eponehlo",
+                  "ocr_conf": 0.0028640899050148614
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0041418239542974
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": " enetics",
+                  "ocr_conf": 0.0038035253657422324
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005680037762386895
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Geology",
+                  "ocr_conf": 0.00434539500330159
+                },
+                "level": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "Gutting",
+                  "ocr_conf": 0.003447058198319156
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0059670248137546535
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "Hair Stylist",
+                  "ocr_conf": 0.003981829892039294
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005935701641602614
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "Handun",
+                  "ocr_conf": 0.0032510809519851816
+                },
+                "level": {
+                  "ocr_text": "7",
+                  "ocr_conf": 0.003224621859727598
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": "Health",
+                  "ocr_conf": 0.005567821431380499
+                },
+                "level": {
+                  "ocr_text": "169",
+                  "ocr_conf": 0.0058499586848989645
+                }
+              }
+            }
+          ]
+        },
+        {
+          "page_index": 6,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Heavy Melee Weapons",
+                  "ocr_conf": 0.00600730111959142
+                },
+                "level": {
+                  "ocr_text": "3329",
+                  "ocr_conf": 0.0061802257810262655
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Hea pa",
+                  "ocr_conf": 0.0029416810732044033
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0026814591673893677
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "l  ",
+                  "ocr_conf": 0.0029167143053297714
+                },
+                "level": {
+                  "ocr_text": "2984",
+                  "ocr_conf": 0.006181334108969884
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "level": {
+                  "ocr_text": "4441",
+                  "ocr_conf": 0.006179837959315013
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Intelligence",
+                  "ocr_conf": 0.004291759677117512
+                },
+                "level": {
+                  "ocr_text": "70",
+                  "ocr_conf": 0.005254928634356287
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "amming",
+                  "ocr_conf": 0.0034049113912732517
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.004919071316136216
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "aseponehnlo",
+                  "ocr_conf": 0.002846033554206623
+                },
+                "level": {
+                  "ocr_text": "580",
+                  "ocr_conf": 0.006180283966347229
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "e   on",
+                  "ocr_conf": 0.0027172628527425764
+                },
+                "level": {
+                  "ocr_text": "288",
+                  "ocr_conf": 0.006172785687250985
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "Longblades",
+                  "ocr_conf": 0.0049284118970625524
+                },
+                "level": {
+                  "ocr_text": "6185",
+                  "ocr_conf": 0.0061818181836222385
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "achinery",
+                  "ocr_conf": 0.0032534025054448985
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006131693820817568
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "Make Texile",
+                  "ocr_conf": 0.0035049580508218197
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0047199987875057225
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": "nt",
+                  "ocr_conf": 0.0027508237866194236
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005040871545089579
+                }
+              }
+            }
+          ]
+        },
+        {
+          "page_index": 7,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Manufacture Attachments",
+                  "ocr_conf": 0.006022456850204977
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.00575360106991062
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Manufacture Electronic Equipment",
+                  "ocr_conf": 0.0052553347388525195
+                },
+                "level": {
+                  "ocr_text": "216",
+                  "ocr_conf": 0.0036181008794164676
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0028332077035439973
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Manufacture Mechanical Equipment",
+                  "ocr_conf": 0.006108013282459466
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006165231212390755
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Manufacture etal qupment",
+                  "ocr_conf": 0.0031842224955467963
+                },
+                "level": {
+                  "ocr_text": "181",
+                  "ocr_conf": 0.006139717377283301
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "anture Tols",
+                  "ocr_conf": 0.002931208432779708
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005286351877613163
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006130632578743793
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006142383541329003
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "s",
+                  "ocr_conf": 0.002744645678786731
+                },
+                "level": {
+                  "ocr_text": "374",
+                  "ocr_conf": 0.006155090363800638
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "artial Art",
+                  "ocr_conf": 0.0031288134661468835
+                },
+                "level": {
+                  "ocr_text": "2997",
+                  "ocr_conf": 0.006181596293287068
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "Mechanics",
+                  "ocr_conf": 0.0038975743577556172
+                },
+                "level": {
+                  "ocr_text": "16",
+                  "ocr_conf": 0.006123077530446254
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": "Melee Combat",
+                  "ocr_conf": 0.004147986462448071
+                },
+                "level": {
+                  "ocr_text": "4177",
+                  "ocr_conf": 0.006181065087384229
+                }
+              }
+            }
+          ]
+        },
+        {
+          "page_index": 8,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Melee Damage Assessment",
+                  "ocr_conf": 0.0059608914606745075
+                },
+                "level": {
+                  "ocr_text": "4083",
+                  "ocr_conf": 0.006181095571758521
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Mentor",
+                  "ocr_conf": 0.005562179634144728
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.004779065127832986
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "etallurg",
+                  "ocr_conf": 0.0037632136580704
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.002778417530818082
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "indforce Harmony",
+                  "ocr_conf": 0.0035933103855555083
+                },
+                "level": {
+                  "ocr_text": "5645",
+                  "ocr_conf": 0.006181530394422857
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Mining",
+                  "ocr_conf": 0.005835426226019561
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006096054434193467
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": " ",
+                  "ocr_conf": 0.0027354847242815265
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.004094982154084537
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005954031001193617
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Nutrition",
+                  "ocr_conf": 0.005367526132907749
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006035989716066215
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "rti enolo",
+                  "ocr_conf": 0.002817005887144315
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005889679405255414
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "Perception",
+                  "ocr_conf": 0.005389815726104661
+                },
+                "level": {
+                  "ocr_text": "5111",
+                  "ocr_conf": 0.0061817278444751215
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "Plasm eaponTehnolo",
+                  "ocr_conf": 0.003274312482732147
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0047199987875057225
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": "Plastic Surgery",
+                  "ocr_conf": 0.0035986609560668846
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005040871545089579
+                }
+              }
+            }
+          ]
+        },
+        {
+          "page_index": 9,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Power Catalyst",
+                  "ocr_conf": 0.006137954219326495
+                },
+                "level": {
+                  "ocr_text": "6686",
+                  "ocr_conf": 0.006181366950726551
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Power Fist",
+                  "ocr_conf": 0.005788533133656023
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006017182587994433
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "reconrtetct",
+                  "ocr_conf": 0.0028935185709485583
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.003099768056882716
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Probing",
+                  "ocr_conf": 0.005551428543994626
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006100667274905538
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Promoterating",
+                  "ocr_conf": 0.003505761913292403
+                },
+                "level": {
+                  "ocr_text": "1000",
+                  "ocr_conf": 0.006181221888981191
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Prospecting",
+                  "ocr_conf": 0.004415625791007185
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.003906959302140571
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "caiYlowb",
+                  "ocr_conf": 0.003881350641001419
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005694006669683553
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Psyche",
+                  "ocr_conf": 0.004476288062436824
+                },
+                "level": {
+                  "ocr_text": "2",
+                  "ocr_conf": 0.003010528960613704
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "Pyrokinesis",
+                  "ocr_conf": 0.004160348140068086
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0059453701669109835
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "Rang  amaAsessm",
+                  "ocr_conf": 0.0029696566009367116
+                },
+                "level": {
+                  "ocr_text": "5018",
+                  "ocr_conf": 0.006181749615185796
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "Reclaiming",
+                  "ocr_conf": 0.003564422721770532
+                },
+                "level": {
+                  "ocr_text": "3176",
+                  "ocr_conf": 0.005470731900986522
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": "Reputation",
+                  "ocr_conf": 0.004306292174045775
+                },
+                "level": {
+                  "ocr_text": "1000",
+                  "ocr_conf": 0.006180947894908625
+                }
+              }
+            }
+          ]
+        },
+        {
+          "page_index": 10,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Resource Gathering",
+                  "ocr_conf": 0.006023141442378878
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006024939573718403
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Rifle",
+                  "ocr_conf": 0.005785024383527861
+                },
+                "level": {
+                  "ocr_text": "574",
+                  "ocr_conf": 0.006145427309980017
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "animallowb",
+                  "ocr_conf": 0.0036789120327105043
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.003227265418855644
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Scan Human",
+                  "ocr_conf": 0.0042937787665303494
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006101295451982117
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Scan Mutant",
+                  "ocr_conf": 0.0044059015360945995
+                },
+                "level": {
+                  "ocr_text": "12",
+                  "ocr_conf": 0.00440662919356871
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "an obot",
+                  "ocr_conf": 0.003370057496634142
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0034417627447975636
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "co",
+                  "ocr_conf": 0.0033491892601752817
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005992796372039414
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Scourging",
+                  "ocr_conf": 0.003461915944694858
+                },
+                "level": {
+                  "ocr_text": "3003",
+                  "ocr_conf": 0.006181595247954018
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "Serendipity",
+                  "ocr_conf": 0.005873618180942338
+                },
+                "level": {
+                  "ocr_text": "5623",
+                  "ocr_conf": 0.006181672430483904
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "Shortblades",
+                  "ocr_conf": 0.0036787155143716116
+                },
+                "level": {
+                  "ocr_text": "1240",
+                  "ocr_conf": 0.006181486390058974
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "Skinning",
+                  "ocr_conf": 0.003539523144394705
+                },
+                "level": {
+                  "ocr_text": "4371",
+                  "ocr_conf": 0.006181680230277788
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": " ",
+                  "ocr_conf": 0.0028025338960571042
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005040871545089579
+                }
+              }
+            }
+          ]
+        },
+        {
+          "page_index": 11,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Spacecraft Pilot",
+                  "ocr_conf": 0.006135650465567905
+                },
+                "level": {
+                  "ocr_text": "7",
+                  "ocr_conf": 0.0034255253685397855
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": " e t",
+                  "ocr_conf": 0.002739761964747841
+                },
+                "level": {
+                  "ocr_text": "5",
+                  "ocr_conf": 0.006132895226938819
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "en",
+                  "ocr_conf": 0.0027781831524559073
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0025975907755775205
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Stamina",
+                  "ocr_conf": 0.005606417031839143
+                },
+                "level": {
+                  "ocr_text": "0",
+                  "ocr_conf": 0.003551768704665996
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Strength",
+                  "ocr_conf": 0.005899241301640155
+                },
+                "level": {
+                  "ocr_text": "71",
+                  "ocr_conf": 0.005705067881148903
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "ppoponem",
+                  "ocr_conf": 0.002900744132971687
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.004224734480841256
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "cnGYlowb",
+                  "ocr_conf": 0.004138811143407349
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005615539017481897
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "   tr",
+                  "ocr_conf": 0.0028366406116404445
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005662472087307071
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "Tailoring",
+                  "ocr_conf": 0.00394660928585028
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005525403290404176
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "Telepathy",
+                  "ocr_conf": 0.005066434867434314
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005905395473702049
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "ee",
+                  "ocr_conf": 0.0027391336441216865
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0047199987875057225
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": "tte n",
+                  "ocr_conf": 0.0027936524632075407
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005040871545089579
+                }
+              }
+            }
+          ]
+        },
+        {
+          "page_index": 12,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Tier Upgrading",
+                  "ocr_conf": 0.005979291160374198
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0061025969752801406
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Tools hnolo",
+                  "ocr_conf": 0.0032015393375669473
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006064707978977062
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "crmaentaYlowb",
+                  "ocr_conf": 0.004213275199920107
+                },
+                "level": {
+                  "ocr_text": "98",
+                  "ocr_conf": 0.005136647053650847
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Treasure Sense",
+                  "ocr_conf": 0.005438263828147501
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006096566195948221
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Vehicle epairing",
+                  "ocr_conf": 0.0035475258802499356
+                },
+                "level": {
+                  "ocr_text": "88",
+                  "ocr_conf": 0.006180221296459266
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "ehicle T hnolo",
+                  "ocr_conf": 0.0031513878414430045
+                },
+                "level": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005063662405474283
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": " ",
+                  "ocr_conf": 0.0027568164350224504
+                },
+                "level": {
+                  "ocr_text": "589",
+                  "ocr_conf": 0.006179130482471258
+                }
+              }
+            },
+            {
+              "row": 8,
+              "cells": {
+                "name": {
+                  "ocr_text": "Whip",
+                  "ocr_conf": 0.0055849317017571355
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.005926711584789847
+                }
+              }
+            },
+            {
+              "row": 9,
+              "cells": {
+                "name": {
+                  "ocr_text": "oo",
+                  "ocr_conf": 0.002758885763377471
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.006093944057239388
+                }
+              }
+            },
+            {
+              "row": 10,
+              "cells": {
+                "name": {
+                  "ocr_text": "oo oess",
+                  "ocr_conf": 0.003013318228243288
+                },
+                "level": {
+                  "ocr_text": "1",
+                  "ocr_conf": 0.0047199987875057225
+                }
+              }
+            },
+            {
+              "row": 11,
+              "cells": {
+                "name": {
+                  "ocr_text": "Woundi",
+                  "ocr_conf": 0.003086809937354101
+                },
+                "level": {
+                  "ocr_text": "5750",
+                  "ocr_conf": 0.0061817500805942645
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "profession": {
+      "n_rows": 8,
+      "cell_names": [
+        "name",
+        "rank_level",
+        "percent"
+      ],
+      "pages": [
+        {
+          "page_index": 1,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Electro Kinetic (Dmg)",
+                  "ocr_conf": 0.005880841084582349
+                },
+                "rank_level": {
+                  "ocr_text": "Superior, 76",
+                  "ocr_conf": 0.005420705229028122
+                },
+                "percent": {
+                  "ocr_text": "46.2",
+                  "ocr_conf": 0.006178940698926186
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Electro Kinetic (Hit)",
+                  "ocr_conf": 0.006139738613454376
+                },
+                "rank_level": {
+                  "ocr_text": "cYanmantaYtYllowbl",
+                  "ocr_conf": 0.00530396936116182
+                },
+                "percent": {
+                  "ocr_text": "98.1",
+                  "ocr_conf": 0.00550024535458264
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Swordsman (Dmg)",
+                  "ocr_conf": 0.005865586879709586
+                },
+                "rank_level": {
+                  "ocr_text": "Expert, 48",
+                  "ocr_conf": 0.006139420040573542
+                },
+                "percent": {
+                  "ocr_text": "77.0",
+                  "ocr_conf": 0.0061794324684501705
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Swordsman (Hit)",
+                  "ocr_conf": 0.006033726780742218
+                },
+                "rank_level": {
+                  "ocr_text": "Advanced, 42",
+                  "ocr_conf": 0.005804198944620376
+                },
+                "percent": {
+                  "ocr_text": "90.5",
+                  "ocr_conf": 0.006070753801428709
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "nifefighter (Dmg)",
+                  "ocr_conf": 0.0038173538038609616
+                },
+                "rank_level": {
+                  "ocr_text": "an",
+                  "ocr_conf": 0.0028323091338352596
+                },
+                "percent": {
+                  "ocr_text": "40.5",
+                  "ocr_conf": 0.0061742206946706225
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": " neti (m",
+                  "ocr_conf": 0.0030838743350924255
+                },
+                "rank_level": {
+                  "ocr_text": "Impressive. 35",
+                  "ocr_conf": 0.00596112442223962
+                },
+                "percent": {
+                  "ocr_text": "19.6",
+                  "ocr_conf": 0.005816082068237774
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Cryogenic (Dmg)",
+                  "ocr_conf": 0.005173319900473389
+                },
+                "rank_level": {
+                  "ocr_text": "Impressive. 35",
+                  "ocr_conf": 0.005476115525282767
+                },
+                "percent": {
+                  "ocr_text": "19.6",
+                  "ocr_conf": 0.006124131134035214
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Ranged Laser (Dmg)",
+                  "ocr_conf": 0.0047721975769638115
+                },
+                "rank_level": {
+                  "ocr_text": "Impressive. 34",
+                  "ocr_conf": 0.005459522380694015
+                },
+                "percent": {
+                  "ocr_text": "27.2",
+                  "ocr_conf": 0.006181186041224112
+                }
+              }
+            }
+          ],
+          "category": 1,
+          "category_page": 1
+        },
+        {
+          "page_index": 2,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "One Handed Clubber (Dmg)",
+                  "ocr_conf": 0.005945422723399982
+                },
+                "rank_level": {
+                  "ocr_text": "Inspiring,33",
+                  "ocr_conf": 0.005752099547388191
+                },
+                "percent": {
+                  "ocr_text": "30.8",
+                  "ocr_conf": 0.006180918457479262
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Two Handed Clubber (Dmg)",
+                  "ocr_conf": 0.00612559956373485
+                },
+                "rank_level": {
+                  "ocr_text": "cInmaGpnlowb",
+                  "ocr_conf": 0.004801701197922808
+                },
+                "percent": {
+                  "ocr_text": "30.8",
+                  "ocr_conf": 0.006180317997034267
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Brawler (Dmg)",
+                  "ocr_conf": 0.00569019949203574
+                },
+                "rank_level": {
+                  "ocr_text": "Inspiring,33",
+                  "ocr_conf": 0.0056130263425020815
+                },
+                "percent": {
+                  "ocr_text": "27.0",
+                  "ocr_conf": 0.006180755507912237
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Whipper (Dmg",
+                  "ocr_conf": 0.0056849040904176544
+                },
+                "rank_level": {
+                  "ocr_text": "Ipn",
+                  "ocr_conf": 0.002989860783572924
+                },
+                "percent": {
+                  "ocr_text": "27.0",
+                  "ocr_conf": 0.0061806633871284425
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Range B (Dmg",
+                  "ocr_conf": 0.0031238281192576944
+                },
+                "rank_level": {
+                  "ocr_text": "pn",
+                  "ocr_conf": 0.0028818371799229654
+                },
+                "percent": {
+                  "ocr_text": "82.4",
+                  "ocr_conf": 0.00617542858153505
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "RangePlasma (Dmg",
+                  "ocr_conf": 0.0036840478758095605
+                },
+                "rank_level": {
+                  "ocr_text": "Inpring2",
+                  "ocr_conf": 0.003115020315548255
+                },
+                "percent": {
+                  "ocr_text": "82.3",
+                  "ocr_conf": 0.006180526852745627
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Ranged Gauss (Dmg)",
+                  "ocr_conf": 0.005252147709636044
+                },
+                "rank_level": {
+                  "ocr_text": "n",
+                  "ocr_conf": 0.0029185436269027957
+                },
+                "percent": {
+                  "ocr_text": "82.3",
+                  "ocr_conf": 0.006180397975060436
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Grenadier (Dmg)",
+                  "ocr_conf": 0.005324204454945552
+                },
+                "rank_level": {
+                  "ocr_text": "Good. 29",
+                  "ocr_conf": 0.005985373960903408
+                },
+                "percent": {
+                  "ocr_text": "9.5",
+                  "ocr_conf": 0.006177330995076441
+                }
+              }
+            }
+          ],
+          "category": 1,
+          "category_page": 2
+        },
+        {
+          "page_index": 3,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Dodger",
+                  "ocr_conf": 0.006125407610087195
+                },
+                "rank_level": {
+                  "ocr_text": "Skilled, 23",
+                  "ocr_conf": 0.005765691167934748
+                },
+                "percent": {
+                  "ocr_text": "47.4",
+                  "ocr_conf": 0.006179822032768734
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Pyro Kinetic (Hit)",
+                  "ocr_conf": 0.005752331702025474
+                },
+                "rank_level": {
+                  "ocr_text": "cYanmaGeenYlllowbl",
+                  "ocr_conf": 0.005084821704503701
+                },
+                "percent": {
+                  "ocr_text": "39.9",
+                  "ocr_conf": 0.006178228793854322
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Cryogenic (Hit)",
+                  "ocr_conf": 0.0059169895512382175
+                },
+                "rank_level": {
+                  "ocr_text": "Skilled, 23",
+                  "ocr_conf": 0.005764377048596448
+                },
+                "percent": {
+                  "ocr_text": "39.9",
+                  "ocr_conf": 0.006179105005369685
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Evader",
+                  "ocr_conf": 0.00613282628107581
+                },
+                "rank_level": {
+                  "ocr_text": "clow",
+                  "ocr_conf": 0.003927736044046316
+                },
+                "percent": {
+                  "ocr_text": "26.6",
+                  "ocr_conf": 0.006174895473207076
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "nifefighter (Hit)",
+                  "ocr_conf": 0.0034547286329547145
+                },
+                "rank_level": {
+                  "ocr_text": "C",
+                  "ocr_conf": 0.0030672234551740655
+                },
+                "percent": {
+                  "ocr_text": "63.6",
+                  "ocr_conf": 0.0060624100987486254
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Decoy Dispenser",
+                  "ocr_conf": 0.004636090094903047
+                },
+                "rank_level": {
+                  "ocr_text": "Adept. 19",
+                  "ocr_conf": 0.005584187482619687
+                },
+                "percent": {
+                  "ocr_text": "88.5",
+                  "ocr_conf": 0.005619567166772221
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Paramedic",
+                  "ocr_conf": 0.005892587102266648
+                },
+                "rank_level": {
+                  "ocr_text": "Adept. 18",
+                  "ocr_conf": 0.005588054341170339
+                },
+                "percent": {
+                  "ocr_text": "96.5",
+                  "ocr_conf": 0.006171110057087299
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Two Handed Clubber (Hit)",
+                  "ocr_conf": 0.006018830595818349
+                },
+                "rank_level": {
+                  "ocr_text": "Adept. 18",
+                  "ocr_conf": 0.005648347053641449
+                },
+                "percent": {
+                  "ocr_text": "78.4",
+                  "ocr_conf": 0.006180007387717556
+                }
+              }
+            }
+          ],
+          "category": 1,
+          "category_page": 3
+        },
+        {
+          "page_index": 4,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Brawler (Hit)",
+                  "ocr_conf": 0.005887332780896417
+                },
+                "rank_level": {
+                  "ocr_text": "Competent, 17",
+                  "ocr_conf": 0.005983368301886379
+                },
+                "percent": {
+                  "ocr_text": "64.9",
+                  "ocr_conf": 0.006180229598474653
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "One Handed Clubber (Hit)",
+                  "ocr_conf": 0.006051914682000838
+                },
+                "rank_level": {
+                  "ocr_text": "Competent, 16",
+                  "ocr_conf": 0.006044408093745505
+                },
+                "percent": {
+                  "ocr_text": "92.7",
+                  "ocr_conf": 0.006181559848767272
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Whipper (Hit)",
+                  "ocr_conf": 0.005886346500020362
+                },
+                "rank_level": {
+                  "ocr_text": "Able, 14",
+                  "ocr_conf": 0.0058902188032158315
+                },
+                "percent": {
+                  "ocr_text": "91.4",
+                  "ocr_conf": 0.006174954629814857
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Laser Sniper (Hit)",
+                  "ocr_conf": 0.005768014241353026
+                },
+                "rank_level": {
+                  "ocr_text": "Qualified,10",
+                  "ocr_conf": 0.0041952767300794695
+                },
+                "percent": {
+                  "ocr_text": "13.9",
+                  "ocr_conf": 0.005709085873101354
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "BLP Sniper (Hit)",
+                  "ocr_conf": 0.005049787607894862
+                },
+                "rank_level": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "percent": {
+                  "ocr_text": "32.9",
+                  "ocr_conf": 0.00618156800426468
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Plasma Snpe(Hit",
+                  "ocr_conf": 0.0035217462039378255
+                },
+                "rank_level": {
+                  "ocr_text": "Intiate",
+                  "ocr_conf": 0.0031404155309038844
+                },
+                "percent": {
+                  "ocr_text": "32.8",
+                  "ocr_conf": 0.006181614103047041
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Gauss Sniper (Hit)",
+                  "ocr_conf": 0.005728389479633886
+                },
+                "rank_level": {
+                  "ocr_text": "Initiated.",
+                  "ocr_conf": 0.00380442641911707
+                },
+                "percent": {
+                  "ocr_text": "32.8",
+                  "ocr_conf": 0.006181633079823968
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Laser Pistoleer (Hit)",
+                  "ocr_conf": 0.005559321865775722
+                },
+                "rank_level": {
+                  "ocr_text": "Initiated. 8",
+                  "ocr_conf": 0.005712066841954682
+                },
+                "percent": {
+                  "ocr_text": "6.2",
+                  "ocr_conf": 0.006180139326845489
+                }
+              }
+            }
+          ],
+          "category": 1,
+          "category_page": 4
+        },
+        {
+          "page_index": 5,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Mounted Laser (Hit)",
+                  "ocr_conf": 0.005814036750364692
+                },
+                "rank_level": {
+                  "ocr_text": "Apprentice, 7",
+                  "ocr_conf": 0.005907000343438123
+                },
+                "percent": {
+                  "ocr_text": "90.2",
+                  "ocr_conf": 0.006181005224918409
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "BLP Pistoleer (Hit)",
+                  "ocr_conf": 0.005689732674593115
+                },
+                "rank_level": {
+                  "ocr_text": "Apprentice,7b",
+                  "ocr_conf": 0.005627819889718257
+                },
+                "percent": {
+                  "ocr_text": "25.1",
+                  "ocr_conf": 0.006181314215509796
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Plasma Pistoleer (Hit)",
+                  "ocr_conf": 0.005906837304406773
+                },
+                "rank_level": {
+                  "ocr_text": "Apprentice, 7",
+                  "ocr_conf": 0.005944752978379673
+                },
+                "percent": {
+                  "ocr_text": "25.0",
+                  "ocr_conf": 0.006181087033927118
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Mounted BLP (Hit)",
+                  "ocr_conf": 0.005644816022592669
+                },
+                "rank_level": {
+                  "ocr_text": "Apprentice, 7",
+                  "ocr_conf": 0.005874541074441227
+                },
+                "percent": {
+                  "ocr_text": "9.1",
+                  "ocr_conf": 0.006176407137139698
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Grenadier (Hit)",
+                  "ocr_conf": 0.005700449317837227
+                },
+                "rank_level": {
+                  "ocr_text": "Apprentice. 7",
+                  "ocr_conf": 0.005916270760808208
+                },
+                "percent": {
+                  "ocr_text": "9.1",
+                  "ocr_conf": 0.005484029443851338
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Mounted Grenadier (Hit)",
+                  "ocr_conf": 0.005236597195602378
+                },
+                "rank_level": {
+                  "ocr_text": "Apprentice. 7",
+                  "ocr_conf": 0.006041133103098103
+                },
+                "percent": {
+                  "ocr_text": "9.1",
+                  "ocr_conf": 0.005699385153398442
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Mining Laser (Hit)",
+                  "ocr_conf": 0.005691013899751114
+                },
+                "rank_level": {
+                  "ocr_text": "Inept, 0",
+                  "ocr_conf": 0.005808056900060116
+                },
+                "percent": {
+                  "ocr_text": "14.7",
+                  "ocr_conf": 0.006180640600572373
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "MiningLase (Dmg",
+                  "ocr_conf": 0.003969911398850959
+                },
+                "rank_level": {
+                  "ocr_text": "Inept. 0",
+                  "ocr_conf": 0.005886837015665161
+                },
+                "percent": {
+                  "ocr_text": "14.7",
+                  "ocr_conf": 0.0061804314187997025
+                }
+              }
+            }
+          ],
+          "category": 1,
+          "category_page": 5
+        },
+        {
+          "page_index": 6,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Tailor",
+                  "ocr_conf": 0.006175760574375191
+                },
+                "rank_level": {
+                  "ocr_text": "Apprentice,6",
+                  "ocr_conf": 0.006160346290350031
+                },
+                "percent": {
+                  "ocr_text": "84.9",
+                  "ocr_conf": 0.006180841530928396
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Tier Upgrader",
+                  "ocr_conf": 0.006151797246924776
+                },
+                "rank_level": {
+                  "ocr_text": "Apprentice, 6b",
+                  "ocr_conf": 0.005603434560185102
+                },
+                "percent": {
+                  "ocr_text": "65.1",
+                  "ocr_conf": 0.006172908118200715
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Gardener",
+                  "ocr_conf": 0.0061228611833098
+                },
+                "rank_level": {
+                  "ocr_text": "Amateur, 5",
+                  "ocr_conf": 0.0058578607843473764
+                },
+                "percent": {
+                  "ocr_text": "98.0",
+                  "ocr_conf": 0.00618019049986888
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Spacecraft Engineering",
+                  "ocr_conf": 0.00617030309596416
+                },
+                "rank_level": {
+                  "ocr_text": "m",
+                  "ocr_conf": 0.0033809781143201365
+                },
+                "percent": {
+                  "ocr_text": "73.7",
+                  "ocr_conf": 0.0056147982224721135
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "LongbladesEngineer",
+                  "ocr_conf": 0.005274533527536885
+                },
+                "rank_level": {
+                  "ocr_text": "Amateur.",
+                  "ocr_conf": 0.004061978890912807
+                },
+                "percent": {
+                  "ocr_text": "12.0",
+                  "ocr_conf": 0.0061793190505734265
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Vehicle Structural Engineer",
+                  "ocr_conf": 0.0061539560500953085
+                },
+                "rank_level": {
+                  "ocr_text": "Novice. 4",
+                  "ocr_conf": 0.003881377357264279
+                },
+                "percent": {
+                  "ocr_text": "17.6",
+                  "ocr_conf": 0.00617957394851563
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Electronics Engineer",
+                  "ocr_conf": 0.006061060589575797
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner. 3",
+                  "ocr_conf": 0.004842781990019798
+                },
+                "percent": {
+                  "ocr_text": "56.2",
+                  "ocr_conf": 0.006173378778672448
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Metal ngineer",
+                  "ocr_conf": 0.004782340570436805
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner. 3",
+                  "ocr_conf": 0.0049369679525757704
+                },
+                "percent": {
+                  "ocr_text": "42.7",
+                  "ocr_conf": 0.0061811674068985595
+                }
+              }
+            }
+          ],
+          "category": 1,
+          "category_page": 6
+        },
+        {
+          "page_index": 7,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Shortblades Engineer",
+                  "ocr_conf": 0.0060696447494486445
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner,3",
+                  "ocr_conf": 0.006160423625006769
+                },
+                "percent": {
+                  "ocr_text": "14.2",
+                  "ocr_conf": 0.006180791705756411
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Laser Weapons Engineer",
+                  "ocr_conf": 0.006046480452722772
+                },
+                "rank_level": {
+                  "ocr_text": "cYBenereY2owb",
+                  "ocr_conf": 0.0039825535917745606
+                },
+                "percent": {
+                  "ocr_text": "87.8",
+                  "ocr_conf": 0.006181299422886778
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Armor Engineer",
+                  "ocr_conf": 0.005540739831063965
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner,2",
+                  "ocr_conf": 0.00614138696366482
+                },
+                "percent": {
+                  "ocr_text": "84.4",
+                  "ocr_conf": 0.006180377965323458
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Mechanical Engineer",
+                  "ocr_conf": 0.006155040250220281
+                },
+                "rank_level": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "percent": {
+                  "ocr_text": "83.6",
+                  "ocr_conf": 0.006061189190647867
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Tool Engineer",
+                  "ocr_conf": 0.003799326482934384
+                },
+                "rank_level": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "percent": {
+                  "ocr_text": "73.0",
+                  "ocr_conf": 0.006181070650687473
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Attachment Engineer",
+                  "ocr_conf": 0.005219296255372921
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner. 2",
+                  "ocr_conf": 0.0051630461543822155
+                },
+                "percent": {
+                  "ocr_text": "73.0",
+                  "ocr_conf": 0.006181060521764165
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "BLP Weapons Engineer",
+                  "ocr_conf": 0.005901732734206923
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner. 2",
+                  "ocr_conf": 0.0035856278169138964
+                },
+                "percent": {
+                  "ocr_text": "64.6",
+                  "ocr_conf": 0.0058653354649324165
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Carpenter",
+                  "ocr_conf": 0.005845224925820123
+                },
+                "rank_level": {
+                  "ocr_text": "Begnnr.2",
+                  "ocr_conf": 0.003281831120200795
+                },
+                "percent": {
+                  "ocr_text": "64.6",
+                  "ocr_conf": 0.005768537493685105
+                }
+              }
+            }
+          ],
+          "category": 2,
+          "category_page": 1
+        },
+        {
+          "page_index": 8,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Plasma Weapons Engineer",
+                  "ocr_conf": 0.0059680107316506786
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner,2",
+                  "ocr_conf": 0.0060629575330499565
+                },
+                "percent": {
+                  "ocr_text": "64.6",
+                  "ocr_conf": 0.005560117995015574
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Powerfist Engineer",
+                  "ocr_conf": 0.0058660692816037046
+                },
+                "rank_level": {
+                  "ocr_text": "cYBenerYY2owb",
+                  "ocr_conf": 0.004097525890522639
+                },
+                "percent": {
+                  "ocr_text": "64.6",
+                  "ocr_conf": 0.005671539169532187
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Gauss Weapons Engineer",
+                  "ocr_conf": 0.006095953022148489
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner,2",
+                  "ocr_conf": 0.0061078070619076
+                },
+                "percent": {
+                  "ocr_text": "64.6",
+                  "ocr_conf": 0.005785098300649448
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Vehicle Engineer",
+                  "ocr_conf": 0.006032300773875657
+                },
+                "rank_level": {
+                  "ocr_text": "Gen",
+                  "ocr_conf": 0.0027218493576048044
+                },
+                "percent": {
+                  "ocr_text": "50.5",
+                  "ocr_conf": 0.006168985805934314
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Projectile Launcher Engineer",
+                  "ocr_conf": 0.006074085086046127
+                },
+                "rank_level": {
+                  "ocr_text": " ",
+                  "ocr_conf": 0.00251500108966062
+                },
+                "percent": {
+                  "ocr_text": "47.6",
+                  "ocr_conf": 0.006176785314268124
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Fishin engie",
+                  "ocr_conf": 0.0032050392356981396
+                },
+                "rank_level": {
+                  "ocr_text": "Green. ",
+                  "ocr_conf": 0.0036788128739726512
+                },
+                "percent": {
+                  "ocr_text": "47.6",
+                  "ocr_conf": 0.006176183295066959
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Fishing Attachment Engineer",
+                  "ocr_conf": 0.00607744654165922
+                },
+                "rank_level": {
+                  "ocr_text": "Green. 2",
+                  "ocr_conf": 0.00557562967004557
+                },
+                "percent": {
+                  "ocr_text": "47.6",
+                  "ocr_conf": 0.006170389277052419
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Chemist",
+                  "ocr_conf": 0.006039164921783689
+                },
+                "rank_level": {
+                  "ocr_text": "Green. 2",
+                  "ocr_conf": 0.006109146908277615
+                },
+                "percent": {
+                  "ocr_text": "22.4",
+                  "ocr_conf": 0.006181039846755681
+                }
+              }
+            }
+          ],
+          "category": 2,
+          "category_page": 2
+        },
+        {
+          "page_index": 9,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "EnhancerConstructor",
+                  "ocr_conf": 0.0060268149405000825
+                },
+                "rank_level": {
+                  "ocr_text": "Green, 1",
+                  "ocr_conf": 0.006151653094301071
+                },
+                "percent": {
+                  "ocr_text": "97.2",
+                  "ocr_conf": 0.006181142615790134
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Material Constructor",
+                  "ocr_conf": 0.0060767573823815296
+                },
+                "rank_level": {
+                  "ocr_text": "cYanareen,elentaellowb",
+                  "ocr_conf": 0.004390574689229746
+                },
+                "percent": {
+                  "ocr_text": "69.0",
+                  "ocr_conf": 0.006178545863255234
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "MiningLaser Engineer",
+                  "ocr_conf": 0.006109096650795913
+                },
+                "rank_level": {
+                  "ocr_text": "Mediocre, 0",
+                  "ocr_conf": 0.005894558821001408
+                },
+                "percent": {
+                  "ocr_text": "99.1",
+                  "ocr_conf": 0.005717253647106757
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Gastronomer",
+                  "ocr_conf": 0.004863659771110481
+                },
+                "rank_level": {
+                  "ocr_text": "oor0ow",
+                  "ocr_conf": 0.0029831286700092844
+                },
+                "percent": {
+                  "ocr_text": "29.2",
+                  "ocr_conf": 0.0061807561969624445
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Nutritionist",
+                  "ocr_conf": 0.004058395260886646
+                },
+                "rank_level": {
+                  "ocr_text": "Poor. 0",
+                  "ocr_conf": 0.005593687449873915
+                },
+                "percent": {
+                  "ocr_text": "29.2",
+                  "ocr_conf": 0.006180867499136867
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Provisioner",
+                  "ocr_conf": 0.006044567982441249
+                },
+                "rank_level": {
+                  "ocr_text": "Poor. 0",
+                  "ocr_conf": 0.005430155802511996
+                },
+                "percent": {
+                  "ocr_text": "29.2",
+                  "ocr_conf": 0.0061808059093440715
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Average",
+                  "ocr_conf": 0.005400232475599686
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner. 2",
+                  "ocr_conf": 0.0038193097481697864
+                },
+                "percent": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "rank_level": {
+                  "ocr_text": "2",
+                  "ocr_conf": 0.0026130304740501413
+                },
+                "percent": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            }
+          ],
+          "category": 2,
+          "category_page": 3
+        },
+        {
+          "page_index": 10,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Animal Looter",
+                  "ocr_conf": 0.0061691363730205185
+                },
+                "rank_level": {
+                  "ocr_text": "Impressive, 34",
+                  "ocr_conf": 0.00590697831075301
+                },
+                "percent": {
+                  "ocr_text": "68.9",
+                  "ocr_conf": 0.006177791977596042
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Mutant Looter",
+                  "ocr_conf": 0.005995497376389874
+                },
+                "rank_level": {
+                  "ocr_text": "cYanaeenetYlowbl",
+                  "ocr_conf": 0.004570361565833548
+                },
+                "percent": {
+                  "ocr_text": "14.7",
+                  "ocr_conf": 0.006049555867200068
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Robot Looter",
+                  "ocr_conf": 0.006111837750123902
+                },
+                "rank_level": {
+                  "ocr_text": "Skilled, 23",
+                  "ocr_conf": 0.004835739094819848
+                },
+                "percent": {
+                  "ocr_text": "51.5",
+                  "ocr_conf": 0.006180824326050134
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Resource Gatherer",
+                  "ocr_conf": 0.005995363996139702
+                },
+                "rank_level": {
+                  "ocr_text": "Qualified,10",
+                  "ocr_conf": 0.003920400709281127
+                },
+                "percent": {
+                  "ocr_text": "7.2",
+                  "ocr_conf": 0.006086914599926434
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Treasure hunter",
+                  "ocr_conf": 0.0054863597763727635
+                },
+                "rank_level": {
+                  "ocr_text": "Noic.4",
+                  "ocr_conf": 0.003497331974378287
+                },
+                "percent": {
+                  "ocr_text": "39.7",
+                  "ocr_conf": 0.006179977029265146
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Prospector",
+                  "ocr_conf": 0.006056018664437455
+                },
+                "rank_level": {
+                  "ocr_text": "Novice. 4",
+                  "ocr_conf": 0.005160976964263242
+                },
+                "percent": {
+                  "ocr_text": "11.6",
+                  "ocr_conf": 0.006180960433451082
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Surveyor",
+                  "ocr_conf": 0.006173440018747915
+                },
+                "rank_level": {
+                  "ocr_text": "Novice. 4",
+                  "ocr_conf": 0.003711389476351854
+                },
+                "percent": {
+                  "ocr_text": "11.5",
+                  "ocr_conf": 0.005497810301101454
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Baitfisher",
+                  "ocr_conf": 0.006015931111057765
+                },
+                "rank_level": {
+                  "ocr_text": "Novice. 3",
+                  "ocr_conf": 0.0059548413870837615
+                },
+                "percent": {
+                  "ocr_text": "91.3",
+                  "ocr_conf": 0.006181245845722397
+                }
+              }
+            }
+          ],
+          "category": 2,
+          "category_page": 4
+        },
+        {
+          "page_index": 11,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Fish Looter",
+                  "ocr_conf": 0.00609133786574159
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner, 3",
+                  "ocr_conf": 0.005216107626892013
+                },
+                "percent": {
+                  "ocr_text": "23.3",
+                  "ocr_conf": 0.0061804007480429695
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Archaeologist",
+                  "ocr_conf": 0.005950423220873631
+                },
+                "rank_level": {
+                  "ocr_text": "cYnareen,tYob",
+                  "ocr_conf": 0.004188919549790979
+                },
+                "percent": {
+                  "ocr_text": "37.2",
+                  "ocr_conf": 0.006180979525084092
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Driller",
+                  "ocr_conf": 0.0060302205128436245
+                },
+                "rank_level": {
+                  "ocr_text": "Green, 2",
+                  "ocr_conf": 0.0061342106766415294
+                },
+                "percent": {
+                  "ocr_text": "17.5",
+                  "ocr_conf": 0.006178045373782395
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Mineable Looter",
+                  "ocr_conf": 0.00612889529988743
+                },
+                "rank_level": {
+                  "ocr_text": "Gen2",
+                  "ocr_conf": 0.0028107416142163833
+                },
+                "percent": {
+                  "ocr_text": "15.2",
+                  "ocr_conf": 0.006181462649761365
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Miner",
+                  "ocr_conf": 0.005925141302244529
+                },
+                "rank_level": {
+                  "ocr_text": " n",
+                  "ocr_conf": 0.002683971281382707
+                },
+                "percent": {
+                  "ocr_text": "9.2",
+                  "ocr_conf": 0.006176793097087399
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Average",
+                  "ocr_conf": 0.005778535159703641
+                },
+                "rank_level": {
+                  "ocr_text": "Intiate",
+                  "ocr_conf": 0.0030629567832693824
+                },
+                "percent": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "rank_level": {
+                  "ocr_text": "x",
+                  "ocr_conf": 0.002568687179474331
+                },
+                "percent": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "S",
+                  "ocr_conf": 0.002796191822154617
+                },
+                "rank_level": {
+                  "ocr_text": "2X",
+                  "ocr_conf": 0.0027518961712170724
+                },
+                "percent": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            }
+          ],
+          "category": 3,
+          "category_page": 1
+        },
+        {
+          "page_index": 12,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Biotropic",
+                  "ocr_conf": 0.006160431148923726
+                },
+                "rank_level": {
+                  "ocr_text": "Great, 30",
+                  "ocr_conf": 0.005491603966268425
+                },
+                "percent": {
+                  "ocr_text": "20.1",
+                  "ocr_conf": 0.006177306460091125
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Telepath",
+                  "ocr_conf": 0.006177671727973074
+                },
+                "rank_level": {
+                  "ocr_text": "Proficient,26",
+                  "ocr_conf": 0.005877885432902363
+                },
+                "percent": {
+                  "ocr_text": "51.8",
+                  "ocr_conf": 0.006181249807180201
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Translocator",
+                  "ocr_conf": 0.006174005140220585
+                },
+                "rank_level": {
+                  "ocr_text": "Capable, 21",
+                  "ocr_conf": 0.005199593003390933
+                },
+                "percent": {
+                  "ocr_text": "71.7",
+                  "ocr_conf": 0.006180811266325153
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Jammer",
+                  "ocr_conf": 0.006151169475233607
+                },
+                "rank_level": {
+                  "ocr_text": "Aept1",
+                  "ocr_conf": 0.002752856318536317
+                },
+                "percent": {
+                  "ocr_text": "79.3",
+                  "ocr_conf": 0.006180507284034781
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Se  th r",
+                  "ocr_conf": 0.0029028212675662824
+                },
+                "rank_level": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "percent": {
+                  "ocr_text": "60.2",
+                  "ocr_conf": 0.006178148410097511
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Average",
+                  "ocr_conf": 0.00576461244875009
+                },
+                "rank_level": {
+                  "ocr_text": "Capable. 1",
+                  "ocr_conf": 0.004261230662219878
+                },
+                "percent": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                },
+                "rank_level": {
+                  "ocr_text": "x",
+                  "ocr_conf": 0.002583538049249147
+                },
+                "percent": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "S",
+                  "ocr_conf": 0.0027504890294505115
+                },
+                "rank_level": {
+                  "ocr_text": "2",
+                  "ocr_conf": 0.002630887885926461
+                },
+                "percent": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            }
+          ],
+          "category": 3,
+          "category_page": 2
+        },
+        {
+          "page_index": 13,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Gunner (Dmg)",
+                  "ocr_conf": 0.0061129703208863
+                },
+                "rank_level": {
+                  "ocr_text": "Competent, 17",
+                  "ocr_conf": 0.0060798217625758315
+                },
+                "percent": {
+                  "ocr_text": "74.4",
+                  "ocr_conf": 0.006181011292762017
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Humanoid Investigator",
+                  "ocr_conf": 0.006075240426645259
+                },
+                "rank_level": {
+                  "ocr_text": "cQualified, 10ob",
+                  "ocr_conf": 0.0050318963021416165
+                },
+                "percent": {
+                  "ocr_text": "35.0",
+                  "ocr_conf": 0.006097436090780204
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Captain",
+                  "ocr_conf": 0.005934804517626884
+                },
+                "rank_level": {
+                  "ocr_text": "Initiated, 8",
+                  "ocr_conf": 0.005857779774742782
+                },
+                "percent": {
+                  "ocr_text": "27.3",
+                  "ocr_conf": 0.006181022767375076
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Anima Tam",
+                  "ocr_conf": 0.0036026983850020603
+                },
+                "rank_level": {
+                  "ocr_text": "Apprentice, 6",
+                  "ocr_conf": 0.006077474183464356
+                },
+                "percent": {
+                  "ocr_text": "90.2",
+                  "ocr_conf": 0.00618116182014432
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Pet Handler",
+                  "ocr_conf": 0.004081751168942031
+                },
+                "rank_level": {
+                  "ocr_text": "Apprentice. 6",
+                  "ocr_conf": 0.0054871371549177145
+                },
+                "percent": {
+                  "ocr_text": "27.0",
+                  "ocr_conf": 0.006180981997449328
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "tan Inestitor",
+                  "ocr_conf": 0.0029020890561528567
+                },
+                "rank_level": {
+                  "ocr_text": "Amateur. 5",
+                  "ocr_conf": 0.004382065796027256
+                },
+                "percent": {
+                  "ocr_text": "70.7",
+                  "ocr_conf": 0.006180912204625085
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Gunner (Hit)",
+                  "ocr_conf": 0.005872670145490687
+                },
+                "rank_level": {
+                  "ocr_text": "Novice. 3",
+                  "ocr_conf": 0.005435210505744407
+                },
+                "percent": {
+                  "ocr_text": "72.9",
+                  "ocr_conf": 0.006181585116778777
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "Colorer",
+                  "ocr_conf": 0.0061738953813114
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner. 3",
+                  "ocr_conf": 0.004749087453410886
+                },
+                "percent": {
+                  "ocr_text": "0.7",
+                  "ocr_conf": 0.006170337662296725
+                }
+              }
+            }
+          ],
+          "category": 4,
+          "category_page": 1
+        },
+        {
+          "page_index": 14,
+          "rows": [
+            {
+              "row": 0,
+              "cells": {
+                "name": {
+                  "ocr_text": "Robot Investigator",
+                  "ocr_conf": 0.006132842006927589
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner, 2",
+                  "ocr_conf": 0.00527969892715458
+                },
+                "percent": {
+                  "ocr_text": "85.8",
+                  "ocr_conf": 0.006180907320338845
+                }
+              }
+            },
+            {
+              "row": 1,
+              "cells": {
+                "name": {
+                  "ocr_text": "Technology Investigator",
+                  "ocr_conf": 0.006171725692925951
+                },
+                "rank_level": {
+                  "ocr_text": "Benere2owb",
+                  "ocr_conf": 0.003606177935386973
+                },
+                "percent": {
+                  "ocr_text": "85.8",
+                  "ocr_conf": 0.006180681002855884
+                }
+              }
+            },
+            {
+              "row": 2,
+              "cells": {
+                "name": {
+                  "ocr_text": "Animal Investigator",
+                  "ocr_conf": 0.005737284722618459
+                },
+                "rank_level": {
+                  "ocr_text": "Beginner,2",
+                  "ocr_conf": 0.0060586520062259125
+                },
+                "percent": {
+                  "ocr_text": "84.7",
+                  "ocr_conf": 0.006180953088405388
+                }
+              }
+            },
+            {
+              "row": 3,
+              "cells": {
+                "name": {
+                  "ocr_text": "Face Sculptor",
+                  "ocr_conf": 0.0049023688415145445
+                },
+                "rank_level": {
+                  "ocr_text": "Mediocre0",
+                  "ocr_conf": 0.0035365700788444307
+                },
+                "percent": {
+                  "ocr_text": "74.2",
+                  "ocr_conf": 0.006180867372045179
+                }
+              }
+            },
+            {
+              "row": 4,
+              "cells": {
+                "name": {
+                  "ocr_text": "Hair Stylist",
+                  "ocr_conf": 0.004067248708512794
+                },
+                "rank_level": {
+                  "ocr_text": "Mediocr.0",
+                  "ocr_conf": 0.003302643477195669
+                },
+                "percent": {
+                  "ocr_text": "74.2",
+                  "ocr_conf": 0.006180953878549852
+                }
+              }
+            },
+            {
+              "row": 5,
+              "cells": {
+                "name": {
+                  "ocr_text": "Boylptor",
+                  "ocr_conf": 0.0031447237284620224
+                },
+                "rank_level": {
+                  "ocr_text": "Mediocre. 0",
+                  "ocr_conf": 0.005431026948705983
+                },
+                "percent": {
+                  "ocr_text": "74.2",
+                  "ocr_conf": 0.006180909751242459
+                }
+              }
+            },
+            {
+              "row": 6,
+              "cells": {
+                "name": {
+                  "ocr_text": "Average",
+                  "ocr_conf": 0.005773493871953214
+                },
+                "rank_level": {
+                  "ocr_text": "Amateur. 5",
+                  "ocr_conf": 0.0045338857796343515
+                },
+                "percent": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            },
+            {
+              "row": 7,
+              "cells": {
+                "name": {
+                  "ocr_text": "S",
+                  "ocr_conf": 0.0027508031179888015
+                },
+                "rank_level": {
+                  "ocr_text": "2",
+                  "ocr_conf": 0.002650481515912508
+                },
+                "percent": {
+                  "ocr_text": "",
+                  "ocr_conf": 0.0
+                }
+              }
+            }
+          ],
+          "category": 5,
+          "category_page": 1
+        }
+      ]
+    }
+  },
+  "overall": {
+    "subprocess_wall_ms": 6428.897278,
+    "batched_model_ms_total": 6419.034705999998,
+    "throughput_cells_per_s": 97.06174683104028,
+    "mean_ms_per_cell_batched": 10.286914592948714,
+    "peak_vram_mb": 0.0,
+    "final_rss_mb": 1431.62109375
+  }
+}

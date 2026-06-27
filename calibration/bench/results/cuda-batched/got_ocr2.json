@@ -1,0 +1,13 @@
+{
+  "engine": "got_ocr2",
+  "status": "failed",
+  "mode": "batched",
+  "batch_size": 16,
+  "failure_stage": "batched_inference",
+  "oom": true,
+  "skip_reason": "OutOfMemoryError during batched inference (batch_size=16): CUDA out of memory. Tried to allocate 352.00 MiB. GPU 0 has a total capacity of 3.68 GiB of which 221.94 MiB is free. Including non-PyTorch memory, this process has 3.45 GiB memory in use. Of the allocated memory 2.64 GiB is allocated by PyTorch, and 726.60 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)",
+  "init": {
+    "device": "cuda",
+    "provider": null
+  }
+}
