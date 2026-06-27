@@ -6,7 +6,7 @@
 
 **Effective accuracy** = (PASS + RECOVERED) / total_data_cells. Non-data rows (`kind=summary` Average rows + `kind=empty` trailing blanks) are recorded by the engines but excluded from the denominator.
 
-**Engines reported:** 17 of 28 candidates (others may be missing if their result JSON hasn't landed yet).
+**Engines reported:** 18 of 28 candidates (others may be missing if their result JSON hasn't landed yet).
 
 | Rank | Engine | Eff Acc | PASS | REC | FAIL | Total | Device | ms/cell | Preprocess ms | Model ms | Peak VRAM (MB) | Wall (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -25,5 +25,6 @@
 | 13 | `tesseract` | 84.0% | 491 | 8 | 95 | 594 | CPU | 632.4 | — | — | — | 396.3 |
 | 14 | `onnxtr_vitstr` | 83.5% | 291 | 205 | 98 | 594 | CPU | 54.6 | 0.0 | 54.3 | — | 37.5 |
 | 15 | `ppocrv5_server` | 81.8% | 383 | 103 | 108 | 594 | CPU | 114.8 | — | — | — | 72.2 |
-| 16 | `mmocr_satrn` | 41.9% | 138 | 111 | 345 | 594 | CPU | 593.4 | — | — | — | 380.4 |
-| 17 | `mmocr_abinet` | 34.5% | 71 | 134 | 389 | 594 | CPU | 95.4 | — | — | — | 72.2 |
+| 16 | `easyocr` | 71.0% | 421 | 1 | 172 | 594 | CPU | 31.2 | — | — | — | 29.4 |
+| 17 | `mmocr_satrn` | 41.9% | 138 | 111 | 345 | 594 | CPU | 593.4 | — | — | — | 380.4 |
+| 18 | `mmocr_abinet` | 34.5% | 71 | 134 | 389 | 594 | CPU | 95.4 | — | — | — | 72.2 |

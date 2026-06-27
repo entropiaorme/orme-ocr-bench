@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Staged Experiment-A runner: run one tier (or an explicit engine list) of the
-# CUDA "research breadth" track, capturing everything needed to interpret the
-# run now and for the article later.
+# Staged tier runner: run one tier (or an explicit engine list) of any track,
+# capturing everything needed to interpret the run now and for the article later.
+# Cross-platform (Linux/CUDA Experiment A and Windows/DirectML+CPU Experiment B):
+# the driver interpreter and GPU query are autodetected per host.
 #
 # Usage (from repo root):
 #   calibration/bench/run_tier.sh gpu            # a --tier preset (gpu|fast|vlm|ship)
@@ -14,16 +15,29 @@
 #   SKIP=0 calibration/bench/run_tier.sh gpu
 #     -> re-run even if a result exists (default SKIP=1 reuses landed results).
 #
+# For a CPU latency track on a GPU host, pin CPU: OCR_BENCH_DEVICE=cpu.
+#
 # Each invocation writes a timestamped log + provenance header under
 # calibration/bench/runs/<SUBDIR>/ and regenerates the <SUBDIR> report at the
-# end. Edit DRIVER_PY / HF_HOME below if your paths differ (see SETUP.md).
+# end. DRIVER_PY autodetects the venv layout; HF_HOME (if set) is inherited from
+# the environment, not hardcoded (see SETUP.md).
 set -uo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$REPO_ROOT"
 
-DRIVER_PY="${DRIVER_PY:-$REPO_ROOT/.venv/bin/python}"
-export HF_HOME="${HF_HOME:-/home/lunet/comw2/.cache/huggingface}"
+# Driver interpreter: honour an explicit DRIVER_PY, else autodetect the venv
+# layout (Windows uses Scripts/python.exe, POSIX uses bin/python).
+if [[ -z "${DRIVER_PY:-}" ]]; then
+  if [[ -x "$REPO_ROOT/.venv/Scripts/python.exe" ]]; then
+    DRIVER_PY="$REPO_ROOT/.venv/Scripts/python.exe"
+  else
+    DRIVER_PY="$REPO_ROOT/.venv/bin/python"
+  fi
+fi
+# HF_HOME is host-specific and never hardcoded here: if the caller exported it,
+# the orchestrator already forwards it to subprocesses; otherwise HuggingFace
+# uses its default cache. (See SETUP.md.)
 SUBDIR="${SUBDIR:-cuda}"
 BATCH="${BATCH:-1}"
 SKIP="${SKIP:-1}"
@@ -62,11 +76,20 @@ RUN_FLAGS=(--results-subdir "$SUBDIR")
   echo "# host:         $(hostname)"
   echo "# os:           $(uname -srm)"
   echo "# python:       $($DRIVER_PY --version 2>&1)"
+  echo "# device_pin:   ${OCR_BENCH_DEVICE:-<auto: best available provider>}"
   echo "# git_commit:   $(git rev-parse --short HEAD 2>/dev/null) $(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
   echo "# git_dirty:    $([[ -n "$(git status --porcelain 2>/dev/null)" ]] && echo yes || echo no)"
-  echo "# HF_HOME:      $HF_HOME"
-  echo "# --- nvidia-smi ---"
-  nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv 2>&1 | sed 's/^/# /'
+  echo "# HF_HOME:      ${HF_HOME:-<inherit HuggingFace default>}"
+  echo "# --- GPU ---"
+  if command -v nvidia-smi >/dev/null 2>&1; then
+    nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv 2>&1 | sed 's/^/# /'
+  elif command -v powershell >/dev/null 2>&1; then
+    powershell -NoProfile -Command \
+      "Get-CimInstance Win32_VideoController | Select-Object Name,DriverVersion | Format-Table -HideTableHeaders" \
+      2>&1 | sed 's/^/# /' | grep -v '^# *$'
+  else
+    echo "# (no GPU query tool found)"
+  fi
   echo "# ---------------------------------------------------------------"
   echo
 } | tee "$LOG"

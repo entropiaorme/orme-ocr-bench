@@ -16,7 +16,8 @@
     "tesseract",
     "mmocr_abinet",
     "mmocr_robustscanner",
-    "mmocr_satrn"
+    "mmocr_satrn",
+    "easyocr"
   ],
   "subprocess_meta": {
     "openocr_svtrv2": {
@@ -120,6 +121,12 @@
       "subprocess_wall_ms": 0.0,
       "exit_code": 0,
       "skipped": true
+    },
+    "easyocr": {
+      "engine": "easyocr",
+      "subprocess_wall_ms": 30135.7587,
+      "exit_code": 0,
+      "python": "E:\\PersonalWorkspace\\entropiaorme\\ocr-bench\\project\\.venv\\Scripts\\python.exe"
     }
   },
   "per_engine_summary": {
@@ -3892,7 +3899,225 @@
           "rss_after_panel_mb": 726.75
         }
       }
+    },
+    "easyocr": {
+      "counts": {
+        "PASS": 421,
+        "RECOVERED": 1,
+        "UNRECOVERABLE": 172
+      },
+      "total": 594,
+      "non_data_cells": 30,
+      "effective_accuracy": 0.7104377104377104,
+      "by_cell_type": {
+        "name": {
+          "counts": {
+            "PASS": 244,
+            "RECOVERED": 1,
+            "UNRECOVERABLE": 1
+          },
+          "total": 246,
+          "effective_accuracy": 0.9959349593495935
+        },
+        "level": {
+          "counts": {
+            "PASS": 43,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 101
+          },
+          "total": 144,
+          "effective_accuracy": 0.2986111111111111
+        },
+        "rank_level": {
+          "counts": {
+            "PASS": 40,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 62
+          },
+          "total": 102,
+          "effective_accuracy": 0.39215686274509803
+        },
+        "percent": {
+          "counts": {
+            "PASS": 94,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 8
+          },
+          "total": 102,
+          "effective_accuracy": 0.9215686274509803
+        }
+      },
+      "by_failure_mode": {
+        "hallucinate": 0,
+        "drop": 1,
+        "substitute": 69,
+        "reject": 103
+      },
+      "ocr_total_ms": 18550.1953,
+      "ocr_mean_ms": 31.229285016835014,
+      "ocr_p95_ms": 52.68982,
+      "ocr_max_ms": 74.9019,
+      "init_load_ms": 9836.2201,
+      "init_warmup_ms": 44.8567,
+      "rss_init_mb": 36.8125,
+      "rss_after_warmup_mb": 604.203125,
+      "device": "cpu",
+      "provider": null,
+      "final_rss_mb": 630.56640625,
+      "subprocess_wall_ms": 29426.9372,
+      "peak_vram_mb": null,
+      "timing_split": null,
+      "mode": "serial",
+      "batch_size": 1,
+      "throughput_cells_per_s": null,
+      "mean_ms_per_cell_batched": null,
+      "raw_init": {
+        "rss_init_mb": 36.8125,
+        "load_ms": 9836.2201,
+        "rss_after_load_mb": 595.4375,
+        "warmup_ms": 44.8567,
+        "rss_after_warmup_mb": 604.203125,
+        "device": "cpu",
+        "provider": null
+      },
+      "raw_overall": {
+        "subprocess_wall_ms": 29426.9372,
+        "final_rss_mb": 630.56640625,
+        "heap_current_mb": 137.11967277526855,
+        "heap_peak_mb": 137.51951217651367,
+        "peak_vram_mb": null,
+        "timing_split": null
+      },
+      "panels_eval": {
+        "skill": {
+          "counts": {
+            "PASS": 185,
+            "RECOVERED": 1,
+            "UNRECOVERABLE": 102
+          },
+          "total": 288,
+          "effective_accuracy": 0.6458333333333334,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 142,
+                "RECOVERED": 1,
+                "UNRECOVERABLE": 1
+              },
+              "total": 144,
+              "effective_accuracy": 0.9930555555555556
+            },
+            "level": {
+              "counts": {
+                "PASS": 43,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 101
+              },
+              "total": 144,
+              "effective_accuracy": 0.2986111111111111
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 0,
+            "substitute": 6,
+            "reject": 97
+          },
+          "panel_wall_ms": 8671.6233,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 144,
+              "total_ms": 6002.317800000001,
+              "mean_ms": 41.6827625,
+              "p50_ms": 39.62415,
+              "p95_ms": 58.57757999999999,
+              "max_ms": 74.9019
+            },
+            "level": {
+              "n": 144,
+              "total_ms": 2499.4465999999998,
+              "mean_ms": 17.357268055555554,
+              "p50_ms": 14.41785,
+              "p95_ms": 26.842615,
+              "max_ms": 32.2511
+            }
+          },
+          "rss_after_panel_mb": 627.19921875
+        },
+        "profession": {
+          "counts": {
+            "PASS": 236,
+            "RECOVERED": 0,
+            "UNRECOVERABLE": 70
+          },
+          "total": 306,
+          "effective_accuracy": 0.7712418300653595,
+          "by_cell_type": {
+            "name": {
+              "counts": {
+                "PASS": 102,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 0
+              },
+              "total": 102,
+              "effective_accuracy": 1.0
+            },
+            "rank_level": {
+              "counts": {
+                "PASS": 40,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 62
+              },
+              "total": 102,
+              "effective_accuracy": 0.39215686274509803
+            },
+            "percent": {
+              "counts": {
+                "PASS": 94,
+                "RECOVERED": 0,
+                "UNRECOVERABLE": 8
+              },
+              "total": 102,
+              "effective_accuracy": 0.9215686274509803
+            }
+          },
+          "by_failure_mode": {
+            "hallucinate": 0,
+            "drop": 1,
+            "substitute": 63,
+            "reject": 6
+          },
+          "panel_wall_ms": 10872.2006,
+          "ocr_per_cell_type": {
+            "name": {
+              "n": 112,
+              "total_ms": 4675.573999999999,
+              "mean_ms": 41.746196428571416,
+              "p50_ms": 42.1174,
+              "p95_ms": 56.33079,
+              "max_ms": 64.2822
+            },
+            "rank_level": {
+              "n": 112,
+              "total_ms": 3765.7119,
+              "mean_ms": 33.62242767857143,
+              "p50_ms": 33.19665,
+              "p95_ms": 44.009595,
+              "max_ms": 50.0076
+            },
+            "percent": {
+              "n": 112,
+              "total_ms": 2232.261,
+              "mean_ms": 19.930901785714287,
+              "p50_ms": 20.24155,
+              "p95_ms": 25.969835,
+              "max_ms": 28.1103
+            }
+          },
+          "rss_after_panel_mb": 630.56640625
+        }
+      }
     }
   },
-  "orchestration_wall_ms": 585.3886
+  "orchestration_wall_ms": 30690.035
 }

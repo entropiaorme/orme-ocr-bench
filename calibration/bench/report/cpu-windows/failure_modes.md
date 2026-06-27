@@ -26,5 +26,6 @@ The classifier is length-based with a blank special-case; it's directional, not 
 | `tesseract` | 66 | 1 | 36 | 0 | 95 |
 | `onnxtr_vitstr` | 33 | 0 | 270 | 0 | 98 |
 | `ppocrv5_server` | 1 | 73 | 137 | 0 | 108 |
+| `easyocr` | 0 | 1 | 69 | 103 | 172 |
 | `mmocr_satrn` | 200 | 2 | 254 | 0 | 345 |
 | `mmocr_abinet` | 176 | 0 | 347 | 0 | 389 |

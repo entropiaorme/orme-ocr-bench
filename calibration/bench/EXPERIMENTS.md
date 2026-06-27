@@ -29,7 +29,7 @@ engine ran where).
 | --- | --- | --- | --- |
 | ONNX recognisers: openocr_svtrv2, onnxtr ×6, ppocr, ppocrv5 ×4 | yes (ran) | yes (ran) | yes (ran) |
 | rapidocr (rapidocr-onnxruntime) | yes (ran) | yes (ran) | no: the pinned library's provider list is CUDA-or-CPU only (no DirectML), so on Windows it runs CPU |
-| easyocr (torch) | yes | yes (ran) | no (torch has no DirectML) |
+| easyocr (torch) | yes (ran) | yes (ran) | no (torch has no DirectML) |
 | tesseract | yes (only) | never | never |
 | mmocr_abinet/robustscanner/satrn (torch 2.0 stack) | yes (ran CPU) | needs torch-2.0 CUDA wheel (absent on this host) | no |
 | VLM tier: trocr, trocr_large_printed, donut, nougat, florence2_base/large, surya, got_ocr2 | possible but impractical (minutes/cell) | yes (ran) | no |
@@ -201,9 +201,13 @@ latency figures are not contended.
 - [x] **V. DirectML-batched** — same group at batch 16 in
       `results/directml-batched/`. openocr_svtrv2 hits ~225 cells/s.
 - [x] **VI. Windows-CPU-serial** — ONNX group (pinned CPU via
-      `OCR_BENCH_DEVICE=cpu`) + tesseract + mmocr ×3 in `results/cpu-windows/`.
-      All 17 verified `device=cpu`. tesseract reads 84.0% here (vs 42% on Linux)
-      — the documented host-tagged tesseract behaviour.
+      `OCR_BENCH_DEVICE=cpu`) + tesseract + mmocr ×3 + easyocr in
+      `results/cpu-windows/`. All 18 verified `device=cpu`. tesseract reads 84.0%
+      here (vs 42% on Linux) — the documented host-tagged tesseract behaviour.
+      easyocr (torch, CPU baseline) is included here: it has no DirectML path so
+      CPU is its only Windows runtime, and unlike the VLM tier it is a mainstream
+      CPU recogniser, so omitting it would be an unjustified gap rather than a
+      principled N/A. It is serial-only (no batched run; per the batching record).
 - [x] **VII. Windows-CPU-batched** — full ONNX group at batch 16 in
       `results/cpu-windows-batched/`. Run for all batch-capable engines (not a
       sample) so the column needs no per-engine subset justification.
@@ -234,6 +238,15 @@ serial." The data is more nuanced (CPU serial vs batched ms/cell, batch 16):
   raised `UnicodeEncodeError` while printing failures, aborting before the
   composite summary was written. `main()` now reconfigures stdout/stderr to UTF-8
   (errors="replace") so every run completes and persists its summary.
+- **Portable `run_tier.sh`**: was Linux/CUDA-only (hardcoded `bin/python`,
+  a host `HF_HOME`, `nvidia-smi`). Now autodetects the venv layout
+  (`Scripts/python.exe` vs `bin/python`), inherits `HF_HOME` from the environment,
+  records the `OCR_BENCH_DEVICE` pin, and queries the GPU OS-aware (nvidia-smi
+  else PowerShell). The four Windows tracks have provenance logs under
+  `runs/<track>/` for parity with the CUDA runs (host, GPU + driver, git commit,
+  device pin). Those logs were stamped with `--skip-existing` over the committed
+  idle-machine results, so they document the environment without re-measuring
+  (the CPU latency numbers were measured earlier in the session on the idle host).
 
 ## Machine cutoff
 

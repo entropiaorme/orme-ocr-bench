@@ -19,5 +19,6 @@ Splits effective accuracy by cell type. Useful for spotting engines that win on 
 | `tesseract` | 100.0% | 38.9% | 100.0% | 93.1% | strongest: `name` (100.0%) · weakest: `level` (38.9%) |
 | `onnxtr_vitstr` | 96.7% | 100.0% | 62.7% | 49.0% | strongest: `level` (100.0%) · weakest: `percent` (49.0%) |
 | `ppocrv5_server` | 63.4% | 99.3% | 86.3% | 97.1% | strongest: `level` (99.3%) · weakest: `name` (63.4%) |
+| `easyocr` | 99.6% | 29.9% | 39.2% | 92.2% | strongest: `name` (99.6%) · weakest: `level` (29.9%) |
 | `mmocr_satrn` | 47.6% | 24.3% | 0.0% | 95.1% | strongest: `percent` (95.1%) · weakest: `rank_level` (0.0%) |
 | `mmocr_abinet` | 54.9% | 47.9% | 1.0% | 0.0% | strongest: `name` (54.9%) · weakest: `percent` (0.0%) |

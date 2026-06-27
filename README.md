@@ -101,17 +101,14 @@ The sweep covers 28 candidate engines across five architectural families:
   `donut`, `nougat`, `florence2_base`, `florence2_large`, `surya`,
   `got_ocr2`, `kosmos25`, `dots_ocr`.
 
-**13 produced complete results** on the capture host and appear on the
-leaderboard above. **15 are pending.** The capture host is AMD + Windows with
-DirectML and no CUDA, and the pending 15 (the MMOCR family, `trocr_large_printed`,
-`donut`, `nougat`, the Florence-2 family, `got_ocr2`, `kosmos25`, `dots_ocr`,
-`surya`) need either Linux + ROCm or NVIDIA + CUDA to run. The adapters for all
-28 are present in the harness; the 15 pending engines run cleanly once cloned
-onto a CUDA/ROCm host. See SETUP.md for the bring-up, including the section on
-completing them on a Linux + NVIDIA box.
-
-This is stated plainly so there is no confusion: not all 28 ran here. The
-leaderboard is 13 engines. The remaining 15 are an open item, not a result.
+**The original capture host** (AMD + Windows, DirectML, no CUDA) ran only 13
+engines; the leaderboard above reflects that first pass. The fleet has since been
+completed across two hosts (see the experiment split below): **Experiment A**
+scored 26 of 28 on a Linux + NVIDIA box (`results/cuda/`), and **Experiment B**
+added the in-domain Windows DirectML and CPU latency tracks (`results/directml/`,
+`results/cpu-windows/`). Only `kosmos25` and `dots_ocr` remain open: they OOM a
+4 GB card and need ~16 GB, recorded as honest non-results. The adapters for all
+28 are present in the harness and reproduce per SETUP.md.
 
 ## Two experiments: unconstrained breadth vs in-domain
 
@@ -131,14 +128,20 @@ each with its own leaderboard and a per-row `Device` column.
   as honest non-results). This is an upper-bound proxy, not what an end user
   sees.
 
-- **Experiment B — in-domain / end-user-targeted** (`results/directml/`, a
-  later pass on a Windows host). "Given the product's actual constraints, which
-  engines run, and how do they do?" DirectML on Windows, matching the shipped
-  app exactly. Narrower (the CUDA-only PyTorch engines have no DirectML path),
-  but these are the representative numbers.
+- **Experiment B — in-domain / end-user-targeted** (`results/directml/`,
+  `results/directml-batched/`, `results/cpu-windows/`, `results/cpu-windows-batched/`).
+  "Given the product's actual constraints, which engines run, and how do they
+  do?" Run on a Windows + AMD host (RX 6750 XT) on DirectML, matching the shipped
+  app's provider path exactly, with serial and batched latency. Narrower than A
+  (the CUDA-only PyTorch engines have no DirectML path), but these are the
+  representative numbers.
 
-A CPU-only third experiment is deliberately omitted: this is a companion app
-for a GPU game, so every user has a GPU; a CPU table would represent nobody.
+The shipped app reaches the GPU through a DirectML -> CPU provider ladder, so the
+CPU figures are the honest fallback (degraded-path) case, not a hypothetical:
+Experiment B reports them (`results/cpu-windows/`) alongside the DirectML
+numbers, including a batched pass that shows CPU batching helps some engines
+substantially (the OnnxTR family) while being flat-to-negative for others (the
+width-padded PP-OCRv5 CTC recognisers).
 
 ## What the sweep found
 
