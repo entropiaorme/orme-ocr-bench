@@ -62,6 +62,46 @@ def _select_providers() -> list[str]:
     return ["CPUExecutionProvider"]
 
 
+def _batched_ctc_read(session, input_name, decode, tensors):
+    """Width-bucketed batched inference for variable-width CTC recognisers.
+
+    Padding a narrow crop out to a much wider batch-max leaks spurious
+    characters into the read (the conv receptive field sees the padded tail),
+    so batched results would not match serial. PP-OCR's reference path avoids
+    this by grouping crops of similar width and padding only to the bucket max.
+    We sort by width and cut a new bucket whenever the width grows past a small
+    ratio of the bucket's min width, so intra-bucket padding stays minimal and
+    batched reads track serial. Results are returned in the original order.
+    """
+    order = sorted(range(len(tensors)), key=lambda i: tensors[i].shape[3])
+    results: dict[int, tuple] = {}
+    bucket: list[int] = []
+
+    def flush(idxs):
+        if not idxs:
+            return
+        max_w = max(tensors[i].shape[3] for i in idxs)
+        batch = np.zeros((len(idxs), 3, TARGET_HEIGHT, max_w), dtype=np.float32)
+        for bi, i in enumerate(idxs):
+            t = tensors[i]
+            batch[bi, :, :, : t.shape[3]] = t[0]
+        preds = session.run(None, {input_name: batch})[0]
+        for bi, i in enumerate(idxs):
+            results[i] = decode(preds[bi : bi + 1])
+
+    bucket_min_w = None
+    for i in order:
+        w = tensors[i].shape[3]
+        if bucket and w > bucket_min_w * 1.10:  # >10% wider: start a new bucket
+            flush(bucket)
+            bucket = []
+        if not bucket:
+            bucket_min_w = w
+        bucket.append(i)
+    flush(bucket)
+    return [results[i] for i in range(len(tensors))]
+
+
 class _PPocrV5Reader:
     """Shared PP-OCRv5 inference helper.
 
@@ -129,20 +169,10 @@ class _PPocrV5Reader:
         return self._decode(output[0])
 
     def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
-        # Preprocess each crop to [1,3,H,w_i] then right-pad all to the batch's
-        # max width (PP-OCR convention) so they stack into one [N,3,H,Wmax]
-        # tensor for a single session run. Padding uses the normalised
-        # background value (-1.0 after the [-1,1] normalisation = white).
-        tensors = [self._preprocess(c) for c in crops_bgr]
-        max_w = max(t.shape[3] for t in tensors)
-        batch = np.full(
-            (len(tensors), 3, TARGET_HEIGHT, max_w), -1.0, dtype=np.float32,
+        return _batched_ctc_read(
+            self._session, self._input_name, self._decode,
+            [self._preprocess(c) for c in crops_bgr],
         )
-        for i, t in enumerate(tensors):
-            batch[i, :, :, : t.shape[3]] = t[0]
-        outputs = self._session.run(None, {self._input_name: batch})
-        preds = outputs[0]  # [N, T, C]
-        return [self._decode(preds[i : i + 1]) for i in range(preds.shape[0])]
 
     @staticmethod
     def _preprocess(bgr: np.ndarray) -> np.ndarray:

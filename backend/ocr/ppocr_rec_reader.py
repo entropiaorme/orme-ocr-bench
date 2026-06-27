@@ -144,17 +144,18 @@ class PPocrRecReader:
         return self._decode(output[0])
 
     def read_batch(self, crops_bgr: list[np.ndarray]) -> list[tuple[str, float]]:
-        """Batched recognition: pad each preprocessed crop to the batch max
-        width, stack to [N,3,H,Wmax], one session run, decode per sample."""
-        tensors = [self._preprocess(c) for c in crops_bgr]
-        max_w = max(t.shape[3] for t in tensors)
-        batch = np.full(
-            (len(tensors), 3, TARGET_HEIGHT, max_w), -1.0, dtype=np.float32,
+        """Width-bucketed batched recognition (see ppocrv5's _batched_ctc_read):
+        group similar-width crops so padding stays minimal and batched reads
+        track serial, rather than a single max-width pad that leaks into narrow
+        crops."""
+        from backend.ocr.calibration.bench.engines.ppocrv5_mobile_engine import (
+            _batched_ctc_read,
         )
-        for i, t in enumerate(tensors):
-            batch[i, :, :, : t.shape[3]] = t[0]
-        preds = self._session.run(None, {self._input_name: batch})[0]
-        return [self._decode(preds[i : i + 1]) for i in range(preds.shape[0])]
+
+        return _batched_ctc_read(
+            self._session, self._input_name, self._decode,
+            [self._preprocess(c) for c in crops_bgr],
+        )
 
     # ------------------------------------------------------------------
     # Preprocessing

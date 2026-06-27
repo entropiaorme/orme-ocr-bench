@@ -55,6 +55,22 @@ engine ran where).
 Adapters were one-crop-at-a-time; a `read_batch` capability was added (true
 batched path only, no loop-fallback) for the engines decided below.
 
+### Finding: variable-width CTC batching must be width-bucketed
+
+The PP-OCR / PP-OCRv5 recognisers take a fixed-height, variable-width tensor.
+Naive batching (pad every crop to the batch's max width) **perturbs accuracy**:
+padding a narrow crop (e.g. a 2-digit level) out to a long skill-name's width
+leaks spurious characters into the read, because the conv receptive field sees
+the padded tail. Measured impact on ppocrv5_mobile: naive max-width pad with
+-1.0 gave 52% (vs 96% serial); with 0.0 it over-read to 98.5%; neither matched
+serial. The fix (PP-OCR's own reference practice) is **width-bucketing**: sort
+crops by width and pad only within similar-width groups (we cut a bucket at a
+>10% width jump), so intra-bucket padding is minimal. Bucketed batched then
+tracks serial to within one cell (95.8% vs 96.0%). This is itself a reportable
+methodology point: "batched throughput for variable-width CTC is only
+apples-to-apples if you width-bucket; otherwise batching changes the reads."
+Batch-of-1 always equals serial exactly (no per-call nondeterminism).
+
 ## Which engines get a batched measurement, and why (decision record)
 
 The per-engine call was made with two heuristics, applied jointly:
