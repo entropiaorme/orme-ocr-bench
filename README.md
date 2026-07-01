@@ -14,7 +14,7 @@ can fuzzy-match against.
 
 The short answer: **OpenOCR's SVTRv2-mobile recogniser**, which reaches **100%
 effective accuracy** on the 594-cell corpus under the production post-process,
-at **~12.3 ms/cell** on CPU. The long answer, with the full accuracy ladder
+at **~12.9 ms/cell** on CPU. The long answer, with the full accuracy ladder
 and the runners-up, is below.
 
 ## The accuracy ladder
@@ -61,7 +61,7 @@ harness's own per-cell Python wall time, measured on CPU.
 
 | Rank | Engine | Eff acc | PASS | REC | FAIL | Mean ms/cell | Init load (ms) | RSS warm (MB) | Wall (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | `openocr_svtrv2` | **100.0%** | 550 | 44 | 0 | 12.3 | 381 | 110 | 8.9 |
+| 1 | `openocr_svtrv2` | **100.0%** | 550 | 44 | 0 | 12.9 | 381 | 110 | 8.9 |
 | 2 | `rapidocr` | 98.7% | 488 | 98 | 8 | 9.6 | 555 | 105 | 7.2 |
 | 3 | `ppocrv5_mobile` | 95.6% | 515 | 53 | 26 | 73.9 | 368 | 99 | 46.6 |
 | 4 | `onnxtr_viptr` | 95.6% | 376 | 192 | 26 | 689.4 | 54180 | 388 | 489.4 |
@@ -151,7 +151,7 @@ deep-dives:
 - **Modern CTC + visual-transformer encoders win on game-UI text.** The
   SVTRv2 family (`openocr_svtrv2`) beats both pure-CRNN-via-ONNX (the PP-OCRv4
   baseline) and transformer-decoder generative OCR (`trocr`) on these crops.
-  It is also the fastest accurate option by a wide margin (~12.3 ms/cell).
+  It is also the fastest accurate option by a wide margin (~12.9 ms/cell).
 - **PARSeq is competitive on names but slower.** Permuted-AR with iterative
   refinement (`onnxtr_parseq`) reads names well but carries a much higher
   per-cell cost and a heavier init, so it loses on the cost/accuracy frontier.
